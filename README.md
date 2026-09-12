@@ -23,3 +23,8 @@ nas Rotas e Lógicas (Back A e Back B).
 arquivos.
 Evolução futura: Quando o sistema começar a funcionar, um (ou ambos) assumiram o papel de QA/Tester,
 tentando quebrar o software e caçando erros.
+
+Público alvo 
+Questionário - 6 a 10 
+Forms
+Lista de Brainstorming
