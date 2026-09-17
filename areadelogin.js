@@ -21,11 +21,15 @@ const login = [
 ]
 
 // Função para validar o login
-function validarLogin(usuario, cpf, senha) {
-    if (usuario === "" || cpf === "" || senha === "") {
-        return false; // Dados incompletos
+function verificarLogin(indentificacao, senha) {
+    for (let i=0; i<login.length; i++){
+        
+        if ((login[i].cpf === identificacao ||
+        login[i].usuario === identificacao) &&
+        login[i].senha === senha) {
+            
+        return true;
     }
-   
 }
-
-//AINDA EM 
+        return false; 
+}
