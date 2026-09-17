@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canhotinho</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:
+     ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <img src="images/logo-canhotinho.png" alt="Logo de Canhotinho" />
+      <h1 class="titulo-principal">Portal Cultura de Canhotinho</h1>
+    </header>
+
+    <nav class="menu-principal">
+      <ul>
+        <a
+          href="index.HTML"
+          class="btn btn-warning"
+          tabindex="-1"
+          role="button"
+          aria-disabled="true"
+          >Início</a
+        >
+        <a
+          href="historia.html"
+          class="btn btn-warning"
+          tabindex="-1"
+          role="button"
+          aria-disabled="true"
+          >História</a
+        >
+        <a
+          href="#"
+          class="btn btn-warning"
+          tabindex="-1"
+          role="button"
+          aria-disabled="true"
+          >Contato</a
+        >
+      </ul>
+    </nav>
+
+    <main>
+      <img src="images/banner-cidade.jpg" width="100%" />
+
+      <section id="festas" ; class="card-festas">
+        <h2 class="secao-h2">Festas Populares</h2>
+        <h3>Festa de São Sebastião</h3>
+
+        <p>
+          O padroeiro de <strong>Canhotinho</strong> é celebrado com muita
+          alegria todo mês de janeiro.
+        </p>
+
+        <img
+          src="images/festa-padroeiro.jpg"
+          alt="Festa de São Sebastião"
+          width="70%"
+        />
+      </section>
+
+      <section>
+        <h2 class="subtitulo">Outras festas tradicionais:</h2>
+        <ul>
+          <li>Carnaval de Rua</li>
+          <li>Festa Junina no Centro</li>
+          <li>Aniversário da Cidade</li>
+        </ul>
+      </section>
+
+      <section class="box-section">
+        <h2 class="secao-h2">Acompanhe as Novidades</h2>
+        <p>
+          Siga o
+          <a
+            href="https://www.instagram.com/canhotinhope?igsh=MXA0Nm1iZjgwb2Fmeg=="
+            target="_blank"
+            >Instagram Oficial da Cultura</a
+          >
+          para ver as fotos dos eventos
+        </p>
+      </section>
+
+      <h2>Galeria de Fotos</h2>
+      <section class="galeria-turismo">
+        <img
+          src="images/igreja-matriz.jpg"
+          alt="Igreja Matriz de Canhotinho"
+          class="foto-turismo foto-destaque"
+        />
+        <img
+          src="images/estatua-do-rio-canhoto.webp"
+          alt="Estátua de Canhotinho"
+          class="foto-turismo foto-alta"
+        />
+        <img
+          src="images/praça-do-centro.jpg"
+          alt="Praça do Centro de Canhotinho"
+          class="foto-turismo"
+        />
+        <img
+          src="images/rio-canhonto.jpg"
+          alt="Rio de Canhotinho"
+          class="foto-turismo"
+        />
+        <img
+          src="images/torre-da-vivo.webp"
+          alt="Torre da Vivo de Canhotinho"
+          class="foto-turismo"
+        />
+      </section>
+
+      <section>
+        <h2 class="subtitulo">Como Participar dos Eventos</h2>
+        <p>Siga o passo a passo para se inscrever:</p>
+
+        <ol>
+          <li>Acesse o formulário online.</li>
+          <li>Preecha seus dados pessoais.</li>
+          <li>Aguade o E-mail de confirmação.</li>
+        </ol>
+      </section>
+
+      <article class="noticia-oficial">
+        <h2 class="titulo-noticia">
+          COMUNICADO OFICIAL: Obras na Estação Ferroviária
+        </h2>
+
+        <p class="texto-noticia">
+          A Prefeitura Municipal de Canhotinho informa que, a partir da próxima
+          segunda-feira, terão início as obras de restauração da Antiga Estação
+          Ferroviária. O projeto visa preservar o patrimônio histórico e
+          cultural do nosso município.
+        </p>
+
+        <p class="texto-noticia">
+          Durante o período de obras, o acesso ao local estará temporariamente
+          restrito por rígidas normas de segurança. Pedimos a compreensão de
+          todos os munícipes e ressaltamos que a área será reaberta em breve.
+        </p>
+
+        <p class="texto-noticia">
+          Gabinete do Prefeito<br />
+          <strong>Prefeitura de Canhotinho</strong>
+        </p>
+      </article>
+
+      <section class="painel-noticias">
+        <article class="destaque">
+          Garanhuns anuncia Festival de Inverno, Canhotinho fará o de Verão!
+          <img
+            src="images/festival-verao.jpeg"
+            alt="Festival de Verão"
+            width="90%"
+          />
+        </article>
+
+        <article class="noticia-1">
+          Novos livros chegam à Biblioteca Municipal.
+          <img
+            src="images/biblioteca.jpg"
+            alt="Biblioteca Municipal"
+            width="90%"
+          />
+        </article>
+
+        <article class="noticia-2">
+          Inscrições abertas para o teatro.
+          <img src="images/teatro.webp" alt="Teatro" width="90%" />
+        </article>
+      </section>
+
+      <section>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">.</th>
+              <th scope="col">Evento</th>
+              <th scope="col">Data</th>
+              <th scope="col">Local</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">.</th>
+              <td>Festival de Inverno</td>
+              <td>20/06/2026</td>
+              <td>Garanhuns-PE</td>
+            </tr>
+            <tr>
+              <th scope="row">.</th>
+              <td>Festa Cultural de Canhotinho</td>
+              <td>15/09/2026</td>
+              <td>Canhotinho-PE</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label"
+            >Nome Completo</label
+          >
+          <input type="text" class="form-control" id="formGroupExampleInput" />
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">E-mail</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-success">enviar</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Todos os Direitos Reservados <br />
+        2024
+      </p>
+      <p>
+        <a href="https://wa.me/558199785659" target="_blank"
+          >Fale Conosco no WhatsApp</a
+        >
+      </p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
