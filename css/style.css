@@ -1,211 +1,72 @@
-body 
-  {font-family: Roboto , sans-serif;
-   background-color: #0D136B;
-   display: grid;
-   grid-template-columns: 250px 1fr;
-   grid-template-areas:
-   "cabecalho cabecalho"
-   "menu menu"
-   "conteudo conteudo"
-   "rodape rodape";}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-main
-  {grid-area:conteudo;
-   background-color: #0D136B;
-   color:#F5EFED}
-
-main a
-  {color: #FFE500; 
-   text-decoration: none;}
-
-header
-  {display:flex;
-   flex-direction: row;
-   align-items: flex-start;
-   gap: 20px;
-   flex-wrap: wrap;
-   grid-area:cabecalho;
-   background-color: #0F0A0A;}
-
-.titulo-principal
-  {color: #F5EFED;
-   font-size: 40px;
-   text-align: center;
-   margin-top: 40px;}
-
-.menu-principal{/*codigo nav*/
-   background-color: #0F0A0A;
-   padding: 15px;
-   grid-area: menu;}
-
-.menu-principal ul
-  {flex-direction: row;
-   display: flex;
-   list-style-type: none;
-   justify-content: center;
-   align-items: center;
-   gap: 20px;}
-  
-.subtitulo
-  {color: #F5EFED;}
-
-.secao-h2
-  {color:#0F0A0A}
-    
-#festas
-  {background-color: #0000FF;}
-
-.card-festas
-  {background-color:#0000FF ;
-   width: 400px;
-   padding: 20px;
-   border: 2px solid #FFE500;
-   margin: 30px;
-   box-sizing: border-box;}
-
-.box-section
-  {background: #0000FF;
-   border:2px solid  #FFE500; 
-   padding: 20px;
-   margin:20px;
-   width: 500px;
-   box-sizing:border-box;}
-
-.galeria-turismo
-  {display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-template-rows: 300px 150px;
-   gap: 10px;}
-
-.foto-turismo
-  {width: 100%;
-   border-radius: 8px;
-   justify-content: center;
-   align-items: justify;
-   object-fit: cover;
-   height: 100%;}
-
-.foto-destaque
-  {grid-column: span 2;}
-
-.foto-alta
-  {grid-row: span 2;
-   grid-column: 3;}
-
-main img
-  {border:3px solid  #FFE500 }
-
-.noticia-oficial
-  {text-align: justify;
-   font-family:'roboto', sans-serif;}
-
-.titulo-noticia
-  {color:#F5EFED;
-   font-weight:800;
-   font-size: 26px;}
-
-.texto-noticia{line-height: 1.6;}
-
-.painel-noticias
-  {display: grid;
-   grid-area: painel-noticias;
-   grid-template-columns: 2fr 1fr;
-   gap: 20px;
-   grid-template-areas:
-   "destaque noticia-1"
-   "destaque noticia-2";}
-
-.destaque
-  {grid-area: destaque;}
-
-.noticia-1
-  {grid-area: noticia-1;}
-
-.noticia-2
-  {grid-area: noticia-2;}
-
-footer
-  {background-color: #0F0A0A;
-   color: #F5EFED;
-   padding: 20px;
-   text-align:center;
-   grid-area: rodape;}
-
-   
-   
-@media(max-width: 768px){
-  .galeria-turismo
-   {grid-template-columns: 2fr;}
-
-  .foto-destaque
-   {grid-column: span 1;}
-
-  .foto-alta
-   {grid-row: span 2;
-    grid-column: 1;}
-
-  .body {
-    grid-template-columns: 13rem 1fr;
-    grid-template-areas:
-     "cabecalho cabecalho"
-   "menu menu"
-   "conteudo conteudo"
-   "rodape rodape";
-  }
-
-  .header {
+body {
+    display: flex;
+    height: 100vh;
     justify-content: center;
-  }
-
-  .menu-principal ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .secao-noticias {
-    flex-direction: column;
     align-items: center;
-  }
+    background-color: #f0f2f5;
+}
 
-  .box-section
-  {background:#0000FF;
-   border: 1% solid  #FFE500; 
-   padding: 1rem;
-   margin: 1rem;
-   width: 22rem;
-   box-sizing:border-box;}
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
 
-  .secao-h2
-  {color:#0F0A0A}
-  
-  .card-festas {
-    width: 90%;
-    margin: 1rem;
-  }
+.login-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .painel-noticias {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "destaque"
-      "noticia-1"
-      "noticia-2";
-  }
+.login-form h2 {
+    margin-bottom: 24px;
+    color: #333333;
+    text-align: center;
+}
 
-  .titulo-principal {
-    font-size: 2rem;
-  }
+.input-group {
+    margin-bottom: 20px;
+}
 
- .menu-principal{/*codigo nav*/
-   background-color: #0F0A0A;
-   padding: 1rem;
-   grid-area: menu;
-   font-size: 1rem;}
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-size: 14px;
+}
 
-  footer
-  {background-color: #0F0A0A;
-   color: #DBFCFF;
-   padding: 1rem;
-   text-align: center;
-   grid-area: rodape;
-   font-size: 1rem ;} 
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
