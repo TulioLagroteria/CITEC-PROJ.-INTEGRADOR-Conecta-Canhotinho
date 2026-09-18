@@ -1,4 +1,4 @@
-const paciente = {
+const paciente = [{
 
         nome: "Texto", // Sempre em string.
         cpf: "123.456.789-00", // O CPF é um dado único, e será usado para identificar o paciente, e caso seja digitado errado, não será possível cadastrar o paciente.
@@ -6,4 +6,13 @@ const paciente = {
         endereco: "Rua", // O endereço é um dado importante para o paciente, e será usado para enviar notificações e lembretes.
         telefone: "123456789", // Será usado para contato.
         email: "texto@exemplo.com", // Será usado para enviar notificações e lembretes.
-    };
+    },
+    {
+        nome: "Texto",
+        cpf: "000.000.000-00",
+        nascimento:"data",
+        endereco: "Rua",
+        telefone: "000000000",
+        email: "texto1@exemplo.com"
+    },]
+    
