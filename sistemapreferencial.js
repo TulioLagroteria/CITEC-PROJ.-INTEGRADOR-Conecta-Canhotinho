@@ -1,5 +1,5 @@
-const cliente[
-  {id: 01, // Os 0 (zeros) à esquerda serao preenchidos automaticamente ao longo qje o id cresça.
+const cliente = [
+  {id: 1, // Os 0 (zeros) à esquerda serão preenchidos automaticamente ao longo que o id cresça.
    idade: 67, // Idade atual do cliente.
    deficiencia: false, // Se o cliente possui deficiencia.
    autismo: false, // Se o cliente possui autismo.
@@ -10,44 +10,58 @@ const cliente[
    obesidade: false, // Se o cliente está obeso.
    doadorDeSangue: false, // Se o cliente é doador de sangue.
    comprovanteDoacaoValido: false, // Se o comprovante da doacao doaçao de sangue é válido.
-}]
+   },
+   {
+    id: 2,
+    idade: 30,
+    deficiencia: true,
+    autismo: false,
+    gestante: false,
+    lactante: false,
+    criancaDeColo: false,
+    mobilidadeReduzida: false,
+    obesidade: false,
+    doadorDeSangue: false,
+    comprovanteDoacaoValido: false,
+   },
+]
 
 function verificarPreferencial(cliente){
-    if (pessoa.idade >= 60) {
-        motivos.push("Pessoa com 60 anos ou mais");
+    if (cliente.idade >= 60) {
+        cliente.idade("Pessoa com 60 anos ou mais");
     }
 
-    if (pessoa.deficiencia) {
-        motivos.push("Pessoa com deficiência");
+    if (cliente.deficiencia) {
+        cliente.deficiencia("Pessoa com deficiência");
     }
 
-    if (pessoa.autismo) {
-        motivos.push("Pessoa com TEA");
+    if (cliente.autismo) {
+        cliente.autismo("Pessoa com TEA");
     }
 
-    if (pessoa.gestante) {
-        motivos.push("Gestante");
+    if (cliente.gestante) {
+        cliente.gestante("Gestante");
     }
 
-    if (pessoa.lactante) {
-        motivos.push("Lactante");
+    if (cliente.lactante) {
+        cliente.lactante("Lactante");
     }
 
-    if (pessoa.criancaDeColo) {
-        motivos.push("Pessoa com criança de colo");
+    if (cliente.criancaDeColo) {
+        cliente.criancaDeColo("Pessoa com criança de colo");
     }
 
-    if (pessoa.mobilidadeReduzida) {
-        motivos.push("Pessoa com mobilidade reduzida");
+    if (cliente.mobilidadeReduzida) {
+        cliente.mobilidadeReduzida("Pessoa com mobilidade reduzida");
     }
 
-    if (pessoa.obesidade) {
-        motivos.push("Pessoa com obesidade");
+    if (cliente.obesidade) {
+        cliente.obesidade("Pessoa com obesidade");
     }
 
     if (
-        pessoa.doadorDeSangue &&
-        pessoa.comprovanteDoacaoValido
+        cliente.doadorDeSangue &&
+        cliente.comprovanteDoacaoValido
     ) {
-        motivos.push("Doador de sangue")}
+        cliente.comprovanteDoacaoValido("Doador de sangue")}
 }
