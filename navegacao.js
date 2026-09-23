@@ -9,7 +9,7 @@ navegacao.get("/api/agendamentoonline", (req, res) => {
 }),
 
 navegacao.get("/api/anexardados", (req, res) => {
-    res.json(Entrar, cadastrasse);
+    res.send(Entrar, cadastrasse);
 
 }),
 
@@ -22,18 +22,18 @@ navegacao.get("/api/", (req, res) => {
 
 }),
   navegacao.get("/api/posicaonafila", (req, res) => {
-    res.send("Página de Contato");
+    res.send("Posição na Fila");
 
 }),
-  navegacao.get("/api/sistemapreferencia", (req, res) => {
-    res.send("Página de Contato");
+  navegacao.get("/api/sistemapreferencial", (req, res) => {
+    res.send("Sistema Preferencial");
 
 }),
   navegacao.get("/api/telainicial", (req, res) => {
-    res.send("Página de Contato");
+    res.send("Área Inicial");
 
 }),
 
-app.listen(3000, () => {
+navegacao.listen(3000, () => {
     console.log("Servidor rodando 3000");
 });
