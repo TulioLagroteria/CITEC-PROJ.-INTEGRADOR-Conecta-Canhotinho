@@ -1,19 +1,4 @@
-let  registrarSenha = [ // Array de consultas de senha.
-      {   cpf: "   ", // CPF da pessoa
-        especialidade: "", // Especialidade da consulta.
-        unidade: "  ", // Unidade de saúde onde a consulta será realizada.
-        profissional: "  ", // Profissional responsável pela consulta.
-        data: "  ", // Data da consulta.
-        horario: "  ", // Horário da consulta.
-        status: "  " // Status da consulta, se está disponível ou agendada.
-    },
-    {   cpf: "   ",
-        especialidade: "   ",
-        unidade: "   ",
-        profissional: "   ",
-        data: "   ",
-        horario: "   ",
-        status: "  " } 
+let  = [ // Array de consultas de senha.
 
 ];
 
@@ -56,26 +41,26 @@ const consultarSenha = [
         status: "Disponível" }
 ];
 
-app.get("/api/agendarConsulta", (req, res) => { // senhas guardadas para usuarios já cadastrado
+app.get("/api/agendarConsulta", (req, res) => {
     res.send(consultarSenha);
 
 },
 )
 
-app.get("/api/", (req, res) => {
+app.get("/api/index.HTML", (req, res) => {
     res.json(Eventos);
 
 },
 )
 
-app.get("/api/", (req, res) => {
+app.get("/api/Artistas", (req, res) => {
     res.send("ARTISTAS");
 
 },
 
 )
-app.get("/api/", (req, res) => {
-    res.send("");
+app.get("/api/contato", (req, res) => {
+    res.send("Página de Contato");
 
 },
 
