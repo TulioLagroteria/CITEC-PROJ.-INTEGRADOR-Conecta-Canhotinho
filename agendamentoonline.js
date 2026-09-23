@@ -1,22 +1,21 @@
-let  = [ // Array de consultas de senha.
-
+let = [
+  // Array de consultas de senha.
 ];
 
 function agendarConsulta(registrarSenha) {
+  for (let i = 0; i < registrarSenha.length; i++) {
+    if (registrarSenha[i].cpf === senha) {
+      if (registrarSenha[i].status === "Disponível") {
+        registrarSenha[i].status = "Agendado";
 
-    for (let i = 0; i < registrarSenha.length; i++) {
-        if (registrarSenha[i].cpf === senha) {
-            if (registrarSenha[i].status === "Disponível") {
-
-                registrarSenha[i].status = "Agendado";
-
-                return "Senha de número" + registrarSenha[i].id + " agendada com sucesso.";
-            } else {
-
-                return "Este horário não está disponível.";
-            }
-        }
+        return (
+          "Senha de número" + registrarSenha[i].id + " agendada com sucesso."
+        );
+      } else {
+        return "Este horário não está disponível.";
+      }
     }
+  }
 }
 
 const express = require("express");
@@ -24,51 +23,41 @@ const express = require("express");
 const app = express();
 
 const consultarSenha = [
-    {   cpf: "123.456.789-00", // CPF da pessoa
-        especialidade: "Clínica Geral", // Especialidade da consulta.
-        unidade: "UBS Central", // Unidade de saúde onde a consulta será realizada.
-        profissional: "Dra. Ana", // Profissional responsável pela consulta.
-        data: "20/09/2026", // Data da consulta.
-        horario: "08:00", // Horário da consulta.
-        status: "Disponível" // Status da consulta, se está disponível ou agendada.
-    },
-    {   cpf: "987.654.321-00",
-        especialidade: "Odontologia",
-        unidade: "Centro Odontológico",
-        profissional: "Dr. Carlos",
-        data: "21/09/2026",
-        horario: "09:00",
-        status: "Disponível" }
+  {
+    cpf: "123.456.789-00", // CPF da pessoa
+    especialidade: "Clínica Geral", // Especialidade da consulta.
+    unidade: "UBS Central", // Unidade de saúde onde a consulta será realizada.
+    profissional: "Dra. Ana", // Profissional responsável pela consulta.
+    data: "20/09/2026", // Data da consulta.
+    horario: "08:00", // Horário da consulta.
+    status: "Disponível", // Status da consulta, se está disponível ou agendada.
+  },
+  {
+    cpf: "987.654.321-00",
+    especialidade: "Odontologia",
+    unidade: "Centro Odontológico",
+    profissional: "Dr. Carlos",
+    data: "21/09/2026",
+    horario: "09:00",
+    status: "Disponível",
+  },
 ];
 
 app.get("/api/agendarConsulta", (req, res) => {
-    res.send(consultarSenha);
+  res.send(consultarSenha);
+});
 
-},
-)
+app.get("/api/", (req, res) => {
+  res.json(Eventos);
+});
 
-app.get("/api/index.HTML", (req, res) => {
-    res.json(Eventos);
-
-},
-)
-
-app.get("/api/Artistas", (req, res) => {
-    res.send("ARTISTAS");
-
-},
-
-)
-app.get("/api/contato", (req, res) => {
-    res.send("Página de Contato");
-
-},
-
-)
-
+app.get("/api/", (req, res) => {
+  res.send(" ");
+});
+app.get("/api/", (req, res) => {
+  res.send("");
+});
 
 app.listen(3000, () => {
-    console.log("Servidor rodando 3000");
-}
-
-)
+  console.log("Servidor rodando 3000");
+});
