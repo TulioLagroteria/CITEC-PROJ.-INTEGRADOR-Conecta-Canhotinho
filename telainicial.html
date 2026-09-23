@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecta Canhotinho.</title>
+  <title>Conecta Canhotinho</title>
   <style>
     * {
       margin: 0;
@@ -23,6 +23,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    /* Botão Entrar como Convidado - canto superior direito */
+    .guest-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    .guest-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
     }
 
     .container {
@@ -139,8 +164,15 @@
       color: #ffd11a;
     }
 
-    /* Responsivo para telas menores */
+    /* Responsivo */
     @media (max-width: 600px) {
+      .guest-btn {
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
       .logo-container {
         width: 160px;
         height: 160px;
@@ -161,6 +193,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Botão no canto superior direito -->
+  <button class="guest-btn">Entrar como convidado</button>
+
   <div class="container">
     <!-- Logo -->
     <div class="logo-container">
@@ -173,13 +209,11 @@
 
         <!-- Contorno do celular -->
         <rect x="50" y="30" width="100" height="140" rx="14" ry="14" fill="none" stroke="white" stroke-width="8"/>
-        <!-- Notch -->
         <rect x="80" y="38" width="40" height="8" rx="4" fill="white"/>
 
         <!-- Escudo -->
         <path d="M70 60 L130 60 L130 130 Q100 155 70 130 Z" fill="#FFD700" stroke="#FFD700"/>
         
-        <!-- Quadrantes do escudo -->
         <!-- Superior esquerdo - arco-íris -->
         <rect x="72" y="62" width="28" height="34" fill="white"/>
         <path d="M74 75 Q86 65 98 75" fill="none" stroke="#E30613" stroke-width="4"/>
@@ -202,7 +236,6 @@
         <!-- Inferior direito - sol -->
         <rect x="100" y="96" width="28" height="34" fill="white"/>
         <circle cx="114" cy="113" r="10" fill="#FFD100"/>
-        <!-- Raios do sol -->
         <g stroke="#FFD100" stroke-width="2.5" stroke-linecap="round">
           <line x1="114" y1="98" x2="114" y2="93"/>
           <line x1="114" y1="128" x2="114" y2="133"/>
