@@ -39,5 +39,5 @@ navegacao.get("/api/areadelogin", (req, res) => {
 }),
 
 navegacao.listen(3000, () => {
-    console.log("Servidor rodando 3000");
+    console.log(`Servidor rodando ${port}`);
 });
