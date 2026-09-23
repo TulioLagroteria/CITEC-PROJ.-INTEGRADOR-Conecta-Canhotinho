@@ -9,7 +9,7 @@ navegacao.get("/api/agendamentoonline", (req, res) => {
 
 }),
 
-// No anexar dados, vai caminhae lado a lado com área de login e sistema preferencial, será onde o cliente/paciente, registrará seus dados pessoais, e a partir daí o sistema identificará se ele preencheu os dados corretamente atendendo as regras.
+// No anexar dados, vai caminhae lado a lado com área do sistema preferencial, será onde o cliente/paciente, registrará seus dados pessoais, e a partir daí o sistema identificará se ele preencheu os dados corretamente atendendo as regras.
 navegacao.get("/api/anexardados", (req, res) => {
     res.send("Anexar Dados");
 
@@ -26,11 +26,13 @@ navegacao.get("/api/areadelogin", (req, res) => {
 
 }),
 
-// 
+// Será atualizada automaticamente junto com o anexar dados, onde vai avaliar os critérios que o cliente/paciente registre e definirá se ele terá preferencia ou não, caso tenha, sepre será tratado como prioridade ao registrar senhas.
   navegacao.get("/api/sistemapreferencial", (req, res) => {
     res.send("Sistema Preferencial");
 
 }),
+
+// A tela inicial 
   navegacao.get("/api/telainicial", (req, res) => {
     res.send("Área Inicial");
 
