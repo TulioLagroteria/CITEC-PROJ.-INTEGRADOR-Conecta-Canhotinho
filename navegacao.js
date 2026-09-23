@@ -32,7 +32,7 @@ navegacao.get("/api/areadelogin", (req, res) => {
 
 }),
 
-// A tela inicial 
+// A tela inicial terá as informacões base como nome do site, e botões para Login, Cadastro, Convidado, Esqueci a senha, em seguida, ao entrar na conta, abrirá o Conecta Canhotinho, o site oficial, onde terão diversos botões e várias informações sobre os profissionais da area, locais de atendinento da cidade entre outras coisas.
   navegacao.get("/api/telainicial", (req, res) => {
     res.send("Área Inicial");
 
