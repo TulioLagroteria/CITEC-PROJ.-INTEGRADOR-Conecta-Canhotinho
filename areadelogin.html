@@ -1,32 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Canhotinho Conectado</title>
+
     <link rel="stylesheet" href="style.css">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <title>Login</title>
+
 </head>
-<body>
-    <div class="login-container">
-        <form class="login-form">
-            <h2>Acessar</h2>
-            <div class="input-group">
-                <label for="identificacao">CPF ou usuário</label>
-                <input type="text" id="identificacao" required placeholder="Digite seu CPF ou usuário">
+
+
+<body class="login-page">
+
+
+    <main class="login-container">
+
+
+        <div class="login-box">
+
+
+            <!-- LOGO -->
+
+            <div class="login-logo">
+
+                <span>CANHOTINHO</span>
+
+                <strong>CONECTADO</strong>
+
             </div>
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" required placeholder="Digite sua senha">
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+                Entrar
+            </h1>
+
+
+            <p class="login-description">
+
+                Acesse sua conta para continuar.
+
+            </p>
+
+
+            <!-- FORMULÁRIO -->
+
+            <form id="loginForm">
+
+
+                <!-- USUÁRIO -->
+
+                <div class="form-group">
+
+                    <label for="usuario">
+                        Usuário
+                    </label>
+
+                    <input
+                        type="text"
+                        id="usuario"
+                        placeholder="Digite seu usuário"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SENHA -->
+
+                <div class="form-group">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- OPÇÕES -->
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="lembrar"
+                        >
+
+                        Lembrar de mim
+
+                    </label>
+
+
+                    <a href="#">
+                        Esqueci minha senha
+                    </a>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+
+                <button
+                    type="submit"
+                    class="btn-entrar"
+                >
+
+                    Entrar
+
+                </button>
+
+
+                <!-- MENSAGEM -->
+
+                <p
+                    id="loginMensagem"
+                    class="login-mensagem"
+                ></p>
+
+
+            </form>
+
+
+            <!-- CADASTRO -->
+
+            <div class="cadastro">
+
+                <p>
+                    Ainda não possui uma conta?
+                </p>
+
+                <a href="#">
+                    Criar uma conta
+                </a>
+
             </div>
-           <input class="btn btn-primary" type="submit" value="Submit">
-        </form>
-    </div>
+
+
+            <!-- VOLTAR -->
+
+            <a
+                href="index.html"
+                class="voltar"
+            >
+
+                ← Voltar para a página inicial
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
+```
