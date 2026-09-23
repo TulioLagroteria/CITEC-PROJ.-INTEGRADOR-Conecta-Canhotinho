@@ -12,10 +12,191 @@
 	<title>NOME DA PAGINA</title>
 </head>
 <body>
-    <header>
-        <h1>TITULO DA PAGINA</h1>
-    </header>
-// 
+   
+    <div class="container py-5">
+
+        <div class="text-center mb-4">
+            <h1 class="text-primary fw-bold">
+                Sistema de Atendimento Preferencial
+            </h1>
+
+            <p class="text-secondary">
+                Controle de senhas e fila de atendimento
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Senha Preferencial -->
+            <div class="col-md-6">
+                <div class="card shadow text-center h-100">
+                    <div class="card-body p-4">
+
+                        <h2 class="h4">
+                            Senha Preferencial
+                        </h2>
+
+                        <div id="senhaPreferencial"
+                             class="senha text-warning">
+                            P-00
+                        </div>
+
+                        <button
+                            class="btn btn-warning text-white w-100"
+                            onclick="gerarSenha('preferencial')">
+                            Gerar Senha Preferencial
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senha Normal -->
+            <div class="col-md-6">
+                <div class="card shadow text-center h-100">
+                    <div class="card-body p-4">
+
+                        <h2 class="h4">
+                            Senha Normal
+                        </h2>
+
+                        <div id="senhaNormal"
+                             class="senha text-primary">
+                            N-00
+                        </div>
+
+                        <button
+                            class="btn btn-primary w-100"
+                            onclick="gerarSenha('normal')">
+                            Gerar Senha Normal
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Atendimento -->
+        <div class="card shadow text-center mt-4">
+            <div class="card-body p-4">
+
+                <h2 class="h4">
+                    Atendimento Atual
+                </h2>
+
+                <div id="senhaAtual"
+                     class="senha text-success">
+                    ---
+                </div>
+
+                <button
+                    class="btn btn-success w-100"
+                    onclick="chamarProximo()">
+                    Chamar Próximo
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Fila -->
+        <div class="card shadow mt-4">
+            <div class="card-body">
+
+                <h2 class="h4 mb-3">
+                    Fila de Atendimento
+                </h2>
+
+                <ul id="listaFila"
+                    class="list-group">
+                    <li class="list-group-item">
+                        Nenhuma pessoa na fila.
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        async function gerarSenha(tipo) {
+
+            const resposta = await fetch("/senha", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ tipo })
+            });
+
+            const dados = await resposta.json();
+
+            if (tipo === "preferencial") {
+                document.getElementById("senhaPreferencial").textContent =
+                    dados.senha;
+            } else {
+                document.getElementById("senhaNormal").textContent =
+                    dados.senha;
+            }
+
+            atualizarFila();
+        }
+
+        async function chamarProximo() {
+
+            const resposta = await fetch("/proximo");
+
+            const dados = await resposta.json();
+
+            if (dados.senha) {
+
+                document.getElementById("senhaAtual").textContent =
+                    dados.senha;
+
+            } else {
+
+                alert("Não há pessoas na fila.");
+            }
+
+            atualizarFila();
+        }
+
+        async function atualizarFila() {
+
+            const resposta = await fetch("/fila");
+
+            const fila = await resposta.json();
+
+            const lista = document.getElementById("listaFila");
+
+            lista.innerHTML = "";
+
+            if (fila.length === 0) {
+
+                lista.innerHTML = `
+                    <li class="list-group-item">
+                        Nenhuma pessoa na fila.
+                    </li>
+                `;
+
+                return;
+            }
+
+            fila.forEach(senha => {
+
+                const item = document.createElement("li");
+
+                item.className = "list-group-item";
+
+                item.textContent = senha;
+
+                lista.appendChild(item);
+            });
+        }
+
+    </script>
 
 </body>
 </html>
