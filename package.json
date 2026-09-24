@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho/issues"
   },
-  "homepage": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho#readme"
+  "homepage": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

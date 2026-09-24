@@ -21,7 +21,7 @@ const login = [
 ]
 
 // Função para validar o login
-function verificarLogin(indentificacao, senha) {
+function verificarLogin(identificacao, senha) {
     for (let i=0; i<login.length; i++){
         
         if ((login[i].cpf === identificacao ||
