@@ -1,3 +1,7 @@
+const express = require("express");
+
+const app = express();
+
 let = [
   // Array de consultas de senha.
 ];
@@ -17,10 +21,6 @@ function agendarConsulta(registrarSenha) {
     }
   }
 }
-
-const express = require("express");
-
-const app = express();
 
 const consultarSenha = [
   {
@@ -56,8 +56,4 @@ app.get("/api/", (req, res) => {
 });
 app.get("/api/", (req, res) => {
   res.send("");
-});
-
-app.listen(3000, () => {
-  console.log("Servidor rodando 3000");
-});
+})

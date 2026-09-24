@@ -36,6 +36,7 @@ navegacao.get("/api/areadelogin", (req, res) => {
   navegacao.get("/api/telainicial", (req, res) => {
     res.send("Área Inicial");
 
+//HEAD
 }),
 
 navegacao.listen(3000, () => {
