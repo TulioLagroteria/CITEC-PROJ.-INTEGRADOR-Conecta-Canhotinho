@@ -36,8 +36,4 @@ navegacao.get("/api/areadelogin", (req, res) => {
   navegacao.get("/api/telainicial", (req, res) => {
     res.send("Área Inicial");
 
-}),
-
-navegacao.listen(3000, () => {
-    console.log(`Servidor rodando ${port}`);
-});
+})
