@@ -7,14 +7,15 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 
 // Agendamento online será onde o client realizará o cadastro de fichas para o atendimento.
-app.get("/api/agendamentoonline", (req, res) => {
-    res.sendFile(__dirname + "/public/agendamentoonline.html");
+app.get("/api/ficha_agendamento", (req, res) => {
+    res.sendFile(__dirname + "/public/ficha_agendamento.html");
 
 }),
 
 // No anexar dados, vai caminhae lado a lado com área do sistema preferencial, será onde o cliente/paciente, registrará seus dados pessoais, e a partir daí o sistema identificará se ele preencheu os dados corretamente atendendo as regras.
-app.get("/api/anexardados", (req, res) => {
-    res.sendFile(__dirname + "/anexardados.html");
+app.get("/api/cadastro", (req, res) => {
+    res.sendFile(__dirname + "/cadastro.html");
+
 
 }),
 
