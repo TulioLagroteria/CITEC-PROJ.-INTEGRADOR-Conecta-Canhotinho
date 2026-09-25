@@ -47,13 +47,3 @@ app.get("/api/agendarConsulta", (req, res) => {
   res.send(consultarSenha);
 });
 
-app.get("/api/", (req, res) => {
-  res.json(Eventos);
-});
-
-app.get("/api/", (req, res) => {
-  res.send(" ");
-});
-app.get("/api/", (req, res) => {
-  res.send("");
-})
