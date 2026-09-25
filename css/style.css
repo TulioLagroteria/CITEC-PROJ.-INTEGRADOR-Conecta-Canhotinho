@@ -166,40 +166,6 @@ body {
 }
 
 
-/* =========================
-   BOTÕES
-========================= */
-
-.buttons {
-    width: 100%;
-
-    max-width: 340px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 15px;
-}
-
-
-.btn {
-    width: 100%;
-
-    padding: 16px 25px;
-
-    border-radius: 15px;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-}
 
 
 /* Botão Entrar */
@@ -217,24 +183,6 @@ body {
 
     transform: translateY(-2px);
 }
-
-
-/* Botão Cadastrar */
-
-.btn-secondary {
-    background: transparent;
-
-    color: white;
-
-    border: 2px solid rgba(255, 255, 255, 0.45);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.12);
-
-    transform: translateY(-2px);
-}
-
 
 /* =========================
    RODAPÉ
@@ -269,18 +217,6 @@ body {
 
 @media (max-width: 600px) {
 
-    /* Botão convidado */
-
-    .guest-btn {
-        top: 15px;
-        right: 15px;
-
-        padding: 8px 15px;
-
-        font-size: 12px;
-    }
-
-
     /* Conteúdo */
 
     .home-container {
@@ -314,12 +250,4 @@ body {
 
         margin-bottom: 30px;
     }
-
-
-    /* Botões */
-
-    .buttons {
-        max-width: 320px;
-    }
-
 }
