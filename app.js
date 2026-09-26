@@ -20,9 +20,25 @@ app.get("/api/cadastro", (req, res) => {
 }),
 
 // Será onde o cliente entrará na sua conta com seus dados, Login e Senha, se preencher corretamente entrará com sucesso na conta.
-app.get("/api/areadelogin", (req, res) => {
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/areadelogin.html", (req, res) => {
     res.sendFile(__dirname + "/areadelogin.html");
-}), 
+});
+
+app.post('/login', (req, res) => {
+    const identificacao = req.body.identificacao;
+    const senha = req.body.senha;
+    const verificarLogin = require("./areadelogin.js");
+    const resultado = verificarLogin(identificacao, senha);
+
+    if (resultado) {
+        res.send("Bem vindo!");
+
+    } else {
+        res.send("Usuário ou senha incorretos.");
+    }
+});
 
 // Essa página, tem o intuito de mostrar a posição do cliente de fato, em qual lugar da fila está, tal como quantas pessoas há em sua frente, o tempo estimado, e outros detalhes como local, sala, e serviço.
   app.get("/api/posicaonafila", (req, res) => {
