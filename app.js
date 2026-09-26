@@ -6,6 +6,13 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
+// Abrirá a página inicial, onde terá as informações básicas do site, e botões para Login e Cadastro.
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/telainicial.html");
+
+}),
+
+
 // Agendamento online será onde o client realizará o cadastro de fichas para o atendimento.
 app.get("/api/ficha_agendamento", (req, res) => {
     res.sendFile(__dirname + "/public/ficha_agendamento.html");
