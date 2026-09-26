@@ -6,6 +6,7 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
+// Abrirá a página inicial, onde terá as informações básicas do site, e botões para Login e Cadastro.
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/telainicial.html");
 
