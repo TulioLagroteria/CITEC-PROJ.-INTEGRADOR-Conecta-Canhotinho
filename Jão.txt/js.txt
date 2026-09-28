@@ -1,0 +1,471 @@
+
+
+// SCRIPT
+
+
+/* =========================================
+   CANHOTINHO CONECTADO
+   SCRIPT PRINCIPAL
+========================================= */
+
+
+/* =========================================
+   SLIDER
+========================================= */
+
+let slideAtual = 0;
+
+const slides = document.querySelectorAll(".hero-slide");
+const indicadores = document.querySelectorAll(".indicator");
+
+
+function mostrarSlide(numero) {
+
+    if (slides.length === 0) {
+        return;
+    }
+
+    slides.forEach(function (slide) {
+        slide.classList.remove("active");
+    });
+
+    indicadores.forEach(function (indicador) {
+        indicador.classList.remove("active");
+    });
+
+
+    slides[numero].classList.add("active");
+
+    if (indicadores[numero]) {
+        indicadores[numero].classList.add("active");
+    }
+
+    slideAtual = numero;
+}
+
+
+function mudarSlide(direcao) {
+
+    if (slides.length === 0) {
+        return;
+    }
+
+    slideAtual += direcao;
+
+
+    if (slideAtual >= slides.length) {
+        slideAtual = 0;
+    }
+
+
+    if (slideAtual < 0) {
+        slideAtual = slides.length - 1;
+    }
+
+
+    mostrarSlide(slideAtual);
+}
+
+
+function irParaSlide(numero) {
+
+    mostrarSlide(numero);
+
+}
+
+
+/* TROCA AUTOMÁTICA */
+
+setInterval(function () {
+
+    mudarSlide(1);
+
+}, 6000);
+
+
+/* =========================================
+   MENU MOBILE
+========================================= */
+
+function abrirMenuMobile() {
+
+    const menu = document.getElementById("mobileMenu");
+
+    if (!menu) {
+        return;
+    }
+
+    menu.classList.toggle("active");
+
+}
+
+
+/* =========================================
+   BUSCA
+========================================= */
+
+function realizarBusca() {
+
+    const campo = document.getElementById("campoBusca");
+
+    if (!campo) {
+        return;
+    }
+
+
+    const termo = campo.value.trim();
+
+
+    if (termo === "") {
+
+        mostrarMensagem(
+            "Digite o que você deseja pesquisar."
+        );
+
+        campo.focus();
+
+        return;
+    }
+
+
+    const termoNormalizado = termo.toLowerCase();
+
+
+    if (
+        termoNormalizado.includes("saude") ||
+        termoNormalizado.includes("saúde") ||
+        termoNormalizado.includes("consulta") ||
+        termoNormalizado.includes("exame")
+    ) {
+
+        window.location.href = "saude.html";
+
+        return;
+    }
+
+
+    if (
+        termoNormalizado.includes("login") ||
+        termoNormalizado.includes("entrar")
+    ) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+
+    if (
+        termoNormalizado.includes("ouvidoria")
+    ) {
+
+        document
+            .getElementById("ouvidoria")
+            ?.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        return;
+    }
+
+
+    if (
+        termoNormalizado.includes("transparencia") ||
+        termoNormalizado.includes("transparência")
+    ) {
+
+        document
+            .getElementById("transparencia")
+            ?.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        return;
+    }
+
+
+    mostrarMensagem(
+        "Não encontramos esse serviço. Tente pesquisar por Saúde, Ouvidoria, Transparência ou Login."
+    );
+
+}
+
+
+/* ENTER NA BUSCA */
+
+const campoBusca = document.getElementById("campoBusca");
+
+if (campoBusca) {
+
+    campoBusca.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Enter") {
+
+                realizarBusca();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   OUVIDORIA
+========================================= */
+
+function abrirOuvidoria() {
+
+    const secao = document.getElementById("ouvidoria");
+
+    if (secao) {
+
+        secao.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+function alternarAcessibilidade() {
+
+    document.body.classList.toggle(
+        "accessibility-mode"
+    );
+
+
+    const ativado =
+        document.body.classList.contains(
+            "accessibility-mode"
+        );
+
+
+    if (ativado) {
+
+        mostrarMensagem(
+            "Modo de acessibilidade ativado."
+        );
+
+    } else {
+
+        mostrarMensagem(
+            "Modo de acessibilidade desativado."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   CHAT
+========================================= */
+
+function alternarChat() {
+
+    const chat =
+        document.getElementById("chatBox");
+
+
+    if (!chat) {
+        return;
+    }
+
+
+    chat.classList.toggle("active");
+
+}
+
+
+/* =========================================
+   VOLTAR AO TOPO
+========================================= */
+
+function voltarAoTopo() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* MOSTRAR BOTÃO AO ROLAR */
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        const botao =
+            document.getElementById("backToTop");
+
+
+        if (!botao) {
+            return;
+        }
+
+
+        if (window.scrollY > 400) {
+
+            botao.classList.add("show");
+
+        } else {
+
+            botao.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MENSAGENS
+========================================= */
+
+let timeoutMensagem;
+
+
+function mostrarMensagem(mensagem) {
+
+    const toast =
+        document.getElementById("toast");
+
+    const texto =
+        document.getElementById("toastMessage");
+
+
+    if (!toast || !texto) {
+        return;
+    }
+
+
+    texto.textContent = mensagem;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(timeoutMensagem);
+
+
+    timeoutMensagem = setTimeout(
+        function () {
+
+            fecharMensagem();
+
+        },
+        4000
+    );
+
+}
+
+
+function fecharMensagem() {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    if (!toast) {
+        return;
+    }
+
+
+    toast.classList.remove("show");
+
+}
+
+
+/* =========================================
+   FECHAR MENU MOBILE AO CLICAR
+========================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const menu =
+            document.getElementById("mobileMenu");
+
+        const botao =
+            document.querySelector(
+                ".mobile-menu-button"
+            );
+
+
+        if (!menu || !botao) {
+            return;
+        }
+
+
+        if (
+            menu.classList.contains("active") &&
+            !menu.contains(event.target) &&
+            !botao.contains(event.target)
+        ) {
+
+            menu.classList.remove("active");
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   FECHAR DROPDOWN COM ESC
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            const menu =
+                document.getElementById(
+                    "mobileMenu"
+                );
+
+
+            if (menu) {
+
+                menu.classList.remove(
+                    "active"
+                );
+
+            }
+
+
+            const chat =
+                document.getElementById(
+                    "chatBox"
+                );
+
+
+            if (chat) {
+
+                chat.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+
+    }
+);

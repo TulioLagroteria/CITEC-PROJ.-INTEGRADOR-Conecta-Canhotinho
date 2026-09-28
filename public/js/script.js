@@ -1,0 +1,1 @@
+console.log("JavaScript do Front-end executado!");
