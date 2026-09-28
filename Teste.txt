@@ -1,3 +1,6 @@
-/* Área de navegação, conterá todas as páginas e todos os guias./*
+ app.get("/api/telainicial", (req, res) => {
+    res.sendFile(__dirname + "/telainicial.html");
 
-
+app.get("/api/areadelogin", (req, res) => {
+    res.sendFile(__dirname + "/areadelogin.html");
+}), 
