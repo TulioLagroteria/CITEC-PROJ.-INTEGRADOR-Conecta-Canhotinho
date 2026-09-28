@@ -6,11 +6,14 @@ const path = require("path")
 const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+
+
 
 // Abrirá a página inicial, onde terá as informações básicas do site, e botões para Login e Cadastro.
 app.get("/", (req, res) => {
