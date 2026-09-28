@@ -13,6 +13,13 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+// Abrirá a página inicial, onde terá as informações básicas do site, e botões para Login e Cadastro.
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/telainicial.html");
+
+}),
+
+
 // Agendamento online será onde o client realizará o cadastro de fichas para o atendimento.
 app.get("/api/ficha_agendamento", (req, res) => {
     res.sendFile(__dirname + "/public/ficha_agendamento.html");
@@ -27,9 +34,30 @@ app.get("/api/cadastro", (req, res) => {
 });
 
 // Será onde o cliente entrará na sua conta com seus dados, Login e Senha, se preencher corretamente entrará com sucesso na conta.
+<<<<<<< HEAD
 app.get("/api/areadelogin", (req, res) => {
      res.sendFile(path.join(__dirname, "public", "areadelogin.html"));
 
+=======
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/areadelogin.html", (req, res) => {
+    res.sendFile(__dirname + "/areadelogin.html");
+});
+
+app.post('/login', (req, res) => {
+    const identificacao = req.body.identificacao;
+    const senha = req.body.senha;
+    const verificarLogin = require("./areadelogin.js");
+    const resultado = verificarLogin(identificacao, senha);
+
+    if (resultado) {
+        res.send("Bem vindo!");
+
+    } else {
+        res.send("Usuário ou senha incorretos.");
+    }
+>>>>>>> 090c7850a509c74a48966429cb204f09dc2e5253
 });
 
 // Essa página, tem o intuito de mostrar a posição do cliente de fato, em qual lugar da fila está, tal como quantas pessoas há em sua frente, o tempo estimado, e outros detalhes como local, sala, e serviço.

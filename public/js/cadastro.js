@@ -1,3 +1,46 @@
+<form action="/areadelogin" method="get">
+
+        <label>nome completo:</label>
+        <input type="text" name="nome completo">
+
+        <label>identidade:</label>
+        <input type="text" name="identidade">
+        
+        <label>sus:</label>
+        <input type="text" name="sus">
+
+        <label>senha:</label>
+        <input type="text" name="senha">
+        
+        <label>nome:</label>
+        <input type="text" name="nome">
+
+        <label>senha:</label>
+        <input type="text" name="senha">
+
+        <label>nome:</label>
+        <input type="text" name="nome">
+
+        <label>senha:</label>
+        <input type="text" name="senha">
+
+        <label>nome:</label>
+        <input type="text" name="nome">
+
+        <label>senha:</label>
+        <input type="text" name="senha">
+
+
+
+
+        <button type="submit">ENTRAR</button>
+</form>
+
+
+
+
+
+
 const paciente = [{
 
         nome: "Texto", // Sempre em string.

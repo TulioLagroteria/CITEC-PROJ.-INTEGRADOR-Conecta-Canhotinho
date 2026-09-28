@@ -33,3 +33,5 @@ function verificarLogin(identificacao, senha) {
 }
         return false; 
 }
+
+module.exports = verificarLogin;

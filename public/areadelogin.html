@@ -3,16 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css" />
   <title>Conecta Canhotinho</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0057B8 0%, #003d82 50%, #002a5c 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /*SECTION DE LOGIN*/
+    .login-container {
+    background-color: #efe8d3;
+    max-width: 480px;
+    padding: 25px;
+    border: 3px solid #0D3044;
+    margin: 30px auto;
+    border-radius: 8px;
+    height: 480px;
+    }
+
+    .login-form {
+    display: flex;
+    flex-direction: column;
+    }
+
+    /* Botão Entrar como Convidado - canto superior direito */
+    .guest-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    .guest-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo-container {
+      width: 220px;
+      height: 220px;
+      background: #0057B8;
+      border-radius: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover {
+      transform: scale(1.03);
+    }
+
+    .logo-svg {
+      width: 180px;
+      height: 180px;
+    }
+
+    .app-name {
+      color: white;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .app-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      margin-bottom: 60px;
+      font-weight: 400;
+    }
+
+    /* Botões */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 18px 32px;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #F4C300;
+      color: #003d82;
+      box-shadow: 0 8px 25px rgba(244, 195, 0, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #ffd11a;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(244, 195, 0, 0.45);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 15px;
+    }
+
+    .footer a {
+      color: #F4C300;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #ffd11a;
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .guest-btn {
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .logo-container {
+        width: 160px;
+        height: 160px;
+        border-radius: 36px;
+      }
+      .logo-svg {
+        width: 130px;
+        height: 130px;
+      }
+      .app-name {
+        font-size: 28px;
+      }
+      .app-subtitle {
+        font-size: 15px;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
 </head>
 
 
 
 <body>
 
-  <!-- Botão no canto superior direito -->
-  <button class="guest-btn">Entrar como convidado</button>
 
   <div class="container">
     <!-- Logo -->
@@ -66,17 +266,31 @@
       </svg>
     </div>
 
-    <h1 class="app-name">Conecta Canhotinho</h1>
-    <p class="app-subtitle">Prefeitura Municipal de Canhotinho</p>
+    <h1 class="app-name">Área de Login</h1>
+    <p class="app-subtitle">Acessar</p>
 
-    <div class="buttons">
-      <button class="btn btn-primary">Entrar</button>
-      <button class="btn btn-secondary">Cadastrar-se</button>
-    </div>
+    /* Formulário de login */
+    <section class="login-container" >
+        <form class="login-form" action="/login" method="POST">
+          
+            <div class="input-group">
+                <label for="identificacao">CPF ou Usuário:</label>
+                <input type="text" id="identificacao" name="identificacao" required placeholder="Digite seu CPF ou usuário">
+            </div>
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="senha" required placeholder="Digite sua senha">
+            </div>
+           <input class = "btn btn-primary" type="submit" value="Entrar">
+        </form>
+    </section>
+
+  
+
 
     <div class="footer">
       <p>Esqueceu a senha? <a href="#">Recuperar acesso</a></p>
     </div>
-  </div>
+  </section>
 </body>
 </html>
