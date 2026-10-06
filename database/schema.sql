@@ -1,12 +1,12 @@
 CREATE TABLE ficha_agendamento (
-    id ficha_agendamento INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     local TEXT NOT NULL,
     data DATE NOT NULL,
     hora TIME NOT NULL
 )
 
-INSERT INTO eventos (nome, local, data, hora)
+INSERT INTO ficha_agendamento (nome, local, data, hora)
 VALUES (
 'Festival de Inverno',
 'Praça Central',
@@ -14,18 +14,18 @@ VALUES (
 '9:00:00');
 
 
-SELECT * FROM eventos;
+SELECT * FROM ficha_agendamento;
 
 SELECT nome, local
-FROM eventos;
+FROM ficha_agendamento
 
 SELECT *
-FROM eventos
+FROM ficha_agendamento
 WHERE id = 2;
 
-UPDATE eventos
+UPDATE ficha_agendamento
 SET local = 'Posto de Saúde Central'
 WHERE id = 1;
 
-DELETE FROM eventos
+DELETE FROM ficha_agendamento
 WHERE id = 1;
