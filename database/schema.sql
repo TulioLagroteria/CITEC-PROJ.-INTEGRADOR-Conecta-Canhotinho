@@ -5,11 +5,27 @@ CREATE TABLE ficha_agendamento (
     data DATE NOT NULL,
     hora TIME NOT NULL
 )
-SELECT * FROM ficha_agendamento;
 
-SELECT nome, local, data, hora FROM ficha_agendamento;
-FROM ficha_agendamento
+INSERT INTO eventos (nome, local, data, hora)
+VALUES (
+'Festival de Inverno',
+'Praça Central',
+'2026-10-10',
+'9:00:00');
 
-SELECT * 
-FROM ficha_agendamento
+
+SELECT * FROM eventos;
+
+SELECT nome, local
+FROM eventos;
+
+SELECT *
+FROM eventos
+WHERE id = 2;
+
+UPDATE eventos
+SET local = 'Posto de Saúde Central'
+WHERE id = 1;
+
+DELETE FROM eventos
 WHERE id = 1;
