@@ -8,8 +8,8 @@ CREATE TABLE ficha_agendamento (
 
 INSERT INTO ficha_agendamento (nome, local, data, hora)
 VALUES (
-'Festival de Inverno',
-'Praça Central',
+'João da Silva',
+'Posto de Saúde Central',
 '2026-10-10',
 '9:00:00');
 
@@ -29,3 +29,21 @@ WHERE id = 1;
 
 DELETE FROM ficha_agendamento
 WHERE id = 1;
+
+// ----------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE cadastro (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    idade TEXT NOT NULL,
+    data_nascimento DATE NOT NULL,
+    sistemapreferencial BOOLEAN NOT NULL
+)
+
+INSERT INTO cadastro (nome, idade, data_nascimento, sistemapreferencial)
+VALUES (
+'João da Silva',
+'30',
+'1993-05-15',
+true);
