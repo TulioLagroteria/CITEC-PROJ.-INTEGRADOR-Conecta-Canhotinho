@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho#readme",
   "dependencies": {
+    "better-sqlite3": "^13.0.3",
     "express": "^5.2.1"
   }
 }
-

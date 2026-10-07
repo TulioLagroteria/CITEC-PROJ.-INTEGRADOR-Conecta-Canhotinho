@@ -1,6 +1,8 @@
 // Servidor do projeto Conecta Canhotinho
 
 const express = require("express");
+const database = require("better-sqlite3");
+const db = database("./database/banco.db");
 const path = require("path");
 
 const app = express();
