@@ -1,6 +1,7 @@
 // Servidor do projeto Conecta Canhotinho
 
 const express = require("express");
+const brcrypt = require("bcrypt");
 const database = require("better-sqlite3");
 const db = database("./database/banco.db");
 const path = require("path");
@@ -24,6 +25,23 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// -------------------------------------------------------------------------------
+// ROTA DE LOGIN
+// -----------------------------------------------------------------------------------------------
+app.post("/login", (req, res) => {
+    const { email, senha } = req.body;
+    const usuario = db.prepare('SELECT * FROM usuarios WHERE email = ?').get(email);
+    if (!usuario) {
+        return res.status(401).json({ mensagem: "e-mail não encontrado." });
+    }
+   const senhaCorreta = bcrypt.compareSync(senha, usuario.senha);
+    if (!senhaCorreta) {
+        return res.status(401).json({ mensagem: "Senha incorreta." });
+    }
+   req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email };
+    res.json({ mensagem: "Login realizado com sucesso!" });
+});
+// -----------------------------------------------------------------------------------------------
 
 
 // =========================
