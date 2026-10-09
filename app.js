@@ -4,6 +4,7 @@ const express = require("express");
 const database = require("better-sqlite3");
 const db = database("./database/banco.db");
 const path = require("path");
+const session = require('express-session');
 
 const app = express();
 const port = 3000;
@@ -17,7 +18,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const session = require('express-session');
 app.use(session({
     secret: 'chave-secreta-aula',
     resave: false,
