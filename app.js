@@ -8,16 +8,22 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
-// Permite receber dados de formulários
-app.use(express.urlencoded({ extended: true }));
-
-// Permite acessar HTML, CSS, JavaScript e imagens da pasta public
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, "public")));
 
 // Função para criar uma espera
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+const session = require('express-session');
+app.use(session({
+    secret: 'chave-secreta-aula',
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 
 // =========================
@@ -96,7 +102,7 @@ app.get("/api/telainicial", async (req, res) => {
     await sleep(3000);
 
     res.sendFile(
-        path.join(__dirname, "public", "001_telainicial.html")
+        path.join(__dirname, "public", "telainicial.html")
     );
 });
 
@@ -105,8 +111,8 @@ app.get("/api/telainicial", async (req, res) => {
 // INICIAR SERVIDOR
 // =========================
 
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
 
 
