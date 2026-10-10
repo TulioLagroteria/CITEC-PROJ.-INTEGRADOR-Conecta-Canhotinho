@@ -18,6 +18,12 @@ app.use(express.static(path.join(__dirname, "public")));
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function verificarLogin(req, res, next) {
+    if (!req.session.usuario) {
+        return res.status(401).json({ mensagem: "Acesso não autorizado, faça login para continuar." });
+    }
+    next();
+}
 
 app.use(session({
     secret: 'chave-secreta-aula',
@@ -44,6 +50,8 @@ app.post("/login", (req, res) => {
 // -----------------------------------------------------------------------------------------------
 
 
+
+
 // =========================
 // PÁGINA INICIAL
 // =========================
@@ -59,7 +67,7 @@ app.get("/", (req, res) => {
 // AGENDAMENTO
 // =========================
 
-app.get("/api/ficha_agendamento", (req, res) => {
+app.get("/api/ficha_agendamento", verificarLogin, (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "ficha_agendamento.html")
     );
