@@ -53,12 +53,36 @@ app.post("/login", (req, res) => {
 
 
 // =========================
+// TELA INICIAL COM ESPERA
+// =========================
+
+app.get("/telainicial", async (req, res) => {
+
+    // Espera 3 segundos
+    await sleep(3000);
+
+    res.sendFile(
+        path.join(__dirname, "public", "telainicial.html")
+    );
+});
+
+// =========================
 // PÁGINA INICIAL
 // =========================
 
-app.get("/", (req, res) => {
+app.get("/index", (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "index.html")
+    );
+});
+
+// =========================
+// LOGIN
+// =========================
+
+app.get("/areadelogin", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "areadelogin.html")
     );
 });
 
@@ -67,31 +91,9 @@ app.get("/", (req, res) => {
 // AGENDAMENTO
 // =========================
 
-app.get("/api/ficha_agendamento", verificarLogin, (req, res) => {
+app.get("/ficha_agendamento", verificarLogin, (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "ficha_agendamento.html")
-    );
-});
-
-
-// =========================
-// CADASTRO
-// =========================
-
-app.get("/api/cadastro", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "public", "cadastro.html")
-    );
-});
-
-
-// =========================
-// LOGIN
-// =========================
-
-app.get("/api/areadelogin", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "public", "areadelogin.html")
     );
 });
 
@@ -100,7 +102,7 @@ app.get("/api/areadelogin", (req, res) => {
 // POSIÇÃO NA FILA
 // =========================
 
-app.get("/api/posicaonafila", (req, res) => {
+app.get("/posicaonafila", (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "posicaonafila.html")
     );
@@ -111,26 +113,16 @@ app.get("/api/posicaonafila", (req, res) => {
 // SISTEMA PREFERENCIAL
 // =========================
 
-app.get("/api/sistemapreferencial", (req, res) => {
+app.get("/sistemapreferencial", (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "sistemapreferencial.html")
     );
 });
 
 
-// =========================
-// TELA INICIAL COM ESPERA
-// =========================
 
-app.get("/api/telainicial", async (req, res) => {
 
-    // Espera 3 segundos
-    await sleep(3000);
 
-    res.sendFile(
-        path.join(__dirname, "public", "telainicial.html")
-    );
-});
 
 
 // =========================
