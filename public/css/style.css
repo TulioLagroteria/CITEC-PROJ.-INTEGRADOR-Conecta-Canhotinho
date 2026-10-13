@@ -1,324 +1,703 @@
-/* =========================
-   CONFIGURAÇÃO GERAL
-========================= */
+/* ========================================
+   1. CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --azul: #0057B8;
+    --azul-escuro: #003D82;
+    --azul-profundo: #002A5C;
+    --amarelo: #F4C300;
+    --amarelo-hover: #FFD11A;
+    --branco: #FFFFFF;
+    --texto: #222222;
+    --texto-secundario: #666666;
+    --borda: #CCCCCC;
+    --fundo-claro: #EEF5FF;
+    --sombra: 0 20px 50px rgba(0, 0, 0, 0.25);
+    --transicao: 0.25s ease;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-html body {
+html,
+body {
     width: 100%;
     min-height: 100%;
 }
 
 body {
     min-height: 100vh;
-
     background: linear-gradient(
         135deg,
-        #0057B8 0%,
-        #003d82 50%,
-        #002a5c 100%
+        var(--azul) 0%,
+        var(--azul-escuro) 50%,
+        var(--azul-profundo) 100%
     );
+    color: var(--branco);
+}
 
-    color: white;
+a {
+    transition: var(--transicao);
+}
 
+button,
+input {
+    font: inherit;
+}
+
+
+/* ========================================
+   2. PÁGINA INICIAL
+======================================== */
+
+.pagina-inicial {
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: relative;
+    padding: 30px 15px;
 }
-
-
-/* =========================
-   BOTÃO CONVIDADO
-========================= */
-
-.guest-btn {
-    position: absolute;
-
-    top: 25px;
-    right: 25px;
-
-    background: rgba(255, 255, 255, 0.12);
-
-    color: white;
-
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-
-    padding: 10px 22px;
-
-    border-radius: 30px;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-
-    z-index: 10;
-}
-
-.guest-btn:hover {
-    background: rgba(255, 255, 255, 0.22);
-
-    transform: translateY(-2px);
-}
-
-
-/* =========================
-   CONTEÚDO PRINCIPAL
-========================= */
 
 .home-container {
     width: 100%;
-
     max-width: 600px;
-
     min-height: 100vh;
-
     padding: 100px 20px 40px;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
 }
 
-
-/* =========================
-   NOVA LOGO
-========================= */
+/* Logo */
 
 .logo-container {
     width: 200px;
     height: 200px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
     margin-bottom: 30px;
-
     border-radius: 45px;
-
     overflow: hidden;
 
-    background: white;
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.35);
+    background: var(--branco);
+    box-shadow: var(--sombra);
 }
 
-
-/* Imagem da logo */
-
-.logo {
+.home-logo {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-
     display: block;
 }
 
-
-/* =========================
-   NOME DO APLICATIVO
-========================= */
+/* Nome do sistema */
 
 .app-name {
-    color: white;
-
+    color: var(--branco);
     font-size: 40px;
-
     font-weight: 700;
-
     margin-bottom: 10px;
-
-    text-align: center;
 }
-
-
-/* =========================
-   SUBTÍTULO
-========================= */
 
 .app-subtitle {
     color: rgba(255, 255, 255, 0.9);
-
     font-size: 18px;
-
     margin-bottom: 40px;
-
-    text-align: center;
 }
 
+/* Botão de convidado */
 
-/* =========================
-   BOTÕES
-========================= */
+.guest-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
 
-.buttons {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--branco);
+
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.guest-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* Botões principais */
+
+.home-buttons {
     width: 100%;
-
     max-width: 340px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     gap: 15px;
 }
 
-
-.btn {
+.home-btn {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     padding: 16px 25px;
-
     border-radius: 15px;
 
     font-size: 17px;
-
     font-weight: 600;
+    text-decoration: none;
 
     cursor: pointer;
-
-    transition: 0.25s;
+    transition: var(--transicao);
 }
 
-
-/* Botão Entrar */
-
-.btn-primary {
-    background: #F4C300;
-
-    color: #003d82;
-
-    border: none;
+.home-btn-primary {
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+    border: 2px solid var(--amarelo);
 }
 
-.btn-primary:hover {
-    background: #ffd11a;
-
+.home-btn-primary:hover {
+    background: var(--amarelo-hover);
+    border-color: var(--amarelo-hover);
     transform: translateY(-2px);
 }
 
-
-/* Botão Cadastrar */
-
-.btn-secondary {
+.home-btn-secondary {
     background: transparent;
-
-    color: white;
-
+    color: var(--branco);
     border: 2px solid rgba(255, 255, 255, 0.45);
 }
 
-.btn-secondary:hover {
+.home-btn-secondary:hover {
     background: rgba(255, 255, 255, 0.12);
-
     transform: translateY(-2px);
 }
 
+/* Rodapé inicial */
 
-/* =========================
-   RODAPÉ
-========================= */
-
-.footer {
+.home-footer {
     margin-top: 35px;
-
     color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    line-height: 1.8;
+}
 
-    font-size: 15px;
 
+/* ========================================
+   3. PÁGINA DE LOGIN
+======================================== */
+
+.pagina-login {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Voltar ao início */
+
+.login-voltar,
+.cadastro-voltar {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+    color: var(--branco);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.login-voltar:hover,
+.cadastro-voltar:hover {
+    color: var(--amarelo);
+    text-decoration: underline;
+}
+
+/* Área central */
+
+.login-principal {
+    flex: 1;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px 30px;
+}
+
+/* Cartão */
+
+.login-cartao {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 35px;
+    background: var(--branco);
+    color: var(--texto);
+
+    border-radius: 18px;
+    box-shadow: var(--sombra);
     text-align: center;
 }
 
-.footer a {
-    color: #F4C300;
+/* Logo dentro do cartão */
 
-    text-decoration: none;
+.login-marca,
+.cadastro-marca {
+    width: 85px;
+    height: 85px;
 
-    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 20px;
+    padding: 5px;
+
+    background: var(--branco);
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
 }
 
-.footer a:hover {
+.login-marca img,
+.cadastro-marca img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.login-cartao h1 {
+    color: var(--azul-escuro);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.login-descricao {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* Campos de login */
+
+.login-campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-campo label,
+.cadastro-campo label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.login-campo input,
+.cadastro-campo input {
+    width: 100%;
+    min-height: 45px;
+    padding: 13px;
+
+    color: var(--texto);
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    outline: none;
+
+    font-size: 15px;
+    transition: var(--transicao);
+}
+
+.login-campo input:focus,
+.cadastro-campo input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.12);
+}
+
+.login-campo input::placeholder,
+.cadastro-campo input::placeholder {
+    color: #999999;
+}
+
+/* Opções da conta */
+
+.login-opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+.login-lembrar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-opcoes a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.login-opcoes a:hover {
+    text-decoration: underline;
+}
+
+/* Botões de login */
+
+.login-botao,
+.login-botao-cadastro,
+.login-botao-convidado {
+    width: 100%;
+    min-height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 13px;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.login-botao {
+    background: var(--azul);
+    color: var(--branco);
+    border: none;
+}
+
+.login-botao:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+.login-separador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 22px 0;
+    color: #888888;
+    font-size: 14px;
+}
+
+.login-separador::before,
+.login-separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #DDDDDD;
+}
+
+.login-botao-cadastro {
+    margin-bottom: 12px;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+}
+
+.login-botao-cadastro:hover {
+    background: var(--amarelo-hover);
+}
+
+.login-botao-convidado {
+    background: var(--branco);
+    color: var(--azul);
+    border: 1px solid var(--azul);
+}
+
+.login-botao-convidado:hover {
+    background: var(--fundo-claro);
+}
+
+.login-rodape {
+    margin-top: 25px;
+    color: #888888;
+    font-size: 12px;
+}
+
+
+/* ========================================
+   4. PÁGINA DE CADASTRO
+======================================== */
+
+.pagina-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    padding: 80px 15px 30px;
+}
+
+.cadastro-principal {
+    width: 100%;
+    max-width: 520px;
+}
+
+.cadastro-cartao {
+    width: 100%;
+    padding: 35px;
+
+    background: var(--branco);
+    color: var(--texto);
+
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+.cadastro-cabecalho {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.cadastro-cabecalho h1 {
+    color: var(--azul-escuro);
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.cadastro-subtitulo {
+    color: var(--azul);
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.cadastro-descricao {
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+/* Campos */
+
+.cadastro-campo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 18px;
+}
+
+.cadastro-campos-duplos {
+    display: flex;
+    gap: 15px;
+}
+
+/* Botão de cadastro */
+
+.cadastro-botao {
+    width: 100%;
+    min-height: 48px;
+    padding: 15px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.cadastro-botao:hover {
+    background: var(--amarelo-hover);
+    transform: translateY(-2px);
+}
+
+/* Rodapé */
+
+.cadastro-rodape {
+    margin-top: 24px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    text-align: center;
+}
+
+.cadastro-rodape a {
+    color: var(--azul);
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.cadastro-rodape a:hover {
     text-decoration: underline;
 }
 
 
-/* =========================
-   RESPONSIVIDADE
-========================= */
+/* ========================================
+   5. ACESSIBILIDADE
+======================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   6. RESPONSIVIDADE
+======================================== */
 
 @media (max-width: 600px) {
 
-    /* Botão convidado */
+    /* Página inicial */
+
+    .pagina-inicial {
+        padding: 20px 15px;
+    }
 
     .guest-btn {
         top: 15px;
         right: 15px;
-
         padding: 8px 15px;
-
         font-size: 12px;
     }
 
-
-    /* Conteúdo */
-
     .home-container {
-        padding: 90px 20px 30px;
+        padding: 90px 10px 30px;
     }
-
-
-    /* Logo */
 
     .logo-container {
         width: 150px;
         height: 150px;
-
         border-radius: 35px;
-
         margin-bottom: 25px;
     }
-
-
-    /* Nome */
 
     .app-name {
         font-size: 28px;
     }
 
-
-    /* Subtítulo */
-
     .app-subtitle {
         font-size: 15px;
-
         margin-bottom: 30px;
     }
 
-
-    /* Botões */
-
-    .buttons {
+    .home-buttons {
         max-width: 320px;
     }
 
+    .home-btn {
+        font-size: 16px;
+    }
+
+    /* Login */
+
+    .login-voltar,
+    .cadastro-voltar {
+        top: 15px;
+        left: 15px;
+        font-size: 12px;
+    }
+
+    .login-principal {
+        padding: 65px 15px 25px;
+    }
+
+    .login-cartao {
+        padding: 25px 20px;
+    }
+
+    .login-cartao h1 {
+        font-size: 24px;
+    }
+
+    .login-marca,
+    .cadastro-marca {
+        width: 70px;
+        height: 70px;
+    }
+
+    .login-opcoes {
+        font-size: 11px;
+    }
+
+    /* Cadastro */
+
+    .pagina-cadastro {
+        padding: 65px 15px 25px;
+    }
+
+    .cadastro-cartao {
+        padding: 25px 20px;
+    }
+
+    .cadastro-cabecalho h1 {
+        font-size: 24px;
+    }
+
+    .cadastro-subtitulo {
+        font-size: 15px;
+    }
+
+    .cadastro-campos-duplos {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+/* Telas muito pequenas */
+
+@media (max-width: 360px) {
+
+    .app-name {
+        font-size: 25px;
+    }
+
+    .app-subtitle {
+        font-size: 14px;
+    }
+
+    .login-opcoes {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }

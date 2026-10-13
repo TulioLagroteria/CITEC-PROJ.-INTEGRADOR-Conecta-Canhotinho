@@ -1,18 +1,37 @@
-// Servidor do projeto Conecta Canhotinho
+// Com um intuito de criar uma navegação entre páginas mais leve e tranquila,
+// organizamos tudo neste arquivo.
 
 const express = require("express");
+<<<<<<< Updated upstream
 const brcrypt = require("bcrypt");
 const database = require("better-sqlite3");
 const db = database("./database/banco.db");
 const path = require("path");
 const session = require('express-session');
 
+=======
+const Database = require("better-sqlite3");
+const path = require("path");
+>>>>>>> Stashed changes
 const app = express();
 const port = 3000;
+const session = require("express-session");
+const bcrypt = require("bcrypt")
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
+// Conecta ao banco de dados
+const db = Database("./database/banco.db");
+
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Configura a sessão
+app.use(session({
+    secret: "sua-chave-secreta",
+    resave: false,
+    saveUninitialized: false
+}));
 
 // Função para criar uma espera
 function sleep(ms) {
@@ -25,6 +44,7 @@ function verificarLogin(req, res, next) {
     next();
 }
 
+<<<<<<< Updated upstream
 app.use(session({
     secret: 'chave-secreta-aula',
     resave: false,
@@ -49,6 +69,17 @@ app.post("/login", (req, res) => {
 });
 // -----------------------------------------------------------------------------------------------
 
+=======
+// função de verificação de login 
+function verificarLogin(req, res, next) {
+    if (! req.session.usuario) {
+        return res.status(401).json({
+            mensagem: "Acesso Negado."
+        });
+    }
+    next();
+}
+>>>>>>> Stashed changes
 
 
 
@@ -72,7 +103,7 @@ app.get("/telainicial", async (req, res) => {
 
 app.get("/index", (req, res) => {
     res.sendFile(
-        path.join(__dirname, "public", "index.html")
+        path.join(__dirname, "public", "logodeentrada.html")
     );
 });
 
