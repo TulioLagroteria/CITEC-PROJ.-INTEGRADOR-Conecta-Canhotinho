@@ -1,2 +1,5 @@
 node_modules/
-database/*
+database/
+.env/
+.dev.vars
+.wrangler/
