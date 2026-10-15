@@ -19,10 +19,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Configura a sessão
 app.use(session({
-    secret: "sua-chave-secreta",
+    secret: process.env.SECRET_SESSION,
     resave: false,
     saveUninitialized: false
 }));
+
+console.log(process.env.SECRET_SESSION)
 
 // Função para criar uma espera
 function sleep(ms) {
@@ -39,19 +41,9 @@ function verificarLogin(req, res, next) {
 // TELA DA LOGO
 // =========================
 
-app.get("/", (req, res) => {
+app.get("/api/logo", (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "logoentrega.html")
-    );
-});
-
-// =========================
-// DIRECIONAR PARA O LOGIN
-// =========================
-
-app.post("/areadelogin", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "public", "areadelogin.html")
     );
 });
 
