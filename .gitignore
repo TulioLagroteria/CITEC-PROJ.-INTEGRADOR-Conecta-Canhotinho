@@ -2,5 +2,4 @@ node_modules/
 .env/
 .dev.vars
 .wrangler/
-database/banco.db
-*.db
+banco.db/*
