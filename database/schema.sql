@@ -1,23 +1,22 @@
-
-// ----------------------------------------------------------------------------------------------------
-
-
 CREATE TABLE IF NOT EXISTS
     usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    senha TEXT NOT NULL hash,
-)
+    senha TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS
     ficha_agendamento (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    senha TEXT NOT NULL hash
-    )
+    senha TEXT NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS
     cadastro (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    senha TEXT NOT NULL hash
-    )
+    senha TEXT NOT NULL
+    );

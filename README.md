@@ -269,3 +269,9 @@ Mais conexão com os serviços públicos.
 Este projeto está em desenvolvimento para fins de prototipação.
 
 A definição de uma licença de uso e distribuição poderá ser realizada posteriormente.
+
+
+
+Comandos para executar no terminal:
+
+node init-db.js - (Este comando serve para rodar o banco de dados)
