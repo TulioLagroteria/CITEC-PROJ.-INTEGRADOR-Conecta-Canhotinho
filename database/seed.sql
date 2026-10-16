@@ -1,2 +1,2 @@
-
-INSERT INTO ficha_agendamento (nome, email, senha) VALUES ('João da Silva', 'jao@gmail.com', 'MINHA_SENHA');
+INSERT INTO ficha_agendamento(nome, email, senha)
+VALUES 
