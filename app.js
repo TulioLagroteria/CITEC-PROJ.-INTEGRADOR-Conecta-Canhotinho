@@ -41,9 +41,9 @@ function verificarLogin(req, res, next) {
 // TELA DA LOGO
 // =========================
 
-app.get("/api/logo", (req, res) => {
+app.get("/logo", (req, res) => {
     res.sendFile(
-        path.join(__dirname, "public", "logoentrega.html")
+        path.join(__dirname, "public", "logodeentrada.html")
     );
 });
 
