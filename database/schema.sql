@@ -49,3 +49,12 @@ VALUES (
 '30',
 '1993-05-15',
 true);
+
+//----------------------TABELA DE FILA DE ATENDIMENTO------------------------------------------------------------------------------
+CREATE TABLE posicaoFila (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'aguardando'
+    )
+
