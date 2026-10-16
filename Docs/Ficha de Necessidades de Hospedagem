@@ -1,0 +1,16 @@
+**Ficha de Necessidades de Hospedagem**  
+**Projeto:** Conecta Canhotinho  
+**UC 04 · Projeto Integrador**
+
+| Item | Resposta |
+|------|----------|
+| 1. Tecnologias | HTML, CSS, JavaScript, Bootstrap (CDN), Node.js, Express 5, SQLite, bcrypt |
+| 2. Tipo de front-end | Arquivos estáticos em `public/`, servidos pelo Express |
+| 3. Possui back-end? | Sim |
+| 4. Tecnologia do back-end | Node.js com Express 5 e express-session |
+| 5. Banco de dados | Sim: SQLite local em `database/banco.db` (better-sqlite3) |
+| 6. Persistência | Sim: usuários, fichas de agendamento e cadastros precisam sobreviver a reinícios |
+| 7. Autenticação | Sim: login por e-mail e senha com bcrypt e sessão |
+| 8. Necessidades da hospedagem | Executar back-end, servir arquivos estáticos, banco de dados persistente, variáveis de ambiente, HTTPS e URL pública |
+| 9. Classificação inicial | Dinâmico (front-end + Node/Express + banco de dados, com login e sessão) |
+| 10. Pontos a pesquisar | Express em Cloudflare Workers, uso do D1 no lugar do SQLite, sessão sem MemoryStore, gerenciamento de secrets e limites do plano gratuito |
