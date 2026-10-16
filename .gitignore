@@ -1,5 +1,6 @@
 node_modules/
 .env/
+secret.env
 .dev.vars
 .wrangler/
-banco.db/*
+banco.db
