@@ -40,9 +40,9 @@ function verificarLogin(req, res, next) {
 // TELA DA LOGO
 // =========================
 
-app.get("/api/logo", (req, res) => {
+app.get("/logodeentrada.html", (req, res) => {
     res.sendFile(
-        path.join(__dirname, "public", "logoentrega.html")
+        path.join(__dirname, "public", "logodeentrada.html")
     );
 });
 
@@ -70,7 +70,7 @@ app.post("/login", (req, res) => {
 
 app.get("/index", (req, res) => {
     res.sendFile(
-        path.join(__dirname, "public", "")
+        path.join(__dirname, "public", "telainicial.html")
     );
 });
 
