@@ -2,13 +2,13 @@ CREATE TABLE IF NOT EXISTS
     usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
+    cpf NUMBER NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     senha TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS
-    ficha_agendamento (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    sessoes (
+    token NOT NULL,
     email TEXT NOT NULL UNIQUE,
     senha TEXT NOT NULL
     );

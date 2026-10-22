@@ -76,6 +76,14 @@ app.post("/login", (req, res) => {
 });
 // -----------------------------------------------------------------------------------------------
 
+//LOGOUT
+app.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.json({ mensagem: "Logout realizado com sucesso!" });
+});
+
+// -----------------------------------------------------------------------------------------------
+
 // SENHA -----------
 app.post("/senha", (req, res) => {
     const { tipo } = req.body;
