@@ -23,16 +23,8 @@ CREATE TABLE IF NOT EXISTS cadastro (
     sistemapreferencial BOOLEAN DEFAULT true
 );
 
-INSERT INTO cadastro (nome, idade, data_nascimento, sistemapreferencial)
-VALUES (
-    'João da Silva',
-    30,
-    '1993-05-15',
-    true
-);
 
-//----------------------TABELA DE FILA DE ATENDIMENTO------------------------------------------------------------------------------
-CREATE TABLE posicaoFila (
+CREATE TABLE IF NOT EXISTS posicaoFila (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     tipo TEXT NOT NULL,

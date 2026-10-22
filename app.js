@@ -1,3 +1,7 @@
+// ================================================================================
+// CONSTS
+// ===============================================================================
+
 // Com um intuito de criar uma navegação entre páginas mais leve e tranquila,
 // organizamos tudo neste arquivo.
 
@@ -9,9 +13,15 @@ const db = new database("banco.db");
 
 const app = express();
 const port = 3000;
+//===============================================================================
+//===============================================================================
 
 
+
+//===============================================================================
+// APP USE
 // Middlewares
+//===============================================================================
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -22,9 +32,15 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+//===============================================================================
+//===============================================================================
+
+
 
 console.log(process.env.SECRET_SESSION)
-
+// ===============================================================================
+// FUNÇÕES
+// ===============================================================================
 // Função para criar uma espera
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -35,18 +51,23 @@ function verificarLogin(req, res, next) {
     }
     next();
 }
+//===============================================================================
+//===============================================================================
 
-// =========================
-// TELA DA LOGO
-// =========================
 
+// ===============================================================================
+//HEAD
 app.get("/logodeentrada.html", (req, res) => {
     res.sendFile(
         path.join(__dirname, "public", "logodeentrada.html")
     );
 });
+//===============================================================================
 
-// -------------------------------------------------------------------------------
+
+// ==============================================================================================
+// APP.POST
+// ==============================================================================================
 // ROTA DE LOGIN
 // -----------------------------------------------------------------------------------------------
 app.post("/login", (req, res) => {
@@ -63,6 +84,48 @@ app.post("/login", (req, res) => {
     res.json({ mensagem: "Login realizado com sucesso!" });
 });
 // -----------------------------------------------------------------------------------------------
+
+// SENHA -----------
+app.post("/senha", (req, res) => {
+    const { tipo } = req.body;
+
+    if (tipo !== "normal" && tipo !== "preferencial") {
+        return (atualizarFila());
+        };
+    });
+    const letra = tipo === "preferencial" ? "P" : "N";
+    const resultado = db.prepare(`
+        SELECT COUNT(*) AS total
+        FROM posicaoFila
+        WHERE tipo = ?
+    `).get(tipo);
+
+    const numero = resultado.total + 1;
+    const senha = letra + String(numero).padStart(3, "0");
+
+    db.prepare(`
+        INSERT INTO posicaoFila (senha, tipo)
+        VALUES (?, ?)
+    `).run(senha, tipo);
+
+    res.json({ senha });
+//=========================================================================================
+//=========================================================================================
+
+
+
+
+// ========================================================================================
+// APP.GET
+// ========================================================================================
+// =========================
+// TELA DA LOGO
+// =========================
+app.get("/logo", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "logodeentrada.html")
+    );
+});
 
 // =========================
 // PÁGINA INICIAL
@@ -116,32 +179,8 @@ app.get("/sistemapreferencial", (req, res) => {
         path.join(__dirname, "public", "sistemapreferencial.html")
     );
 });
-// SENHA -----------
-app.post("/senha", (req, res) => {
-    const { tipo } = req.body;
 
-    if (tipo !== "normal" && tipo !== "preferencial") {
-        return (atualizarFila());
-        };
-    });
-    const letra = tipo === "preferencial" ? "P" : "N";
-    const resultado = db.prepare(`
-        SELECT COUNT(*) AS total
-        FROM posicaoFila
-        WHERE tipo = ?
-    `).get(tipo);
-
-    const numero = resultado.total + 1;
-    const senha = letra + String(numero).padStart(3, "0");
-
-    db.prepare(`
-        INSERT INTO posicaoFila (senha, tipo)
-        VALUES (?, ?)
-    `).run(senha, tipo);
-
-    res.json({ senha });
-
-    // FILA -----------
+ // FILA -----------
     
     app.get("/fila", (req, res) => {
     const fila = db.prepare(`
@@ -187,10 +226,10 @@ app.get("/proximo", (req, res) => {
     res.json({ senha: proxima.senha });
 });
 
+
 // =========================
 // TELA INICIAL COM ESPERA
 // =========================
-
 app.get("/api/telainicial", async (req, res) => {
 
     // Espera 3 segundos
@@ -200,7 +239,8 @@ app.get("/api/telainicial", async (req, res) => {
         path.join(__dirname, "public", "001_telainicial.html")
     );
 });
-
+// =====================================================================
+// =====================================================================
 
 // =========================
 // INICIAR SERVIDOR

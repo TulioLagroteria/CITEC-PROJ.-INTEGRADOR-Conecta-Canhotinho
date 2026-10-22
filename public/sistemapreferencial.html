@@ -1,203 +1,585 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-	<title>Sistema Preferencial - Conecta Canhotinho</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema Preferencial | Conecta Canhotinho</title>
+
+    <!-- CSS unificado existente -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
-   
-    <div class="container py-5">
 
-        <div class="text-center mb-4">
-            <h1 class="text-primary fw-bold">
-                Sistema de Atendimento Preferencial
-            </h1>
+<body class="pagina-sistema-preferencial">
 
-            <p class="text-secondary">
-                Controle de senhas e fila de atendimento
+    <!-- CABEÇALHO -->
+    <header class="pref-topbar">
+
+        <a href="001_telainicial.html" class="pref-brand">
+            <img
+                    src="imagens/logo1.png"
+                    alt="Logo do Conecta Canhotinho" class="pref-brand-mark">
+
+            <span class="pref-brand-text">
+                Conecta<br>Canhotinho
+            </span>
+        </a>
+
+        <div class="pref-divider"></div>
+
+        <div class="pref-module">
+            <h1>Sistema Preferencial</h1>
+            <p>Área da Saúde</p>
+        </div>
+
+        <div class="pref-account">
+            <i class="fa-solid fa-user pref-user-icon"></i>
+
+            <span>Olá, João Silva</span>
+
+            <i class="fa-solid fa-chevron-down pref-chevron"></i>
+
+            <a href="/logout" class="pref-logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Sair
+            </a>
+        </div>
+
+    </header>
+
+    <!-- MENU LATERAL -->
+    <aside class="pref-sidebar">
+
+        <nav class="pref-nav" aria-label="Menu principal">
+
+            <a href="001_telainicial.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Início</span>
+            </a>
+
+            <a href="ficha_agendamento.html">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Agendamento</span>
+            </a>
+
+            <a href="posicao-fila.html">
+                <i class="fa-solid fa-rectangle-list"></i>
+                <span>Posição na Fila</span>
+            </a>
+
+            <a href="sistema-preferencial.html"
+               class="pref-active"
+               aria-current="page">
+                <i class="fa-brands fa-accessible-icon"></i>
+                <span>Sistema Preferencial</span>
+            </a>
+
+            <a href="#contato">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Contato</span>
+            </a>
+
+        </nav>
+
+        <section class="pref-sidebar-message">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <strong>
+                Cuidar das pessoas<br>
+                também é prioridade!
+            </strong>
+
+            <p>
+                O sistema preferencial auxilia no registro das
+                solicitações, respeitando os direitos de quem
+                precisa de atendimento prioritário.
             </p>
+
+        </section>
+
+        <div class="pref-city">
+
+            <div class="pref-city-symbol">
+                <i class="fa-solid fa-landmark"></i>
+            </div>
+
+            <div>
+                <strong>
+                    Prefeitura Municipal<br>
+                    de Canhotinho
+                </strong>
+
+                <p>Trabalhando por uma<br>cidade melhor para todos!</p>
+            </div>
+
         </div>
 
-        <div class="row g-4">
+    </aside>
 
-            <!-- Senha Preferencial -->
-            <div class="col-md-6">
-                <div class="card shadow text-center h-100">
-                    <div class="card-body p-4">
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="pref-main">
 
-                        <h2 class="h4">
-                            Senha Preferencial
-                        </h2>
+        <div class="pref-shell">
 
-                        <div id="senhaPreferencial"
-                             class="senha text-warning">
-                            P-00
+            <!-- TÍTULO -->
+            <div class="pref-heading">
+
+                <div class="pref-heading-icon">
+                    <i class="fa-brands fa-accessible-icon"></i>
+                </div>
+
+                <div>
+                    <h2>Solicitar Atendimento Preferencial</h2>
+
+                    <p>
+                        Preencha os dados abaixo para registrar sua
+                        solicitação de atendimento prioritário.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- FORMULÁRIO -->
+            <form id="pref-form"
+                  class="pref-form"
+                  enctype="multipart/form-data">
+
+                <!-- SELEÇÃO DA PRIORIDADE -->
+                <fieldset class="pref-priority-options">
+
+                    <legend>Selecione a categoria correspondente</legend>
+
+                    <label class="pref-priority-option pref-selected">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="deficiencia"
+                               checked
+                               required>
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-brands fa-accessible-icon"></i>
+
+                        <strong>Pessoa com deficiência</strong>
+                        <small>Comprovante, quando aplicável</small>
+
+                    </label>
+
+                    <label class="pref-priority-option">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="idoso">
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-solid fa-person-cane"></i>
+
+                        <strong>Idosos</strong>
+                        <small>60 anos ou mais</small>
+
+                    </label>
+
+                    <label class="pref-priority-option">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="gestante">
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-solid fa-person-pregnant"></i>
+
+                        <strong>Gestantes</strong>
+                        <small>Comprovante, quando aplicável</small>
+
+                    </label>
+
+                    <label class="pref-priority-option">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="lactante">
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-solid fa-person-breastfeeding"></i>
+
+                        <strong>Lactantes</strong>
+                        <small>Conforme os critérios aplicáveis</small>
+
+                    </label>
+
+                    <label class="pref-priority-option">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="doenca-grave">
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                        <strong>Doenças graves</strong>
+                        <small>Documentação, quando aplicável</small>
+
+                    </label>
+
+                    <label class="pref-priority-option">
+
+                        <input type="radio"
+                               name="prioridade"
+                               value="outros">
+
+                        <span class="pref-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <i class="fa-solid fa-handshake"></i>
+
+                        <strong>Outros casos previstos em lei</strong>
+                        <small>Conforme as regras aplicáveis</small>
+
+                    </label>
+
+                </fieldset>
+
+                <div class="pref-form-layout">
+
+                    <!-- FORMULÁRIO PRINCIPAL -->
+                    <section class="pref-request-card">
+
+                        <h3 class="pref-section-title">
+                            <i class="fa-solid fa-file-lines"></i>
+                            Dados do Solicitante
+                        </h3>
+
+                        <div class="pref-fields-grid">
+
+                            <div class="pref-field">
+                                <label for="pref-nome">Nome completo *</label>
+
+                                <div class="pref-input-wrap">
+                                    <i class="fa-solid fa-user"></i>
+
+                                    <input id="pref-nome"
+                                           name="nome"
+                                           type="text"
+                                           autocomplete="name"
+                                           placeholder="Digite seu nome completo"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="pref-field">
+                                <label for="pref-cpf">CPF *</label>
+
+                                <div class="pref-input-wrap">
+                                    <i class="fa-regular fa-id-card"></i>
+
+                                    <input id="pref-cpf"
+                                           name="cpf"
+                                           type="text"
+                                           inputmode="numeric"
+                                           maxlength="14"
+                                           placeholder="000.000.000-00"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="pref-field">
+                                <label for="pref-telefone">Telefone *</label>
+
+                                <div class="pref-input-wrap">
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    <input id="pref-telefone"
+                                           name="telefone"
+                                           type="tel"
+                                           autocomplete="tel"
+                                           placeholder="(87) 99999-9999"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="pref-field">
+                                <label for="pref-email">E-mail (opcional)</label>
+
+                                <div class="pref-input-wrap">
+                                    <i class="fa-regular fa-envelope"></i>
+
+                                    <input id="pref-email"
+                                           name="email"
+                                           type="email"
+                                           autocomplete="email"
+                                           placeholder="exemplo@email.com">
+                                </div>
+                            </div>
+
                         </div>
 
-                        <button
-                            class="btn btn-warning text-white w-100"
-                            onclick="gerarSenha('preferencial')">
-                            Gerar Senha Preferencial
-                        </button>
+                        <div class="pref-form-divider"></div>
 
-                    </div>
-                </div>
-            </div>
+                        <h3 class="pref-section-title">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            Informações da Solicitação
+                        </h3>
 
-            <!-- Senha Normal -->
-            <div class="col-md-6">
-                <div class="card shadow text-center h-100">
-                    <div class="card-body p-4">
+                        <div class="pref-fields-grid">
 
-                        <h2 class="h4">
-                            Senha Normal
-                        </h2>
+                            <div class="pref-field">
+                                <label for="pref-tipo">
+                                    Tipo de atendimento preferencial *
+                                </label>
 
-                        <div id="senhaNormal"
-                             class="senha text-primary">
-                            N-00
+                                <select id="pref-tipo"
+                                        name="tipo"
+                                        required>
+
+                                    <option value="deficiencia">
+                                        Pessoa com deficiência
+                                    </option>
+
+                                    <option value="idoso">
+                                        Pessoa idosa
+                                    </option>
+
+                                    <option value="gestante">
+                                        Gestante
+                                    </option>
+
+                                    <option value="lactante">
+                                        Lactante
+                                    </option>
+
+                                    <option value="doenca-grave">
+                                        Condição de saúde grave
+                                    </option>
+
+                                    <option value="outros">
+                                        Outros casos previstos em lei
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="pref-field">
+                                <label for="pref-unidade">
+                                    Unidade de saúde *
+                                </label>
+
+                                <select id="pref-unidade"
+                                        name="unidade"
+                                        required>
+
+                                    <option value="UBS Centro">UBS Centro</option>
+                                    <option value="UBS Boa Vista">UBS Boa Vista</option>
+                                    <option value="Unidade Rural">
+                                        Unidade de Saúde Rural
+                                    </option>
+                                    <option value="Hospital Municipal">
+                                        Hospital Municipal
+                                    </option>
+
+                                </select>
+                            </div>
+
                         </div>
 
-                        <button
-                            class="btn btn-primary w-100"
-                            onclick="gerarSenha('normal')">
-                            Gerar Senha Normal
-                        </button>
+                        <div class="pref-field pref-observations">
+                            <label for="pref-observacoes">
+                                Observações (opcional)
+                            </label>
 
-                    </div>
+                            <textarea id="pref-observacoes"
+                                      name="observacoes"
+                                      maxlength="300"
+                                      rows="3"
+                                      placeholder="Informe condições especiais ou outras informações relevantes."></textarea>
+
+                            <small id="pref-character-count">
+                                0/300 caracteres
+                            </small>
+                        </div>
+
+                        <!-- COMPROVANTE -->
+                        <section class="pref-upload-panel">
+
+                            <div class="pref-upload-description">
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                                <div>
+                                    <strong>Comprovante da condição</strong>
+
+                                    <p>
+                                        Selecione o documento pertinente
+                                        à categoria informada. A necessidade
+                                        de comprovação será definida conforme
+                                        as regras aplicáveis.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <label for="pref-comprovante"
+                                   class="pref-upload-control">
+
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                                <span>
+                                    <strong>Selecionar documento</strong>
+
+                                    <small>Formatos: PDF, JPG ou PNG</small>
+                                    <small>Tamanho máximo: 5 MB</small>
+
+                                    <em id="pref-file-name">
+                                        Nenhum arquivo selecionado
+                                    </em>
+                                </span>
+
+                                <input id="pref-comprovante"
+                                       name="comprovante"
+                                       type="file"
+                                       accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+
+                            </label>
+
+                        </section>
+
+                        <p class="pref-form-feedback"
+                           id="pref-feedback"
+                           role="status"
+                           aria-live="polite"></p>
+
+                        <!-- AÇÕES -->
+                        <div class="pref-form-actions">
+
+                            <button class="pref-submit-button" type="submit">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Enviar solicitação
+                            </button>
+
+                            <button class="pref-reset-button" type="reset">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Limpar formulário
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                    <!-- PAINEL INFORMATIVO -->
+                    <aside class="pref-information-column">
+
+                        <section class="pref-info-card pref-important">
+
+                            <h3>
+                                <i class="fa-solid fa-circle-info"></i>
+                                Importante!
+                            </h3>
+
+                            <ul>
+                                <li>
+                                    Informe dados corretos para facilitar
+                                    a análise da solicitação.
+                                </li>
+
+                                <li>
+                                    A equipe responsável poderá verificar
+                                    os documentos apresentados.
+                                </li>
+
+                                <li>
+                                    O protocolo deve ser disponibilizado
+                                    após o registro no sistema.
+                                </li>
+
+                                <li>
+                                    A concessão da prioridade segue
+                                    os critérios legais aplicáveis.
+                                </li>
+                            </ul>
+
+                        </section>
+
+                        <section class="pref-info-card pref-tracking">
+
+                            <h3>
+                                <i class="fa-solid fa-circle-check"></i>
+                                Acompanhe sua solicitação
+                            </h3>
+
+                            <p>
+                                Consulte o andamento do atendimento
+                                na página de posição na fila.
+                            </p>
+
+                            <a href="posicao-fila.html"
+                               class="pref-tracking-button">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Consultar andamento
+                            </a>
+
+                        </section>
+
+                        <section class="pref-info-card pref-tip">
+
+                            <h3>
+                                <i class="fa-regular fa-clock"></i>
+                                Dica
+                            </h3>
+
+                            <p>
+                                Mantenha seus dados de contato atualizados
+                                para facilitar a comunicação com a unidade
+                                de saúde.
+                            </p>
+
+                        </section>
+
+                    </aside>
+
                 </div>
-            </div>
+
+            </form>
 
         </div>
 
-        <!-- Atendimento -->
-        <div class="card shadow text-center mt-4">
-            <div class="card-body p-4">
+        <!-- RODAPÉ -->
+        <footer class="pref-footer">
 
-                <h2 class="h4">
-                    Atendimento Atual
-                </h2>
-
-                <div id="senhaAtual"
-                     class="senha text-success">
-                    ---
-                </div>
-
-                <button
-                    class="btn btn-success w-100"
-                    onclick="chamarProximo()">
-                    Chamar Próximo
-                </button>
-
+            <div class="pref-footer-links">
+                <span>Conecta Canhotinho</span>
+                <i></i>
+                <span>Prefeitura Municipal de Canhotinho</span>
+                <i></i>
+                <span>Sistema Preferencial - Área da Saúde</span>
             </div>
-        </div>
 
-        <!-- Fila -->
-        <div class="card shadow mt-4">
-            <div class="card-body">
+            <a href="#acessibilidade" class="pref-accessibility">
+                <i class="fa-solid fa-universal-access"></i>
+                Acessibilidade
+            </a>
 
-                <h2 class="h4 mb-3">
-                    Fila de Atendimento
-                </h2>
+        </footer>
 
-                <ul id="listaFila"
-                    class="list-group">
-                    <li class="list-group-item">
-                        Nenhuma pessoa na fila.
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-
-        async function gerarSenha(tipo) {
-
-            const resposta = await fetch("/senha", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ tipo })
-            });
-
-            const dados = await resposta.json();
-
-            if (tipo === "preferencial") {
-                document.getElementById("senhaPreferencial").textContent =
-                    dados.senha;
-            } else {
-                document.getElementById("senhaNormal").textContent =
-                    dados.senha;
-            }
-
-            atualizarFila();
-        }
-
-        async function chamarProximo() {
-
-            const resposta = await fetch("/proximo");
-
-            const dados = await resposta.json();
-
-            if (dados.senha) {
-
-                document.getElementById("senhaAtual").textContent =
-                    dados.senha;
-
-            } else {
-
-                alert("Não há pessoas na fila.");
-            }
-
-            atualizarFila();
-        }
-
-        async function atualizarFila() {
-
-            const resposta = await fetch("/fila");
-
-            const fila = await resposta.json();
-
-            const lista = document.getElementById("listaFila");
-
-            lista.innerHTML = "";
-
-            if (fila.length === 0) {
-
-                lista.innerHTML = `
-                    <li class="list-group-item">
-                        Nenhuma pessoa na fila.
-                    </li>
-                `;
-
-                return;
-            }
-
-            fila.forEach(senha => {
-
-                const item = document.createElement("li");
-
-                item.className = "list-group-item";
-
-                item.textContent = senha;
-
-                lista.appendChild(item);
-            });
-        }
-
-    </script>
-
+    </main>
 </body>
 </html>

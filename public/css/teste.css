@@ -1,0 +1,1728 @@
+/* ==========================================================
+   CONECTA CANHOTINHO — CSS UNIFICADO
+   Portal + página inicial + login + cadastro
+   ========================================================== */
+
+/* ==========================================================
+   1. CONFIGURAÇÕES GERAIS
+   ========================================================== */
+
+:root {
+    --azul: #0057B8;
+    --azul-escuro: #003D82;
+    --azul-profundo: #002A5C;
+    --azul-claro: #1762B8;
+    --amarelo: #F4C300;
+    --amarelo-hover: #FFD11A;
+    --branco: #FFFFFF;
+    --texto: #222222;
+    --texto-secundario: #666666;
+    --borda: #CCCCCC;
+    --fundo: #F3F7FC;
+    --fundo-claro: #EEF5FF;
+    --sombra: 0 20px 50px rgba(0, 0, 0, 0.18);
+    --transicao: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ==========================================================
+   2. PÁGINA INICIAL DO SISTEMA
+   Use: <body class="pagina-inicial">
+   ========================================================== */
+
+.pagina-inicial,
+.pagina-login,
+.pagina-cadastro {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        var(--azul) 0%,
+        var(--azul-escuro) 50%,
+        var(--azul-profundo) 100%
+    );
+    color: var(--branco);
+}
+
+.pagina-inicial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 30px 15px;
+}
+
+.home-container {
+    width: 100%;
+    max-width: 600px;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Logo */
+
+.logo-container {
+    width: 200px;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    border-radius: 45px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+.home-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Nome do sistema */
+
+.app-name {
+    margin-bottom: 10px;
+    color: var(--branco);
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.app-subtitle {
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Botão para entrar como convidado */
+
+.guest-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 22px;
+
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--branco);
+    font-size: 14px;
+}
+
+.guest-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* Botões principais */
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 340px;
+}
+
+.home-btn {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 25px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+
+    transition: var(--transicao);
+}
+
+.home-btn-primary {
+    border-color: var(--amarelo);
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+}
+
+.home-btn-primary:hover {
+    border-color: var(--amarelo-hover);
+    background: var(--amarelo-hover);
+    transform: translateY(-2px);
+}
+
+.home-btn-secondary {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: transparent;
+    color: var(--branco);
+}
+
+.home-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Rodapé da tela inicial */
+
+.home-footer {
+    margin-top: 35px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   3. PÁGINA DE LOGIN
+   Use: <body class="pagina-login">
+   ========================================================== */
+
+.pagina-login {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Link para voltar ao início */
+
+.login-voltar,
+.cadastro-voltar {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+    color: var(--branco);
+    font-size: 14px;
+}
+
+.login-voltar:hover,
+.cadastro-voltar:hover {
+    color: var(--amarelo);
+    text-decoration: underline;
+}
+
+/* Área central */
+
+.login-principal {
+    flex: 1;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px 30px;
+}
+
+/* Cartão do login */
+
+.login-cartao {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 35px;
+    border-radius: 18px;
+
+    background: var(--branco);
+    color: var(--texto);
+
+    box-shadow: var(--sombra);
+    text-align: center;
+}
+
+/* Logo do login e cadastro */
+
+.login-marca,
+.cadastro-marca {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 20px;
+    padding: 5px;
+
+    border-radius: 18px;
+    background: var(--branco);
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+}
+
+.login-marca img,
+.cadastro-marca img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.login-cartao h1 {
+    margin-bottom: 10px;
+    color: var(--azul-escuro);
+    font-size: 28px;
+}
+
+.login-descricao {
+    margin-bottom: 28px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Campos de login e cadastro */
+
+.login-campo,
+.cadastro-campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-campo label,
+.cadastro-campo label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-campo input,
+.cadastro-campo input {
+    width: 100%;
+    min-height: 45px;
+    padding: 13px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    outline: none;
+
+    background: var(--branco);
+    color: var(--texto);
+    font-size: 15px;
+
+    transition: var(--transicao);
+}
+
+.login-campo input:focus,
+.cadastro-campo input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.12);
+}
+
+.login-campo input::placeholder,
+.cadastro-campo input::placeholder {
+    color: #999999;
+}
+
+/* Opções da conta */
+
+.login-opcoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+
+.login-lembrar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-lembrar input {
+    accent-color: var(--azul);
+}
+
+.login-opcoes a {
+    color: var(--azul);
+}
+
+.login-opcoes a:hover {
+    text-decoration: underline;
+}
+
+/* Botões de login */
+
+.login-botao,
+.login-botao-cadastro,
+.login-botao-convidado {
+    width: 100%;
+    min-height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 13px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+
+    transition: var(--transicao);
+}
+
+.login-botao {
+    border: none;
+    background: var(--azul);
+    color: var(--branco);
+}
+
+.login-botao:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+/* Separador */
+
+.login-separador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 22px 0;
+    color: #888888;
+    font-size: 14px;
+}
+
+.login-separador::before,
+.login-separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #DDDDDD;
+}
+
+/* Botão para cadastro */
+
+.login-botao-cadastro {
+    margin-bottom: 12px;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+}
+
+.login-botao-cadastro:hover {
+    background: var(--amarelo-hover);
+}
+
+/* Botão de convidado */
+
+.login-botao-convidado {
+    border-color: var(--azul);
+    background: var(--branco);
+    color: var(--azul);
+}
+
+.login-botao-convidado:hover {
+    background: var(--fundo-claro);
+}
+
+/* Rodapé do login */
+
+.login-rodape {
+    margin-top: 25px;
+    color: #888888;
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   4. PÁGINA DE CADASTRO
+   Use: <body class="pagina-cadastro">
+   ========================================================== */
+
+.pagina-cadastro {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 15px 30px;
+}
+
+.cadastro-principal {
+    width: 100%;
+    max-width: 520px;
+}
+
+.cadastro-cartao {
+    width: 100%;
+    padding: 35px;
+
+    border-radius: 18px;
+    background: var(--branco);
+    color: var(--texto);
+
+    box-shadow: var(--sombra);
+}
+
+.cadastro-cabecalho {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.cadastro-cabecalho h1 {
+    margin-bottom: 8px;
+    color: var(--azul-escuro);
+    font-size: 28px;
+}
+
+.cadastro-subtitulo {
+    margin-bottom: 8px;
+    color: var(--azul);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.cadastro-descricao {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Campos do formulário */
+
+.cadastro-campo {
+    flex: 1;
+    margin-bottom: 18px;
+}
+
+.cadastro-campos-duplos {
+    display: flex;
+    gap: 15px;
+}
+
+/* Botão de cadastro */
+
+.cadastro-botao {
+    width: 100%;
+    min-height: 48px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: var(--transicao);
+}
+
+.cadastro-botao:hover {
+    background: var(--amarelo-hover);
+    transform: translateY(-2px);
+}
+
+/* Rodapé do cadastro */
+
+.cadastro-rodape {
+    margin-top: 24px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    text-align: center;
+}
+
+.cadastro-rodape a {
+    margin-left: 4px;
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.cadastro-rodape a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   5. PORTAL PRINCIPAL DO CONECTA CANHOTINHO
+   Use os seletores .cabecalho, .menu, .banner etc.
+   ========================================================== */
+
+/* Cabeçalho */
+
+.cabecalho {
+    min-height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    padding: 18px 4%;
+
+    background: linear-gradient(
+        110deg,
+        #062B68,
+        #0751AD,
+        #032653
+    );
+
+    color: var(--branco);
+}
+
+.identidade {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Logo do portal */
+
+.logo {
+    width: 68px;
+    height: 78px;
+
+    display: grid;
+    place-items: center;
+
+    border: 3px solid var(--branco);
+    border-radius: 14px;
+
+    color: var(--amarelo);
+    font-size: 22px;
+    font-weight: 900;
+
+    box-shadow: inset 0 0 0 3px #174A91;
+}
+
+.identidade h1,
+.identidade h2 {
+    color: var(--branco);
+    font-size: 23px;
+    line-height: 1.05;
+}
+
+.identidade h1 span,
+.identidade h2 span {
+    display: block;
+    color: var(--amarelo);
+}
+
+.identidade p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* Frase do cabeçalho */
+
+.frase {
+    color: var(--branco);
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Pesquisa */
+
+.pesquisa {
+    width: 100%;
+    max-width: 280px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px 12px;
+
+    border: 1px solid var(--amarelo);
+    border-radius: 30px;
+}
+
+.pesquisa input {
+    width: 100%;
+    min-width: 0;
+    padding: 8px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: var(--branco);
+}
+
+.pesquisa input::placeholder {
+    color: #E2EAF8;
+}
+
+.pesquisa button {
+    border: none;
+    background: transparent;
+    color: var(--branco);
+    font-size: 24px;
+}
+
+/* Botão de login do portal */
+
+.login {
+    padding: 13px 25px;
+    border-radius: 30px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.login:hover {
+    background: #FFE94D;
+    transform: translateY(-2px);
+}
+
+/* Menu de navegação */
+
+.menu {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    padding: 7px 3%;
+
+    background: var(--amarelo);
+}
+
+.menu a {
+    padding: 13px 20px;
+    border-right: 1px solid #B9A500;
+    border-radius: 25px;
+
+    color: var(--azul-escuro);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.menu a.ativo,
+.menu a:hover {
+    background: var(--azul);
+    color: var(--branco);
+}
+
+/* Banner principal */
+
+.banner {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 38% 62%;
+
+    min-height: 350px;
+    margin: 12px 1.4%;
+
+    overflow: hidden;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        120deg,
+        var(--azul-profundo),
+        #0754A2
+    );
+
+    color: var(--branco);
+}
+
+.banner-conteudo {
+    position: relative;
+    z-index: 2;
+    padding: 35px 0 30px 8%;
+}
+
+.subtitulo {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.banner h2 {
+    margin: 12px 0;
+    font-size: clamp(40px, 4.5vw, 65px);
+    line-height: 0.98;
+}
+
+.banner h2 span {
+    color: var(--amarelo);
+}
+
+.banner-conteudo > p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Linha decorativa amarela */
+
+.linha-amarela {
+    width: 70px;
+    height: 5px;
+
+    margin: 17px 0;
+    border-radius: 5px;
+
+    background: var(--amarelo);
+}
+
+/* Vantagens */
+
+.vantagens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    font-size: 11px;
+}
+
+/* Botão amarelo */
+
+.botao-amarelo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    padding: 14px 20px;
+    border-radius: 30px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow: 0 3px 12px #0003;
+}
+
+.botao-amarelo:hover {
+    background: #FFE94D;
+    transform: translateY(-2px);
+}
+
+/* Ilustração da cidade */
+
+.banner-imagem {
+    position: relative;
+    min-height: 350px;
+    overflow: hidden;
+
+    background: linear-gradient(
+        140deg,
+        #60BCEB,
+        #D7F2FF 48%,
+        #78BB52 49%,
+        #286B38
+    );
+
+    clip-path: polygon(
+        8% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+.paisagem {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    background: linear-gradient(
+        #69C5F2 0%,
+        #D5F1FF 48%,
+        #5FAD49 49%,
+        #1E6436 100%
+    );
+}
+
+/* Sol */
+
+.sol {
+    position: absolute;
+    top: 35px;
+    right: 25%;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+    background: #FFF0A0;
+}
+
+/* Montanhas */
+
+.montanha {
+    position: absolute;
+    bottom: 60px;
+    left: -10%;
+
+    width: 130%;
+    height: 150px;
+
+    border-radius: 50% 50% 0 0;
+}
+
+.montanha-1 {
+    background: #408D4D;
+    transform: rotate(-8deg);
+}
+
+.montanha-2 {
+    bottom: 35px;
+    background: #75B85A;
+    transform: rotate(9deg);
+}
+
+/* Igreja */
+
+.igreja {
+    position: absolute;
+    bottom: 36px;
+    left: 42%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 175px;
+    height: 185px;
+
+    filter: drop-shadow(5px 5px 3px #1238);
+}
+
+.torre {
+    position: relative;
+
+    width: 57px;
+    height: 110px;
+
+    border: 5px solid #D69B31;
+    border-bottom: 0;
+
+    background: #FFF8D8;
+    text-align: center;
+}
+
+.cruz {
+    position: absolute;
+    top: -32px;
+    left: 15px;
+
+    color: #FFF8D8;
+    font-size: 27px;
+}
+
+.relogio {
+    width: 25px;
+    height: 25px;
+
+    margin: 10px auto;
+
+    border: 2px solid #B87A1B;
+    border-radius: 50%;
+
+    background: var(--branco);
+    color: #123C78;
+
+    line-height: 21px;
+}
+
+.corpo-igreja {
+    width: 170px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    border: 5px solid #D69B31;
+    background: #FFF9DE;
+}
+
+.janela {
+    width: 22px;
+    height: 33px;
+
+    border: 3px solid #D69B31;
+    border-radius: 12px 12px 0 0;
+
+    background: #1C5D8C;
+}
+
+.porta {
+    align-self: flex-end;
+
+    width: 32px;
+    height: 52px;
+
+    border: 4px solid #D69B31;
+    border-radius: 15px 15px 0 0;
+
+    background: #80502D;
+}
+
+/* Árvores */
+
+.arvores {
+    position: absolute;
+    bottom: 12px;
+
+    width: 100%;
+
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Frase da ilustração */
+
+.frase-banner {
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+
+    padding: 12px;
+
+    border-bottom: 4px solid var(--amarelo);
+    border-radius: 8px;
+
+    background: #063675CC;
+    color: var(--branco);
+
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Seções de acesso */
+
+.acesso {
+    padding: 20px 3.6% 25px;
+}
+
+.acesso > p {
+    max-width: 900px;
+    line-height: 1.7;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.titulo-secao h2 {
+    padding-left: 12px;
+    border-left: 5px solid var(--amarelo);
+    font-size: 22px;
+}
+
+.titulo-secao p {
+    padding: 5px 0 0 17px;
+    font-size: 14px;
+}
+
+.titulo-secao > a {
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.titulo-secao > a:hover {
+    color: var(--azul-claro);
+    text-decoration: underline;
+}
+
+/* Cartões de acesso */
+
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.cartao {
+    position: relative;
+    min-height: 200px;
+    padding: 18px;
+    border-radius: 13px;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cartao:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px #102D5020;
+}
+
+/* Cores dos cartões */
+
+.azul {
+    background: #D9EDFF;
+}
+
+.amarelo {
+    background: #FFF5D8;
+}
+
+.verde {
+    background: #DDF7E9;
+}
+
+/* Ícones dos cartões */
+
+.icone {
+    width: 57px;
+    height: 57px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 8px;
+    border-radius: 50%;
+
+    color: var(--branco);
+    font-size: 30px;
+}
+
+.azul-escuro {
+    background: #0754A9;
+}
+
+.amarelo-escuro {
+    background: #F2C800;
+    color: #07377D;
+}
+
+.verde-escuro {
+    background: #087A55;
+}
+
+.cartao h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.cartao p {
+    padding-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Setas dos cartões */
+
+.seta {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+
+    width: 33px;
+    height: 33px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: #0754A9;
+    color: var(--branco);
+}
+
+.amarelo .seta {
+    background: #F2C800;
+    color: #07377D;
+}
+
+.verde .seta {
+    background: #087A55;
+}
+
+
+/* ==========================================================
+   6. NOTÍCIAS E EVENTOS
+   ========================================================== */
+
+.informacoes {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    padding: 5px 3.6% 30px;
+}
+
+.noticias .titulo-secao h2,
+.eventos .titulo-secao h2 {
+    padding-left: 0;
+    border-left: none;
+    font-size: 20px;
+}
+
+/* Lista de notícias */
+
+.noticias-lista {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* Cartões de notícias */
+
+.noticia {
+    overflow: hidden;
+    border-radius: 10px;
+
+    background: var(--branco);
+    box-shadow: 0 3px 9px #102D501A;
+}
+
+.foto-noticia {
+    height: 100px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--branco);
+    font-size: 45px;
+}
+
+.foto-1 {
+    background: linear-gradient(135deg, #1C6392, #7BC6A0);
+}
+
+.foto-2 {
+    background: linear-gradient(135deg, #8FAD72, #A77A47);
+}
+
+.foto-3 {
+    background: linear-gradient(135deg, #56A9D4, #D5F2FA);
+}
+
+.noticia-texto {
+    padding: 12px;
+}
+
+.etiqueta {
+    position: relative;
+    display: inline-block;
+
+    margin-top: -25px;
+    padding: 5px 9px;
+
+    border-radius: 3px;
+
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-size: 11px;
+}
+
+.noticia h3 {
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.noticia p {
+    margin-bottom: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.noticia small {
+    font-size: 10px;
+}
+
+/* Lista de eventos */
+
+.eventos {
+    padding-left: 20px;
+    border-left: 1px solid #B8C9DD;
+}
+
+.evento {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 10px 0;
+    border-bottom: 1px solid #DCE4EF;
+}
+
+.data-evento {
+    min-width: 49px;
+    height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 7px;
+
+    background: #0754A9;
+    color: var(--branco);
+}
+
+.data-evento strong {
+    font-size: 21px;
+}
+
+.data-evento span {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.evento h3 {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.evento p {
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+
+/* ==========================================================
+   7. RODAPÉ DO PORTAL
+   ========================================================== */
+
+.rodape {
+    padding: 25px 3%;
+
+    background: linear-gradient(
+        100deg,
+        var(--azul-profundo),
+        #063B7C
+    );
+
+    color: var(--branco);
+}
+
+.rodape-topo {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+    align-items: center;
+    gap: 25px;
+}
+
+.identidade-rodape {
+    padding-right: 15px;
+    border-right: 1px solid #41618A;
+}
+
+.identidade-rodape .logo {
+    width: 55px;
+    height: 60px;
+    font-size: 18px;
+}
+
+.identidade-rodape h2 {
+    font-size: 16px;
+}
+
+.identidade-rodape p {
+    font-size: 10px;
+}
+
+.rodape-topo > div:not(:first-child) {
+    min-height: 65px;
+    border-right: 1px solid #41618A;
+}
+
+.rodape-topo h3 {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.rodape-topo > div > a {
+    display: block;
+    margin: 4px 0;
+    font-size: 11px;
+}
+
+.rodape-topo > div > a:hover,
+.rodape-final a:hover {
+    color: var(--amarelo);
+}
+
+.redes {
+    font-size: 20px;
+}
+
+.frase-rodape {
+    color: var(--amarelo);
+    font-style: italic;
+    text-align: center;
+}
+
+.rodape-final {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 20px;
+    padding-top: 12px;
+
+    border-top: 1px solid #41618A;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================================
+   8. ACESSIBILIDADE
+   ========================================================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #E89B00;
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   9. RESPONSIVIDADE PARA TABLETS
+   ========================================================== */
+
+@media (max-width: 1050px) {
+
+    .cabecalho {
+        flex-wrap: wrap;
+    }
+
+    .frase {
+        display: none;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .cartoes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .banner {
+        grid-template-columns: 48% 52%;
+    }
+
+    .banner-conteudo {
+        padding-left: 7%;
+    }
+
+    .informacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .eventos {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .rodape-topo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ==========================================================
+   10. RESPONSIVIDADE PARA CELULARES
+   ========================================================== */
+
+@media (max-width: 650px) {
+
+    /* Portal */
+
+    .cabecalho {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .identidade h1,
+    .identidade h2 {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 58px;
+    }
+
+    .pesquisa {
+        max-width: 100%;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 8px;
+    }
+
+    .menu a {
+        padding: 12px 5px;
+        border: none;
+        font-size: 12px;
+    }
+
+    .banner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-conteudo {
+        padding: 30px 22px;
+    }
+
+    .banner h2 {
+        font-size: 46px;
+    }
+
+    .banner-imagem {
+        min-height: 220px;
+        clip-path: none;
+    }
+
+    .igreja {
+        transform: scale(0.8);
+        transform-origin: bottom center;
+    }
+
+    .frase-banner {
+        right: 8px;
+        bottom: 8px;
+        font-size: 13px;
+    }
+
+    .cartoes,
+    .noticias-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .cartao {
+        min-height: 175px;
+    }
+
+    .titulo-secao {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .foto-noticia {
+        height: 150px;
+    }
+
+    /* Rodapé */
+
+    .rodape-topo {
+        grid-template-columns: 1fr;
+    }
+
+    .identidade-rodape,
+    .rodape-topo > div:not(:first-child) {
+        padding: 12px 0;
+        border-right: none;
+        border-bottom: 1px solid #41618A;
+    }
+
+    .frase-rodape {
+        padding: 15px;
+    }
+
+    .rodape-final {
+        flex-direction: column;
+        line-height: 1.6;
+    }
+
+    /* Página inicial do sistema */
+
+    .pagina-inicial {
+        padding: 20px 15px;
+    }
+
+    .guest-btn {
+        top: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .home-container {
+        padding: 90px 10px 30px;
+    }
+
+    .logo-container {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 25px;
+        border-radius: 35px;
+    }
+
+    .app-name {
+        font-size: 28px;
+    }
+
+    .app-subtitle {
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+
+    .home-buttons {
+        max-width: 320px;
+    }
+
+    .home-btn {
+        font-size: 16px;
+    }
+
+    /* Login e cadastro */
+
+    .login-voltar,
+    .cadastro-voltar {
+        top: 15px;
+        left: 15px;
+        font-size: 12px;
+    }
+
+    .login-principal {
+        padding: 65px 15px 25px;
+    }
+
+    .login-cartao,
+    .cadastro-cartao {
+        padding: 25px 20px;
+    }
+
+    .login-cartao h1,
+    .cadastro-cabecalho h1 {
+        font-size: 24px;
+    }
+
+    .login-marca,
+    .cadastro-marca {
+        width: 70px;
+        height: 70px;
+    }
+
+    .login-opcoes {
+        font-size: 11px;
+    }
+
+    .pagina-cadastro {
+        padding: 65px 15px 25px;
+    }
+
+    .cadastro-subtitulo {
+        font-size: 15px;
+    }
+
+    .cadastro-campos-duplos {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+/* ==========================================================
+   11. AJUSTES PARA TELAS MUITO PEQUENAS
+   ========================================================== */
+
+@media (max-width: 360px) {
+
+    .app-name {
+        font-size: 25px;
+    }
+
+    .app-subtitle {
+        font-size: 14px;
+    }
+
+    .login-opcoes {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .login-cartao,
+    .cadastro-cartao {
+        padding: 22px 16px;
+    }
+}

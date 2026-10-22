@@ -1,21 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Eventos - Conecta Canhotinho</title>
+    <meta name="description" content="Portal Conecta Canhotinho">
+    <title>Conecta Canhotinho</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
-<form action="/index" method="POST">
 
-        <label>Nome do evento:</label>
-        <input type="text" name="nome">
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <a href="index.html" class="identidade">
+            <img src="imagens/logo1.png" alt="Logo do Conecta Canhotinho" class="logo">
+            <div>
+                <h1>CONECTA <span>CANHOTINHO</span></h1>
+                <p>Prefeitura Municipal de Canhotinho</p>
+            </div>
+        </a>
 
-        <label>Local:</label>
-        <input type="text" name="local">
+        <div class="frase">
+            Juntos por uma<br>
+            Canhotinho ainda melhor!
+        </div>
 
-        <button type="submit">Cadastrar</button>
-</form>
+        <form class="pesquisa" action="#" method="get">
+            <input type="search" name="q" placeholder="O que você procura?">
+            <button type="submit" aria-label="Pesquisar">⌕</button>
+        </form>
+
+        <a href="login.html" class="login">♟ Login</a>
+    </header>
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <nav class="menu">
+        <a href="index.html" class="ativo">⌂ Início</a>
+        <a href="#sobre">♟ Sobre</a>
+        <a href="#produtos">▣ Produtos</a>
+        <a href="#servicos">⚙ Serviços</a>
+        <a href="#noticias">▦ Notícias e Eventos</a>
+        <a href="#contato">✉ Contato</a>
+    </nav>
+
+    <main id="conteudo">
+
+        <!-- BANNER PRINCIPAL -->
+        <section class="banner">
+            <div class="banner-conteudo">
+                <span class="subtitulo">BEM-VINDO AO</span>
+
+                <h2>Conecta<br><span>Canhotinho</span></h2>
+
+                <p>Tudo o que você precisa, em um só lugar.</p>
+
+                <div class="linha-amarela"></div>
+
+                <div class="vantagens">
+                    <span>✹ Serviços online</span>
+                    <span>♙ Informações da cidade</span>
+                    <span>✓ Mais praticidade</span>
+                </div>
+
+                <a href="login.html" class="botao-amarelo">
+                    ⇥ Acesse sua conta <span>➜</span>
+                </a>
+            </div>
+
+            <!-- ILUSTRAÇÃO DA CIDADE -->
+            <div class="banner-imagem">
+                <div class="paisagem">
+                    <div class="sol"></div>
+                    <div class="montanha montanha-1"></div>
+                    <div class="montanha montanha-2"></div>
+
+                    <div class="igreja">
+                        <div class="torre">
+                            <div class="cruz">✝</div>
+                            <div class="relogio">◷</div>
+                        </div>
+
+                        <div class="corpo-igreja">
+                            <div class="janela"></div>
+                            <div class="porta"></div>
+                            <div class="janela"></div>
+                        </div>
+                    </div>
+
+                    <div class="arvores">🌳 🌲 🌳</div>
+                </div>
+
+                <div class="frase-banner">
+                    Canhotinho<br>é a nossa gente!
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section class="acesso" id="sobre">
+            <div class="titulo-secao">
+                <div>
+                    <h2>Sobre Canhotinho</h2>
+                    <p>Conheça melhor o nosso município.</p>
+                </div>
+            </div>
+
+            <p>
+                O Conecta Canhotinho reúne informações da cidade,
+                serviços municipais, notícias e eventos em um só lugar,
+                facilitando o acesso da população.
+            </p>
+        </section>
+
+        <!-- ACESSO RÁPIDO -->
+        <section class="acesso" id="servicos">
+            <div class="titulo-secao">
+                <div>
+                    <h2>Acesso rápido</h2>
+                    <p>Escolha o que você precisa:</p>
+                </div>
+
+                <a href="#servicos-lista">Ver todos os serviços ➜</a>
+            </div>
+
+            <div class="cartoes" id="servicos-lista">
+
+                <a href="#sobre" class="cartao azul">
+                    <div class="icone azul-escuro">▥</div>
+                    <h3>Informações da cidade</h3>
+                    <p>
+                        Conheça Canhotinho, sua história,
+                        cultura e turismo.
+                    </p>
+                    <span class="seta">➜</span>
+                </a>
+
+                <a href="#produtos" class="cartao amarelo">
+                    <div class="icone amarelo-escuro">♜</div>
+                    <h3>Serviços municipais</h3>
+                    <p>
+                        Acesse serviços, documentos e informações
+                        da prefeitura.
+                    </p>
+                    <span class="seta">➜</span>
+                </a>
+
+                <a href="login.html" class="cartao azul">
+                    <div class="icone azul-escuro">▦</div>
+                    <h3>Agendamentos</h3>
+                    <p>
+                        Marque seus atendimentos de forma rápida
+                        e fácil.
+                    </p>
+                    <span class="seta">➜</span>
+                </a>
+
+                <a href="login.html" class="cartao verde">
+                    <div class="icone verde-escuro">☷</div>
+                    <h3>Acompanhar solicitação</h3>
+                    <p>
+                        Acompanhe seus pedidos e protocolos.
+                    </p>
+                    <span class="seta">➜</span>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- PRODUTOS E SERVIÇOS -->
+        <section class="acesso" id="produtos">
+            <div class="titulo-secao">
+                <div>
+                    <h2>Serviços municipais</h2>
+                    <p>Consulte as opções disponíveis no portal.</p>
+                </div>
+            </div>
+
+            <div class="cartoes">
+                <a href="login.html" class="cartao azul">
+                    <div class="icone azul-escuro">▦</div>
+                    <h3>Agendamentos</h3>
+                    <p>Acesse sua conta para solicitar um atendimento.</p>
+                    <span class="seta">➜</span>
+                </a>
+
+                <a href="login.html" class="cartao amarelo">
+                    <div class="icone amarelo-escuro">☷</div>
+                    <h3>Protocolos</h3>
+                    <p>Entre na sua conta para acompanhar solicitações.</p>
+                    <span class="seta">➜</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- NOTÍCIAS E EVENTOS -->
+        <section class="informacoes" id="noticias">
+
+            <div class="noticias">
+                <div class="titulo-secao">
+                    <h2>⚑ Notícias em destaque</h2>
+                    <a href="#noticias">Ver todas ➜</a>
+                </div>
+
+                <div class="noticias-lista">
+
+                    <article class="noticia">
+                        <div class="foto-noticia foto-1">🏛️</div>
+                        <div class="noticia-texto">
+                            <span class="etiqueta">Cultura</span>
+                            <h3>Festival de Inverno</h3>
+                            <p>
+                                Canhotinho se prepara para mais uma edição
+                                do seu tradicional festival.
+                            </p>
+                            <small>▦ 15 de junho de 2026</small>
+                        </div>
+                    </article>
+
+                    <article class="noticia">
+                        <div class="foto-noticia foto-2">🚧</div>
+                        <div class="noticia-texto">
+                            <span class="etiqueta">Obras</span>
+                            <h3>Mais infraestrutura</h3>
+                            <p>
+                                Confira informações sobre obras e melhorias
+                                no município.
+                            </p>
+                            <small>▦ 12 de junho de 2026</small>
+                        </div>
+                    </article>
+
+                    <article class="noticia">
+                        <div class="foto-noticia foto-3">🏥</div>
+                        <div class="noticia-texto">
+                            <span class="etiqueta">Saúde</span>
+                            <h3>Serviços de saúde</h3>
+                            <p>
+                                Consulte informações e serviços de
+                                atendimento à população.
+                            </p>
+                            <small>▦ 10 de junho de 2026</small>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- EVENTOS -->
+            <aside class="eventos" id="eventos">
+                <div class="titulo-secao">
+                    <h2>▦ Campanhas de Saúde</h2>
+                    <a href="#eventos-lista">Ver todos ➜</a>
+                </div>
+
+                <div id="eventos-lista">
+
+                    <article class="evento">
+                        <div class="data-evento">
+                            <strong>Data</strong>
+                            <span>Mês</span>
+                        </div>
+                        <div>
+                            <h3>Campanha de vacinação contra a gripe</h3>
+                            <p>⌖ Centro de saúde</p>
+                            <p>◷ Às 9h</p>
+                        </div>
+                    </article>
+
+                    <article class="evento">
+                        <div class="data-evento">
+                            <strong>Data</strong>
+                            <span>***</span>
+                        </div>
+                        <div>
+                            <h3>Campanha de saúde bucal</h3>
+                            <p>⌖ Centro de saúde</p>
+                            <p>◷ Às 14h</p>
+                        </div>
+                    </article>
+
+                    <article class="evento">
+                        <div class="data-evento">
+                            <strong>Data</strong>
+                            <span>***</span>
+                        </div>
+                        <div>
+                            <h3>Campanha de saúde mental</h3>
+                            <p>⌖ Centro da cidade</p>
+                            <p>◷ Às 8h</p>
+                        </div>
+                    </article>
+
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape" id="contato">
+        <div class="rodape-topo">
+
+            <div class="identidade identidade-rodape">
+                <img src="imagens/logo1.png" alt="Logo do Conecta Canhotinho" class="logo">
+                <div>
+                    <h2>CONECTA <span>CANHOTINHO</span></h2>
+                    <p>Prefeitura Municipal de Canhotinho</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Links úteis</h3>
+                <a href="#sobre">› Sobre o município</a>
+                <a href="#servicos">› Portal de serviços</a>
+                <a href="#noticias">› Notícias e eventos</a>
+                <a href="#contato">› Contato</a>
+            </div>
+
+            <div>
+                <h3>Redes sociais</h3>
+                <p class="redes">◎　f　▶　𝕏</p>
+            </div>
+
+            <div class="frase-rodape">
+                Canhotinho<br>é a nossa gente!
+            </div>
+        </div>
+
+        <div class="rodape-final">
+            <p>
+                © 2026 Prefeitura Municipal de Canhotinho -
+                Todos os direitos reservados.
+            </p>
+            <a href="#conteudo">Voltar ao conteúdo</a>
+        </div>
+    </footer>
+
 </body>
 </html>
