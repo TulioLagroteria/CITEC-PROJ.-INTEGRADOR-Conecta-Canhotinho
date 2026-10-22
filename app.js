@@ -55,6 +55,15 @@ function verificarLogin(req, res, next) {
 //===============================================================================
 
 
+// ===============================================================================
+//HEAD
+app.get("/logodeentrada.html", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "logodeentrada.html")
+    );
+});
+//===============================================================================
+
 
 // ==============================================================================================
 // APP.POST
@@ -132,7 +141,7 @@ app.get("/logo", (req, res) => {
 
 app.get("/index", (req, res) => {
     res.sendFile(
-        path.join(__dirname, "public", "")
+        path.join(__dirname, "public", "telainicial.html")
     );
 });
 
