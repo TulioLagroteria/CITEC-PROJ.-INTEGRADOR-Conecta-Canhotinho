@@ -93,18 +93,22 @@ app.post('/logout', (req, res) => {
     req.session.destroy();
     res.json({ mensagem: "Logout realizado com sucesso!" });
 });
-
 // -----------------------------------------------------------------------------------------------
 
-// SENHA -----------
+//--------------------------------
+// SENHA
+//-------------------------------
 app.post("/senha", (req, res) => {
     const { tipo } = req.body;
 
     if (tipo !== "normal" && tipo !== "preferencial") {
-        return (atualizarFila());
-        };
-    });
+        return res.status(400).json({
+            mensagem: "Tipo de senha inválido."
+        });
+    }
+
     const letra = tipo === "preferencial" ? "P" : "N";
+
     const resultado = db.prepare(`
         SELECT COUNT(*) AS total
         FROM posicaoFila
@@ -120,7 +124,9 @@ app.post("/senha", (req, res) => {
     `).run(senha, tipo);
 
     res.json({ senha });
+});
 //=========================================================================================
+
 //=========================================================================================
 
 
