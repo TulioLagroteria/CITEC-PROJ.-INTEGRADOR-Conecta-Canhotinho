@@ -30,3 +30,9 @@ CREATE TABLE IF NOT EXISTS posicaoFila (
     tipo TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'aguardando'
 );
+
+
+
+
+// -----------------------------------------------
+
