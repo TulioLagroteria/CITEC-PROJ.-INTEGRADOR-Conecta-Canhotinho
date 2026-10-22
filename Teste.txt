@@ -1,6 +1,62 @@
- app.get("/api/telainicial", (req, res) => {
-    res.sendFile(__dirname + "/telainicial.html");
+// =========================
+// TELA DA LOGO
+// =========================
 
-app.get("/api/areadelogin", (req, res) => {
-    res.sendFile(__dirname + "/areadelogin.html");
-}), 
+app.get("/logo", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "logodeentrada.html")
+    );
+});
+
+// =========================
+// PÁGINA INICIAL
+// =========================
+
+app.get("/index", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "")
+    );
+});
+
+// =========================
+// LOGIN
+// =========================
+
+app.get("/areadelogin", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "areadelogin.html")
+    );
+});
+
+
+// =========================
+// AGENDAMENTO
+// =========================
+
+app.get("/ficha_agendamento", verificarLogin, (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "ficha_agendamento.html")
+    );
+});
+
+
+// =========================
+// POSIÇÃO NA FILA
+// =========================
+
+app.get("/posicaonafila", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "posicaonafila.html")
+    );
+});
+
+
+// =========================
+// SISTEMA PREFERENCIAL
+// =========================
+
+app.get("/sistemapreferencial", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "public", "sistemapreferencial.html")
+    );
+});
