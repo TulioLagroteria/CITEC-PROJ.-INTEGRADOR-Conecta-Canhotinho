@@ -3068,6 +3068,1076 @@ img {
 }
 
 
+/* =====================================================
+   CONECTA CANHOTINHO
+   Página: Agendamento Online de Saúde
+   CSS independente e responsivo
+   ===================================================== */
+
+.ag-pagina {
+    --ag-azul: #0057B8;
+    --ag-azul-escuro: #003D82;
+    --ag-azul-profundo: #002A5C;
+    --ag-azul-claro: #EAF3FF;
+    --ag-amarelo: #F4C300;
+    --ag-amarelo-hover: #FFD11A;
+    --ag-fundo: #F1F6FD;
+    --ag-branco: #FFFFFF;
+    --ag-texto: #0A2F68;
+    --ag-texto-suave: #496A9F;
+    --ag-borda: #D7E5F8;
+    --ag-sombra: 0 8px 24px rgba(0, 45, 105, 0.07);
+
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ag-texto);
+    background: var(--ag-fundo);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.ag-pagina *,
+.ag-pagina *::before,
+.ag-pagina *::after {
+    box-sizing: border-box;
+}
+
+.ag-pagina a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ag-pagina button,
+.ag-pagina input,
+.ag-pagina select {
+    font: inherit;
+}
+
+.ag-pagina a:focus-visible {
+    outline: 3px solid var(--ag-amarelo);
+    outline-offset: 3px;
+}
+
+.ag-pagina h1,
+.ag-pagina h2,
+.ag-pagina h3,
+.ag-pagina p {
+    margin-top: 0;
+}
+
+.ag-pagina h2 {
+    margin-bottom: 4px;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+/* =====================================================
+   CABEÇALHO
+   ===================================================== */
+
+.ag-cabecalho {
+    min-height: 108px;
+    padding: 16px 3.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    background: var(--ag-branco);
+    box-shadow: 0 2px 10px rgba(0, 40, 90, 0.06);
+}
+
+.ag-identidade {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 12px;
+}
+
+.logo-agendamento {width: 72px;
+    height: 63px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -4px;}
+    
+.ag-logo-letras {
+    display: flex;
+    align-items: center;
+    font-size: 51px;
+    font-weight: 900;
+    letter-spacing: -17px;
+    padding-right: 14px;
+    line-height: 1;
+    color: var(--ag-azul);
+    
+}
+
+.ag-logo-letras span:last-child {
+    color: var(--ag-amarelo);
+    position: relative;
+    z-index: 1;
+}
+
+.ag-logo-texto {
+    display: flex;
+    flex-direction: column;
+    color: var(--ag-azul);
+}
+
+.ag-logo-texto strong {
+    font-size: 24px;
+    line-height: 0.98;
+}
+
+.ag-logo-texto small {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.ag-slogan {
+    padding-left: 22px;
+    border-left: 1px solid var(--ag-borda);
+    color: var(--ag-azul);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.ag-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ag-navegacao a {
+    color: var(--ag-azul-escuro);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.ag-navegacao a:hover {
+    color: var(--ag-azul);
+}
+
+.ag-botao-entrar {
+    flex-shrink: 0;
+    padding: 12px 23px;
+    color: var(--ag-branco) !important;
+    background: var(--ag-azul);
+    border-radius: 14px;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.ag-botao-entrar:hover {
+    background: var(--ag-azul-escuro);
+}
+
+/* =====================================================
+   BANNER PRINCIPAL
+   ===================================================== */
+
+.ag-banner {
+    min-height: 176px;
+    padding: 28px 3.5%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    color: var(--ag-azul-claro);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 65, 145, 0.98) 0%,
+            rgba(0, 77, 164, 0.96) 43%,
+            rgba(0, 67, 143, 0.48) 72%,
+            rgba(0, 54, 119, 0.92) 100%
+        ),
+        url("../imagens/canhotinho.jpg") center 45% / cover no-repeat,
+        var(--ag-azul);
+}
+
+.ag-banner-icone {
+    width: 82px;
+    height: 82px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--ag-branco);
+    color: var(--ag-azul);
+    font-size: 53px;
+    font-weight: 700;
+}
+
+.ag-banner-texto {
+    max-width: 650px;
+}
+
+.ag-banner-texto h1 {
+    margin-bottom: 5px;
+    font-size: clamp(25px, 2.5vw, 36px);
+    line-height: 1.2;
+}
+
+.ag-banner-texto p {
+    max-width: 620px;
+    margin-bottom: 0;
+    font-size: 17px;
+}
+
+.ag-banner-frase {
+    margin-left: auto;
+    padding-left: 14px;
+    flex-shrink: 0;
+    color: var(--ag-branco);
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+/* =====================================================
+   ÁREA PRINCIPAL
+   ===================================================== */
+
+.ag-conteudo {
+    width: min(1450px, 94%);
+    margin: 26px auto 22px;
+    display: grid;
+    grid-template-columns: minmax(0, 3.2fr) minmax(250px, 1fr);
+    align-items: stretch;
+    gap: 28px;
+}
+
+.ag-painel {
+    min-width: 0;
+    padding: 24px;
+    background: var(--ag-branco);
+    border: 1px solid var(--ag-borda);
+    border-radius: 12px;
+    box-shadow: var(--ag-sombra);
+}
+
+/* =====================================================
+   ETAPAS
+   ===================================================== */
+
+.ag-etapas {
+    margin: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ag-etapa {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #788EAE;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.ag-etapa > span {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid #BFD2EC;
+    border-radius: 50%;
+    background: #EDF3FC;
+    color: var(--ag-texto);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.ag-etapa-ativa {
+    color: var(--ag-azul);
+}
+
+.ag-etapa-ativa > span {
+    background: var(--ag-azul);
+    color: var(--ag-branco);
+    border-color: var(--ag-azul);
+}
+
+.ag-linha {
+    min-width: 10px;
+    height: 1px;
+    flex: 1;
+    background: #C7D8F1;
+}
+
+/* =====================================================
+   TRÊS COLUNAS DE AGENDAMENTO
+   ===================================================== */
+
+.ag-colunas {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.08fr) minmax(0, 0.85fr);
+    align-items: start;
+}
+
+.ag-especialidades,
+.ag-calendario,
+.ag-horarios {
+    min-width: 0;
+}
+
+.ag-especialidades {
+    padding-right: 22px;
+}
+
+.ag-calendario {
+    padding: 0 22px;
+    border-left: 1px solid #E0EAF7;
+    border-right: 1px solid #E0EAF7;
+}
+
+.ag-horarios {
+    padding-left: 16px;
+}
+
+.ag-descricao {
+    min-height: 43px;
+    margin: 0 0 13px;
+    color: var(--ag-texto-suave);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =====================================================
+   ESPECIALIDADES
+   ===================================================== */
+
+.ag-lista-especialidades {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ag-especialidade {
+    min-height: 53px;
+    padding: 10px 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 9px;
+    background: #F0F5FC;
+    color: var(--ag-texto);
+    font-size: 13px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ag-especialidade:hover {
+    background: #DFEBFC;
+}
+
+.ag-especialidade.ag-selecionada {
+    color: var(--ag-branco);
+    background: linear-gradient(110deg, #0872E5, #0060C9);
+    box-shadow: 0 4px 10px rgba(0, 87, 184, 0.16);
+}
+
+.ag-icone {
+    width: 23px;
+    flex-shrink: 0;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1;
+}
+
+.ag-mais {
+    font-size: 31px;
+    font-weight: 700;
+}
+
+.ag-seta {
+    margin-left: auto;
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* =====================================================
+   CALENDÁRIO ESTÁTICO
+   ===================================================== */
+
+.ag-calendario-caixa {
+    padding: 12px;
+    border: 1px solid var(--ag-borda);
+    border-radius: 9px;
+    background: #FFFFFF;
+}
+
+.ag-mes {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--ag-texto);
+}
+
+.ag-mes strong {
+    font-size: 16px;
+}
+
+.ag-mes > span {
+    color: var(--ag-azul);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.ag-dias {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 5px 2px;
+}
+
+.ag-dias-semana {
+    margin-bottom: 12px;
+}
+
+.ag-dias-semana span {
+    color: var(--ag-texto);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ag-numeros span {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--ag-texto);
+    font-size: 12px;
+}
+
+.ag-numeros .ag-dia-escolhido {
+    color: var(--ag-branco);
+    background: var(--ag-azul);
+}
+
+/* =====================================================
+   HORÁRIOS
+   ===================================================== */
+
+.ag-lista-horarios {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ag-horario {
+    min-height: 35px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #C9DDF8;
+    border-radius: 7px;
+    background: #F7FAFF;
+    color: var(--ag-texto);
+    font-size: 13px;
+    transition: background 0.2s ease;
+}
+
+.ag-horario:hover {
+    background: #E7F1FF;
+}
+
+.ag-horario-ativo {
+    color: var(--ag-branco);
+    background: #0872E5;
+    border-color: #0872E5;
+}
+
+/* =====================================================
+   AVISO E BOTÃO DE CONTINUAÇÃO
+   ===================================================== */
+
+.ag-lembrete {
+    margin-top: 18px;
+    padding: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #C8DFFF;
+    border-radius: 9px;
+    background: #EDF5FF;
+}
+
+.ag-info-icone {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: var(--ag-branco);
+    background: var(--ag-azul);
+    font-weight: 700;
+}
+
+.ag-lembrete strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--ag-azul);
+}
+
+.ag-lembrete p {
+    margin-bottom: 3px;
+    color: var(--ag-texto-suave);
+    font-size: 12px;
+}
+
+.ag-lembrete a {
+    color: var(--ag-azul);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ag-acoes {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ag-botao-proximo {
+    min-height: 44px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    color: var(--ag-azul-profundo) !important;
+    background: var(--ag-amarelo);
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.ag-botao-proximo:hover {
+    background: var(--ag-amarelo-hover);
+}
+
+.ag-aviso-funcionamento {
+    margin: 12px 0 0;
+    color: #657A98;
+    font-size: 11px;
+    text-align: right;
+}
+
+/* =====================================================
+   PAINEL LATERAL
+   ===================================================== */
+
+.ag-lateral {
+    min-width: 0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+}
+
+.ag-beneficio {
+    padding: 13px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--ag-borda);
+    border-radius: 9px;
+    background: var(--ag-branco);
+}
+
+.ag-beneficio-icone {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #E5F0FF;
+    color: var(--ag-azul-escuro);
+    font-size: 27px;
+}
+
+.ag-beneficio h3,
+.ag-preferencial h3 {
+    margin-bottom: 4px;
+    color: var(--ag-texto);
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.ag-beneficio p,
+.ag-preferencial p {
+    margin-bottom: 0;
+    color: var(--ag-texto-suave);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Atendimento preferencial */
+
+.ag-preferencial {
+    margin-top: 10px;
+    padding: 15px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #F4CC25;
+    border-radius: 9px;
+    background: #FFF8D9;
+}
+
+.ag-preferencial-icone {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #FFE58A;
+    color: var(--ag-azul-escuro);
+    font-size: 26px;
+}
+
+.ag-preferencial p {
+    margin-bottom: 12px;
+    color: #344B6D;
+}
+
+.ag-preferencial a {
+    padding: 9px 11px;
+    display: block;
+    border-radius: 7px;
+    background: var(--ag-amarelo);
+    color: var(--ag-azul-profundo);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.ag-preferencial a:hover {
+    background: var(--ag-amarelo-hover);
+}
+
+/* Cartão institucional */
+
+.ag-cartao-marca {
+    min-height: 175px;
+    margin-top: 5px;
+    padding: 22px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 9px;
+    color: var(--ag-branco);
+    background: linear-gradient(
+        145deg,
+        #0758B1,
+        #003777 100%
+    );
+    text-align: center;
+}
+
+.ag-marca-central {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.ag-logo-claro {
+    color: var(--ag-branco);
+}
+
+.ag-marca-central strong {
+    display: block;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.ag-marca-central small {
+    display: block;
+    margin-top: 7px;
+    font-size: 9px;
+}
+
+.ag-cartao-marca > p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* =====================================================
+   RODAPÉ
+   ===================================================== */
+
+.ag-rodape {
+    min-height: 58px;
+    padding: 15px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    color: var(--ag-branco);
+    background: var(--ag-azul-profundo);
+}
+
+.ag-rodape-marca {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+}
+
+.ag-rodape-marca > strong {
+    font-size: 26px;
+    letter-spacing: -3px;
+}
+
+.ag-rodape p {
+    margin: 0;
+    font-size: 11px;
+    text-align: right;
+}
+
+/* =====================================================
+   RESPONSIVIDADE — TABLETS
+   ===================================================== */
+
+@media (max-width: 1150px) {
+    .ag-cabecalho {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ag-slogan {
+        display: none;
+    }
+
+    .ag-conteudo {
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 16px;
+    }
+
+    .ag-painel {
+        padding: 18px;
+    }
+
+    .ag-colunas {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .ag-especialidades {
+        padding-right: 16px;
+    }
+
+    .ag-calendario {
+        padding-right: 0;
+        border-right: 0;
+    }
+
+    .ag-horarios {
+        grid-column: 1 / -1;
+        padding: 18px 0 0;
+        border-top: 1px solid #E0EAF7;
+    }
+
+    .ag-lista-horarios {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ag-descricao {
+        min-height: 0;
+    }
+
+    .ag-etapa {
+        gap: 5px;
+        font-size: 11px;
+    }
+
+    .ag-etapa > span {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVIDADE — CELULARES
+   ===================================================== */
+
+@media (max-width: 760px) {
+    .ag-cabecalho {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .ag-logo-letras {
+        font-size: 43px;
+    }
+
+    .ag-logo-texto strong {
+        font-size: 21px;
+    }
+
+    .ag-navegacao {
+        width: 100%;
+        gap: 10px 16px;
+    }
+
+    .ag-navegacao a {
+        font-size: 12px;
+    }
+
+    .ag-banner {
+        padding: 24px 5%;
+        gap: 13px;
+        background-image: linear-gradient(
+            110deg,
+            rgba(0, 61, 130, 0.97),
+            rgba(0, 87, 184, 0.88)
+        );
+    }
+
+    .ag-banner-icone {
+        width: 55px;
+        height: 55px;
+        font-size: 38px;
+    }
+
+    .ag-banner-texto h1 {
+        font-size: 24px;
+    }
+
+    .ag-banner-texto p {
+        font-size: 13px;
+    }
+
+    .ag-banner-frase {
+        display: none;
+    }
+
+    .ag-conteudo {
+        width: 94%;
+        margin-top: 16px;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ag-painel {
+        padding: 15px;
+    }
+
+    .ag-etapas {
+        margin-bottom: 25px;
+        gap: 5px;
+    }
+
+    .ag-etapa {
+        flex-direction: column;
+        text-align: center;
+        white-space: normal;
+        flex: 1;
+        font-size: 10px;
+    }
+
+    .ag-etapa > span {
+        width: 31px;
+        height: 31px;
+    }
+
+    .ag-linha {
+        flex: 0.3;
+        margin-top: -18px;
+    }
+
+    .ag-colunas {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .ag-especialidades,
+    .ag-calendario,
+    .ag-horarios {
+        padding: 0;
+        border: 0;
+    }
+
+    .ag-calendario,
+    .ag-horarios {
+        padding-top: 20px;
+        border-top: 1px solid #E0EAF7;
+    }
+
+    .ag-lista-especialidades {
+        gap: 7px;
+    }
+
+    .ag-especialidade {
+        min-height: 50px;
+    }
+
+    .ag-calendario-caixa {
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 14px;
+    }
+
+    .ag-numeros {
+        gap: 8px 3px;
+    }
+
+    .ag-numeros span {
+        width: 33px;
+        height: 33px;
+    }
+
+    .ag-dias-semana span {
+        font-size: 12px;
+    }
+
+    .ag-lista-horarios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .ag-horario {
+        min-height: 42px;
+    }
+
+    .ag-lembrete {
+        margin-top: 24px;
+    }
+
+    .ag-botao-proximo {
+        width: 100%;
+    }
+
+    .ag-aviso-funcionamento {
+        text-align: center;
+    }
+
+    .ag-lateral {
+        padding: 0;
+        background: transparent;
+    }
+
+    .ag-beneficio {
+        padding: 15px;
+    }
+
+    .ag-preferencial {
+        padding: 17px;
+    }
+
+    .ag-cartao-marca {
+        min-height: 160px;
+    }
+
+    .ag-rodape {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ag-rodape-marca {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .ag-rodape p {
+        text-align: center;
+    }
+}
+
+/* =====================================================
+   TELAS MUITO PEQUENAS
+   ===================================================== */
+
+@media (max-width: 380px) {
+    .ag-identidade {
+        gap: 7px;
+    }
+
+    .ag-logo-letras {
+        font-size: 37px;
+        letter-spacing: -14px;
+        padding-right: 12px;
+    }
+
+    .ag-logo-texto strong {
+        font-size: 18px;
+    }
+
+    .ag-logo-texto small {
+        font-size: 8px;
+    }
+
+    .ag-etapas {
+        gap: 3px;
+    }
+
+    .ag-etapa {
+        font-size: 9px;
+    }
+
+    .ag-etapa > span {
+        width: 27px;
+        height: 27px;
+        font-size: 13px;
+    }
+
+    .ag-painel {
+        padding: 12px;
+    }
+
+    .ag-numeros {
+        gap: 5px 0;
+    }
+
+    .ag-numeros span {
+        width: 29px;
+        height: 29px;
+        font-size: 11px;
+    }
+
+    .ag-preferencial {
+        flex-direction: column;
+    }
+}
+
+
 /* ==========================================================
    14. RESPONSIVIDADE DAS DUAS NOVAS PÁGINAS
    As regras antigas continuam preservadas.

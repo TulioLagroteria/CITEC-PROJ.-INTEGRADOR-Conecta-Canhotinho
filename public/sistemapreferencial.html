@@ -22,7 +22,9 @@
     <header class="pref-topbar">
 
         <a href="001_telainicial.html" class="pref-brand">
-            <span class="pref-brand-mark">CC</span>
+            <img
+                    src="imagens/logo1.png"
+                    alt="Logo do Conecta Canhotinho" class="pref-brand-mark">
 
             <span class="pref-brand-text">
                 Conecta<br>Canhotinho
@@ -579,126 +581,5 @@
         </footer>
 
     </main>
-
-    <!-- INTERAÇÕES DA INTERFACE -->
-    <script>
-        const prefForm = document.getElementById("pref-form");
-        const prefFile = document.getElementById("pref-comprovante");
-        const prefFileName = document.getElementById("pref-file-name");
-        const prefTipo = document.getElementById("pref-tipo");
-        const prefFeedback = document.getElementById("pref-feedback");
-
-        const prefObservacoes = document.getElementById("pref-observacoes");
-        const prefCharacterCount = document.getElementById("pref-character-count");
-
-        // Destaca a categoria escolhida.
-        document.querySelectorAll(
-            '.pagina-sistema-preferencial input[name="prioridade"]'
-        ).forEach(function (radio) {
-
-            radio.addEventListener("change", function () {
-
-                document.querySelectorAll(".pref-priority-option").forEach(
-                    function (card) {
-                        card.classList.remove("pref-selected");
-                    }
-                );
-
-                radio.closest(".pref-priority-option")
-                    .classList.add("pref-selected");
-
-                // Mantém a categoria do formulário sincronizada com o cartão.
-                prefTipo.value = radio.value;
-            });
-        });
-
-        // Também sincroniza o cartão quando o usuário muda o select.
-        prefTipo.addEventListener("change", function () {
-
-            const radio = document.querySelector(
-                '.pagina-sistema-preferencial input[name="prioridade"]' +
-                '[value="' + prefTipo.value + '"]'
-            );
-
-            if (radio) {
-                radio.checked = true;
-                radio.dispatchEvent(new Event("change"));
-            }
-        });
-
-        // Apresenta o nome do arquivo escolhido e verifica o tamanho.
-        prefFile.addEventListener("change", function () {
-
-            prefFeedback.textContent = "";
-            prefFeedback.classList.remove("pref-feedback-error");
-
-            if (!prefFile.files.length) {
-                prefFileName.textContent = "Nenhum arquivo selecionado";
-                return;
-            }
-
-            const arquivo = prefFile.files[0];
-            const tamanhoMaximo = 5 * 1024 * 1024;
-
-            if (arquivo.size > tamanhoMaximo) {
-                prefFeedback.textContent =
-                    "O arquivo excede o limite de 5 MB. Selecione outro documento.";
-
-                prefFeedback.classList.add("pref-feedback-error");
-
-                prefFile.value = "";
-                prefFileName.textContent = "Nenhum arquivo selecionado";
-                return;
-            }
-
-            prefFileName.textContent = arquivo.name;
-        });
-
-        // Contador de caracteres.
-        prefObservacoes.addEventListener("input", function () {
-            prefCharacterCount.textContent =
-                prefObservacoes.value.length + "/300 caracteres";
-        });
-
-        // Demonstração: não envia dados para o servidor.
-        prefForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            prefFeedback.classList.remove("pref-feedback-error");
-            prefFeedback.textContent =
-                "Validação visual concluída. Para registrar a solicitação, " +
-                "é necessário conectar o formulário à rota do servidor.";
-        });
-
-        // Restaura as informações após limpar.
-        prefForm.addEventListener("reset", function () {
-            setTimeout(function () {
-
-                prefFileName.textContent = "Nenhum arquivo selecionado";
-                prefCharacterCount.textContent = "0/300 caracteres";
-                prefFeedback.textContent = "";
-                prefFeedback.classList.remove("pref-feedback-error");
-
-                document.querySelectorAll(".pref-priority-option").forEach(
-                    function (card) {
-                        card.classList.remove("pref-selected");
-                    }
-                );
-
-                const selecionado = document.querySelector(
-                    '.pagina-sistema-preferencial input[name="prioridade"]:checked'
-                );
-
-                if (selecionado) {
-                    selecionado.closest(".pref-priority-option")
-                        .classList.add("pref-selected");
-
-                    prefTipo.value = selecionado.value;
-                }
-
-            }, 0);
-        });
-    </script>
-
 </body>
 </html>
