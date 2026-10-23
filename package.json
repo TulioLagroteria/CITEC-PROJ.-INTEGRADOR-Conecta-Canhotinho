@@ -11,20 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho.git"
+    "url": "git+https://github.com"
   },
   "keywords": [],
   "author": "Túlio Lagroteria Cardoso Oliveira, Tatiane Lagroteria Cardoso Oliveira Freitas, Laís Viana Rufino, José Henrique lves Vieira, Mikael Felipe Quirino de Sant’Ana, João Vitor Silva de Lima, júlio cauã morais de souza, Maria Clara Martins Ferreira, Hugo Santos Rocha do Nascimento",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho/issues"
+    "url": "https://github.com"
   },
-  "homepage": "https://github.com/TulioLagroteria/CITEC-PROJ.-INTEGRADOR-Conecta-Canhotinho#readme",
+  "homepage": "https://github.com",
   "dependencies": {
     "express": "^5.3.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20261023.1",
+    "@cloudflare/workers-types": "^4.20240405.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
     "typescript": "^5.4.5",
