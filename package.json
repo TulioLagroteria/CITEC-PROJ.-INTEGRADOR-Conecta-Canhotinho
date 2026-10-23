@@ -4,6 +4,8 @@
   "description": "PROJ. INT.",
   "main": "agendamentoonline.js",
   "scripts": {
+    "dev": "wrangler dev",
+    "setup": "mkdir wrangler && mkdir wrangler",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
