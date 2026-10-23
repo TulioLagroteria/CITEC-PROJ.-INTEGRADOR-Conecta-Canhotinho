@@ -9,9 +9,8 @@ const express = require("express");
 const session = require('express-session');
 const Database = require("better-sqlite3");
 const path = require("path");
-const database = require("better-sqlite3");
-const db = new database("banco.db");
-
+const bcrypt = require('bcrypt'); // Added bcrypt require
+const db = new Database("banco.db");
 const app = express();
 const port = 3000;
 //===============================================================================
@@ -39,8 +38,12 @@ app.use(session({
 
 console.log(process.env.SECRET_SESSION)
 //===============================================================================
-//===============================================================================
 
+const fs = require('fs');
+
+if (!fs.existsSync('wrangler')) {
+    fs.mkdirSync('wrangler');
+}
 // ===============================================================================
 // FUNÇÕES
 // ===============================================================================
@@ -215,11 +218,10 @@ app.get("/sistemapreferencial", (req, res) => {
     res.json(fila.map(item => item.senha));
 });
 
-// PROXIMO ----------------
 app.get("/proximo", (req, res) => {
     const proxima = db.prepare(`
         SELECT id, senha
-        FROM senhas
+        FROM posicaoFila
         WHERE status = 'aguardando'
         ORDER BY
             CASE
@@ -235,7 +237,7 @@ app.get("/proximo", (req, res) => {
     }
 
     db.prepare(`
-        UPDATE senhas
+        UPDATE posicaoFila
         SET status = 'chamada'
         WHERE id = ?
     `).run(proxima.id);
@@ -261,9 +263,7 @@ app.get("/api/telainicial", async (req, res) => {
 
 // =========================
 // INICIAR SERVIDOR
-// =========================
-
-app.listen(3000, () => {
-    console.log("Servidor rodando 3000");
+app.listen(port, () => {
+    console.log(`Servidor rodando ${port}`);
 })
 console.log("banco está conectado");
