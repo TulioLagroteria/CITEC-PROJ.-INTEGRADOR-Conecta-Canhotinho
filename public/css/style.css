@@ -3068,831 +3068,1820 @@ img {
 }
 
 
-/* =====================================================
-   CONECTA CANHOTINHO
-   Página: Agendamento Online de Saúde
-   CSS independente e responsivo
-   ===================================================== */
 
-.ag-pagina {
-    --ag-azul: #0057B8;
-    --ag-azul-escuro: #003D82;
-    --ag-azul-profundo: #002A5C;
-    --ag-azul-claro: #EAF3FF;
-    --ag-amarelo: #F4C300;
-    --ag-amarelo-hover: #FFD11A;
-    --ag-fundo: #F1F6FD;
-    --ag-branco: #FFFFFF;
-    --ag-texto: #0A2F68;
-    --ag-texto-suave: #496A9F;
-    --ag-borda: #D7E5F8;
-    --ag-sombra: 0 8px 24px rgba(0, 45, 105, 0.07);
+/* =========================================================
+   CONECTA CANHOTINHO — AGENDAMENTO ONLINE
+   CSS independente e responsivo
+   Prefixo cc- para reduzir conflitos com outras páginas
+   ========================================================= */
+
+
+/* =========================================================
+   1. CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+.cc-agendamento-page {
+    --cc-blue: #0757b8;
+    --cc-blue-dark: #06366f;
+    --cc-blue-deep: #052950;
+    --cc-blue-soft: #eaf3ff;
+
+    --cc-yellow: #ffcc00;
+    --cc-yellow-hover: #ffdb42;
+
+    --cc-text: #092f68;
+    --cc-muted: #52709c;
+    --cc-line: #d5e5fa;
+
+    --cc-white: #ffffff;
+    --cc-bg: #eef5fd;
 
     margin: 0;
     min-height: 100vh;
-    color: var(--ag-texto);
-    background: var(--ag-fundo);
-    font-family: Arial, Helvetica, sans-serif;
+
+    background: var(--cc-bg);
+    color: var(--cc-text);
+
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
     font-size: 15px;
     line-height: 1.5;
 }
 
-.ag-pagina *,
-.ag-pagina *::before,
-.ag-pagina *::after {
+.cc-agendamento-page *,
+.cc-agendamento-page *::before,
+.cc-agendamento-page *::after {
     box-sizing: border-box;
 }
 
-.ag-pagina a {
+.cc-agendamento-page a {
     color: inherit;
-    text-decoration: none;
 }
 
-.ag-pagina button,
-.ag-pagina input,
-.ag-pagina select {
+.cc-agendamento-page button,
+.cc-agendamento-page input {
     font: inherit;
 }
 
-.ag-pagina a:focus-visible {
-    outline: 3px solid var(--ag-amarelo);
-    outline-offset: 3px;
+
+/* =========================================================
+   2. ESTRUTURA PRINCIPAL
+   ========================================================= */
+
+.cc-layout {
+    display: grid;
+
+    grid-template-columns: 345px minmax(0, 1fr);
+
+    min-height: 100vh;
 }
 
-.ag-pagina h1,
-.ag-pagina h2,
-.ag-pagina h3,
-.ag-pagina p {
-    margin-top: 0;
+
+/* =========================================================
+   3. MENU LATERAL
+   ========================================================= */
+
+.cc-sidebar {
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+    min-height: 720px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 0 24px;
+
+    overflow-y: auto;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            ellipse at 0% 65%,
+            rgba(15, 82, 151, 0.32),
+            transparent 55%
+        ),
+        linear-gradient(
+            155deg,
+            #07366f 0%,
+            #052950 100%
+        );
 }
 
-.ag-pagina h2 {
-    margin-bottom: 4px;
-    font-size: 19px;
-    line-height: 1.35;
-}
 
-/* =====================================================
-   CABEÇALHO
-   ===================================================== */
+/* Identidade visual do menu */
 
-.ag-cabecalho {
-    min-height: 108px;
-    padding: 16px 3.5%;
+.cc-brand {
+    min-height: 103px;
+
+    padding: 15px 23px;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 22px;
-    background: var(--ag-branco);
-    box-shadow: 0 2px 10px rgba(0, 40, 90, 0.06);
+
+    gap: 15px;
+
+    background: #0751a0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.ag-identidade {
+.cc-brand img {
+    width: 88px;
+    height: 72px;
+
+    flex: 0 0 auto;
+
+    object-fit: contain;
+}
+
+.cc-brand span {
+    font-size: 27px;
+    font-weight: 850;
+
+    letter-spacing: -0.65px;
+    line-height: 1.02;
+}
+
+
+/* Navegação */
+
+.cc-navigation {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 20px 0 12px;
+}
+
+.cc-nav-link {
+    min-height: 68px;
+
+    padding: 12px 25px;
+
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+
+    gap: 25px;
+
+    border-left: 5px solid transparent;
+    border-radius: 0 11px 11px 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 550;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.cc-nav-link > i {
+    width: 32px;
+    flex: 0 0 32px;
+
+    text-align: center;
+
+    font-size: 27px;
+}
+
+
+/* Efeito ao passar o mouse */
+
+.cc-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+
+    padding-left: 31px;
+}
+
+
+/* Item da página atual */
+
+.cc-nav-link.cc-current {
+    color: #07366f;
+
+    background: var(--cc-yellow);
+
+    border-left-color: var(--cc-yellow);
+
+    font-weight: 800;
+}
+
+.cc-nav-link.cc-current:hover {
+    background: var(--cc-yellow-hover);
+}
+
+
+/* =========================================================
+   4. CARTÃO INFORMATIVO DO MENU
+   ========================================================= */
+
+.cc-sidebar-note {
+    margin: 12px 23px 27px;
+
+    padding: 19px 19px 20px;
+
+    background: rgba(13, 83, 151, 0.48);
+
+    border: 1px solid rgba(71, 164, 255, 0.48);
+    border-radius: 12px;
+}
+
+.cc-note-heading {
+    display: flex;
+    align-items: flex-start;
+
     gap: 12px;
+
+    margin-bottom: 14px;
 }
 
-.logo-agendamento {width: 72px;
-    height: 63px;
+.cc-note-heading i {
+    color: #c5e0ff;
+
+    font-size: 34px;
+
+    padding-top: 2px;
+}
+
+.cc-note-heading h2 {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+.cc-sidebar-note p {
+    margin: 0;
+
+    color: #f0f6ff;
+
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   5. RODAPÉ DO MENU LATERAL
+   ========================================================= */
+
+.cc-sidebar-footer {
+    margin: auto 23px 0;
+
+    padding-top: 29px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.cc-city-icon {
+    width: 72px;
+    height: 78px;
+
+    flex: 0 0 72px;
 
     display: grid;
     place-items: center;
 
-    border-radius: 9px;
-    background: var(--amarelo);
-    color: var(--azul-escuro);
+    border: 2px solid rgba(218, 235, 255, 0.8);
 
-    font-size: 38px;
-    font-weight: 900;
-    letter-spacing: -4px;}
-    
-.ag-logo-letras {
-    display: flex;
-    align-items: center;
-    font-size: 51px;
-    font-weight: 900;
-    letter-spacing: -17px;
-    padding-right: 14px;
-    line-height: 1;
-    color: var(--ag-azul);
-    
+    border-radius: 27px;
 }
 
-.ag-logo-letras span:last-child {
-    color: var(--ag-amarelo);
-    position: relative;
-    z-index: 1;
+.cc-city-icon i {
+    font-size: 34px;
 }
 
-.ag-logo-texto {
-    display: flex;
-    flex-direction: column;
-    color: var(--ag-azul);
-}
+.cc-sidebar-footer h2 {
+    margin: 0 0 9px;
 
-.ag-logo-texto strong {
-    font-size: 24px;
-    line-height: 0.98;
-}
-
-.ag-logo-texto small {
-    margin-top: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.ag-slogan {
-    padding-left: 22px;
-    border-left: 1px solid var(--ag-borda);
-    color: var(--ag-azul);
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 1.3;
-}
-
-.ag-navegacao {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.ag-navegacao a {
-    color: var(--ag-azul-escuro);
     font-size: 14px;
-    font-weight: 600;
-    transition: color 0.2s ease;
+    line-height: 1.5;
+
+    font-weight: 800;
 }
 
-.ag-navegacao a:hover {
-    color: var(--ag-azul);
+.cc-sidebar-footer p {
+    margin: 0;
+
+    color: #e5efff;
+
+    font-size: 13px;
+    line-height: 1.55;
 }
 
-.ag-botao-entrar {
-    flex-shrink: 0;
-    padding: 12px 23px;
-    color: var(--ag-branco) !important;
-    background: var(--ag-azul);
-    border-radius: 14px;
-    font-weight: 700;
-    transition: background 0.2s ease;
+
+/* =========================================================
+   6. ÁREA PRINCIPAL
+   ========================================================= */
+
+.cc-main {
+    min-width: 0;
+
+    padding: 0 24px 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f6faff 0%,
+            #eaf3fd 100%
+        );
 }
 
-.ag-botao-entrar:hover {
-    background: var(--ag-azul-escuro);
-}
 
-/* =====================================================
-   BANNER PRINCIPAL
-   ===================================================== */
+/* =========================================================
+   7. CABEÇALHO SUPERIOR
+   ========================================================= */
 
-.ag-banner {
-    min-height: 176px;
-    padding: 28px 3.5%;
+.cc-topbar {
+    min-height: 112px;
+
     display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 2px 20px;
+}
+
+.cc-eyebrow {
+    margin: 0 0 3px;
+
+    color: var(--cc-blue);
+
+    font-size: 11px;
+    font-weight: 850;
+
+    letter-spacing: 1.6px;
+}
+
+.cc-topbar h1 {
+    margin: 0;
+
+    color: #07366f;
+
+    font-size: clamp(25px, 2.2vw, 34px);
+    line-height: 1.2;
+
+    letter-spacing: -0.7px;
+}
+
+.cc-topbar-description {
+    margin: 5px 0 0;
+
+    color: var(--cc-muted);
+
+    font-size: 14px;
+}
+
+
+/* Área do usuário */
+
+.cc-user-area {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    white-space: nowrap;
+
+    color: #244b7d;
+
+    font-weight: 650;
+}
+
+.cc-user-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--cc-blue);
+
+    background: #dcecff;
+
+    border-radius: 50%;
+
+    font-size: 17px;
+}
+
+.cc-exit-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 13px;
+    margin-left: 8px;
+
+    color: var(--cc-blue);
+
+    border: 1px solid #b7d1f1;
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+.cc-exit-link:hover {
+    background: #e1efff;
+}
+
+
+/* =========================================================
+   8. BANNER DA SAÚDE
+   ========================================================= */
+
+.cc-hero {
     position: relative;
+    isolation: isolate;
+
+    min-height: 180px;
+
+    padding: 28px 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 23px;
+
     overflow: hidden;
-    color: var(--ag-azul-claro);
+
+    border-radius: 13px;
+
+    color: #ffffff;
+
     background:
         linear-gradient(
             90deg,
-            rgba(0, 65, 145, 0.98) 0%,
-            rgba(0, 77, 164, 0.96) 43%,
-            rgba(0, 67, 143, 0.48) 72%,
-            rgba(0, 54, 119, 0.92) 100%
+            rgba(0, 68, 147, 0.98) 0%,
+            rgba(0, 78, 164, 0.92) 40%,
+            rgba(0, 75, 156, 0.2) 78%,
+            rgba(0, 68, 147, 0.86) 100%
         ),
-        url("../imagens/canhotinho.jpg") center 45% / cover no-repeat,
-        var(--ag-azul);
+        url("../imagens/canhotinho-banner.jpg") center 48% / cover,
+        linear-gradient(120deg, #0757b8, #003c83);
+
+    box-shadow: 0 8px 22px rgba(0, 63, 135, 0.12);
 }
 
-.ag-banner-icone {
-    width: 82px;
-    height: 82px;
+.cc-hero-icon {
+    width: 78px;
+    height: 78px;
+
+    flex: 0 0 78px;
+
     display: grid;
     place-items: center;
-    flex-shrink: 0;
+
+    color: #0751a0;
+
+    background: #ffffff;
+
     border-radius: 50%;
-    background: var(--ag-branco);
-    color: var(--ag-azul);
-    font-size: 53px;
-    font-weight: 700;
+
+    font-size: 38px;
 }
 
-.ag-banner-texto {
-    max-width: 650px;
+.cc-hero-copy {
+    max-width: 590px;
 }
 
-.ag-banner-texto h1 {
-    margin-bottom: 5px;
-    font-size: clamp(25px, 2.5vw, 36px);
-    line-height: 1.2;
+.cc-hero-kicker {
+    color: #d9eaff;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    letter-spacing: 1.7px;
 }
 
-.ag-banner-texto p {
-    max-width: 620px;
-    margin-bottom: 0;
-    font-size: 17px;
-}
+.cc-hero h2 {
+    margin: 4px 0 6px;
 
-.ag-banner-frase {
-    margin-left: auto;
-    padding-left: 14px;
-    flex-shrink: 0;
-    color: var(--ag-branco);
-    font-family: Georgia, serif;
-    font-size: 27px;
-    font-style: italic;
-    font-weight: 700;
+    color: #ffffff;
+
+    font-size: clamp(25px, 2.4vw, 34px);
     line-height: 1.15;
+
+    letter-spacing: -0.6px;
 }
 
-/* =====================================================
-   ÁREA PRINCIPAL
-   ===================================================== */
+.cc-hero p {
+    margin: 0;
 
-.ag-conteudo {
-    width: min(1450px, 94%);
-    margin: 26px auto 22px;
+    color: #f2f7ff;
+
+    font-size: 14px;
+}
+
+.cc-hero-slogan {
+    margin-left: auto;
+    padding-left: 16px;
+
+    color: #ffffff;
+
+    font-size: clamp(18px, 1.8vw, 25px);
+    font-style: italic;
+    font-weight: 800;
+
+    line-height: 1.2;
+    text-align: right;
+
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   9. GRID DO CONTEÚDO
+   ========================================================= */
+
+.cc-content-grid {
     display: grid;
-    grid-template-columns: minmax(0, 3.2fr) minmax(250px, 1fr);
+
+    grid-template-columns: minmax(0, 1fr) 290px;
+
     align-items: stretch;
-    gap: 28px;
+
+    gap: 16px;
+
+    margin-top: 18px;
 }
 
-.ag-painel {
+.cc-booking-card,
+.cc-benefits {
     min-width: 0;
-    padding: 24px;
-    background: var(--ag-branco);
-    border: 1px solid var(--ag-borda);
-    border-radius: 12px;
-    box-shadow: var(--ag-sombra);
+
+    border: 1px solid #dce9f9;
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.91);
+
+    box-shadow: 0 6px 18px rgba(17, 75, 138, 0.045);
 }
 
-/* =====================================================
-   ETAPAS
-   ===================================================== */
+.cc-booking-card {
+    padding: 23px 20px 18px;
+}
 
-.ag-etapas {
-    margin: 0 0 36px;
+
+/* =========================================================
+   10. ETAPAS DO AGENDAMENTO
+   ========================================================= */
+
+.cc-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 0 0 27px;
+    padding: 0 2px 21px;
+
+    border-bottom: 1px solid #e6effa;
+}
+
+.cc-step {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #7187a9;
+
+    font-size: 12px;
+}
+
+.cc-step span {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: grid;
+    place-items: center;
+
+    color: #234c80;
+
+    background: #edf4fd;
+
+    border: 1px solid #c9ddf7;
+    border-radius: 50%;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.cc-step b {
+    font-weight: 650;
+}
+
+.cc-step-active {
+    color: #0757b8;
+}
+
+.cc-step-active span {
+    color: #ffffff;
+
+    background: var(--cc-blue);
+
+    border-color: var(--cc-blue);
+
+    box-shadow: 0 4px 10px rgba(7, 87, 184, 0.2);
+}
+
+.cc-step-active b {
+    color: #0757b8;
+}
+
+
+/* =========================================================
+   11. COLUNAS DE ESPECIALIDADE, DATA E HORÁRIO
+   ========================================================= */
+
+.cc-booking-columns {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(0, 0.95fr)
+        minmax(0, 0.85fr);
+}
+
+.cc-booking-section {
+    min-width: 0;
+
+    padding: 0 15px;
+}
+
+.cc-booking-section:first-child {
+    padding-left: 0;
+}
+
+.cc-booking-section + .cc-booking-section {
+    border-left: 1px solid #e0ebf9;
+}
+
+.cc-booking-section h3 {
+    margin: 0 0 5px;
+
+    color: #07366f;
+
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.cc-booking-section h3 span {
+    color: var(--cc-blue);
+}
+
+.cc-section-help {
+    min-height: 38px;
+
+    margin: 0 0 12px;
+
+    color: #617b9e;
+
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   12. LISTA DE ESPECIALIDADES
+   ========================================================= */
+
+.cc-specialty-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.cc-specialty {
+    min-height: 49px;
+
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #0a3a79;
+
+    background: #f0f6fe;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.cc-specialty > i:first-child {
+    width: 22px;
+
+    flex: 0 0 22px;
+
+    text-align: center;
+
+    font-size: 20px;
+}
+
+.cc-specialty .cc-chevron {
+    margin-left: auto;
+
+    font-size: 12px;
+}
+
+.cc-specialty:hover {
+    background: #e3efff;
+
+    border-color: #c8defb;
+}
+
+.cc-specialty.cc-specialty-selected {
+    color: #ffffff;
+
+    background: linear-gradient(100deg, #0875e9, #0757b8);
+
+    box-shadow: 0 5px 12px rgba(7, 87, 184, 0.15);
+}
+
+
+/* =========================================================
+   13. CALENDÁRIO
+   ========================================================= */
+
+.cc-calendar {
+    padding: 12px 10px 13px;
+
+    border: 1px solid #d7e7fa;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+.cc-calendar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 5px;
+
+    margin-bottom: 12px;
+}
+
+.cc-calendar-header h4 {
+    margin: 0;
+
+    color: #07366f;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.cc-calendar-header button {
+    width: 24px;
+    height: 26px;
+
+    display: grid;
+    place-items: center;
+
+    color: #376ba7;
+
+    background: transparent;
+
+    border: 0;
+    border-radius: 5px;
+}
+
+.cc-calendar-header button:disabled {
+    opacity: 0.7;
+}
+
+.cc-calendar-grid {
+    display: grid;
+
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+
+    justify-items: center;
+    align-items: center;
+
+    gap: 4px 1px;
+}
+
+.cc-weekdays {
+    margin-bottom: 6px;
+
+    color: #254d7e;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.cc-days span {
+    width: 27px;
+    height: 27px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: #153f78;
+
+    font-size: 11px;
+}
+
+.cc-days .cc-day-selected {
+    color: #ffffff;
+
+    background: var(--cc-blue);
+
+    box-shadow: 0 3px 8px rgba(7, 87, 184, 0.2);
+}
+
+.cc-calendar-caption {
+    margin: 10px 0 0;
+
+    color: #7086a6;
+
+    font-size: 10px;
+}
+
+.cc-calendar-caption i {
+    margin-right: 4px;
+}
+
+
+/* =========================================================
+   14. HORÁRIOS
+   ========================================================= */
+
+.cc-time-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.cc-time-option {
+    position: relative;
+
+    min-height: 35px;
+
+    padding: 7px 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    color: #17467f;
+
+    background: #f7faff;
+
+    border: 1px solid #cfe1f9;
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.cc-time-option input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.cc-time-option:has(input:checked) {
+    color: #ffffff;
+
+    background: #0870df;
+
+    border-color: #0870df;
+
+    box-shadow: 0 3px 8px rgba(7, 87, 184, 0.14);
+}
+
+.cc-time-option:has(input:focus-visible) {
+    outline: 3px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+.cc-time-option i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   15. AVISO DE ATENDIMENTO PREFERENCIAL
+   ========================================================= */
+
+.cc-reminder {
+    margin-top: 18px;
+
+    padding: 12px 14px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    color: #1a4d87;
+
+    background: #edf6ff;
+
+    border: 1px solid #cde3ff;
+    border-radius: 9px;
+}
+
+.cc-reminder > i {
+    margin-top: 2px;
+
+    color: #0870df;
+
+    font-size: 22px;
+}
+
+.cc-reminder strong {
+    color: #0757b8;
+
+    font-size: 13px;
+}
+
+.cc-reminder p {
+    margin: 3px 0 4px;
+
+    color: #526f94;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.cc-reminder a {
+    color: #0757b8;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+.cc-reminder a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   16. BOTÃO PRÓXIMO PASSO
+   ========================================================= */
+
+.cc-booking-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 13px;
+}
+
+.cc-next-button {
+    min-height: 44px;
+
+    padding: 10px 17px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 16px;
+
+    color: #07366f;
+
+    background: var(--cc-yellow);
+
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: 850;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cc-next-button:hover {
+    background: var(--cc-yellow-hover);
+
+    transform: translateY(-1px);
+}
+
+.cc-next-button i {
+    font-size: 13px;
+}
+
+.cc-demo-notice {
+    margin: 12px 0 0;
+
+    color: #7185a1;
+
+    font-size: 10px;
+    text-align: right;
+}
+
+
+/* =========================================================
+   17. PAINEL LATERAL DE BENEFÍCIOS
+   ========================================================= */
+
+.cc-benefits {
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.cc-benefit-card {
+    padding: 13px 11px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    border: 1px solid #d8e7f9;
+    border-radius: 10px;
+
+    background: #fbfdff;
+}
+
+.cc-benefit-icon {
+    width: 47px;
+    height: 47px;
+
+    flex: 0 0 47px;
+
+    display: grid;
+    place-items: center;
+
+    color: #0757b8;
+
+    background: #e5f0ff;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.cc-benefit-card h3,
+.cc-preferential-card h3 {
+    margin: 0 0 4px;
+
+    color: #07366f;
+
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.cc-benefit-card p,
+.cc-preferential-card p {
+    margin: 0;
+
+    color: #617b9e;
+
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   18. CARTÃO PREFERENCIAL
+   ========================================================= */
+
+.cc-preferential-card {
+    padding: 14px 12px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    border: 1px solid #f3d35a;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #fff9df,
+        #fff1b7
+    );
+}
+
+.cc-preferential-icon {
+    width: 47px;
+    height: 47px;
+
+    flex: 0 0 47px;
+
+    display: grid;
+    place-items: center;
+
+    color: #074b94;
+
+    background: #ffe17b;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.cc-preferential-card a {
+    display: inline-flex;
+
+    margin-top: 10px;
+    padding: 7px 9px;
+
+    color: #07366f;
+
+    background: var(--cc-yellow);
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+.cc-preferential-card a:hover {
+    background: #ffdc45;
+}
+
+
+/* =========================================================
+   19. CARTÃO COM A MARCA CONECTA CANHOTINHO
+   ========================================================= */
+
+.cc-sidebar-brand-card {
+    min-height: 158px;
+
+    margin-top: auto;
+    padding: 20px 13px 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        145deg,
+        #0757b8,
+        #034080
+    );
+
+    border-radius: 10px;
+}
+
+.cc-brand-card-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     gap: 10px;
 }
 
-.ag-etapa {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #788EAE;
-    font-size: 13px;
-    white-space: nowrap;
-}
+.cc-brand-card-symbol {
+    width: 53px;
+    height: 53px;
 
-.ag-etapa > span {
-    width: 36px;
-    height: 36px;
     display: grid;
     place-items: center;
-    flex-shrink: 0;
-    border: 1px solid #BFD2EC;
+
+    color: #ffcc00;
+
+    background: #ffffff;
+
     border-radius: 50%;
-    background: #EDF3FC;
-    color: var(--ag-texto);
-    font-weight: 700;
-    font-size: 16px;
-}
 
-.ag-etapa-ativa {
-    color: var(--ag-azul);
-}
-
-.ag-etapa-ativa > span {
-    background: var(--ag-azul);
-    color: var(--ag-branco);
-    border-color: var(--ag-azul);
-}
-
-.ag-linha {
-    min-width: 10px;
-    height: 1px;
-    flex: 1;
-    background: #C7D8F1;
-}
-
-/* =====================================================
-   TRÊS COLUNAS DE AGENDAMENTO
-   ===================================================== */
-
-.ag-colunas {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.08fr) minmax(0, 0.85fr);
-    align-items: start;
-}
-
-.ag-especialidades,
-.ag-calendario,
-.ag-horarios {
-    min-width: 0;
-}
-
-.ag-especialidades {
-    padding-right: 22px;
-}
-
-.ag-calendario {
-    padding: 0 22px;
-    border-left: 1px solid #E0EAF7;
-    border-right: 1px solid #E0EAF7;
-}
-
-.ag-horarios {
-    padding-left: 16px;
-}
-
-.ag-descricao {
-    min-height: 43px;
-    margin: 0 0 13px;
-    color: var(--ag-texto-suave);
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* =====================================================
-   ESPECIALIDADES
-   ===================================================== */
-
-.ag-lista-especialidades {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.ag-especialidade {
-    min-height: 53px;
-    padding: 10px 13px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-radius: 9px;
-    background: #F0F5FC;
-    color: var(--ag-texto);
-    font-size: 13px;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.ag-especialidade:hover {
-    background: #DFEBFC;
-}
-
-.ag-especialidade.ag-selecionada {
-    color: var(--ag-branco);
-    background: linear-gradient(110deg, #0872E5, #0060C9);
-    box-shadow: 0 4px 10px rgba(0, 87, 184, 0.16);
-}
-
-.ag-icone {
-    width: 23px;
-    flex-shrink: 0;
-    font-size: 24px;
-    text-align: center;
-    line-height: 1;
-}
-
-.ag-mais {
-    font-size: 31px;
-    font-weight: 700;
-}
-
-.ag-seta {
-    margin-left: auto;
-    font-size: 25px;
-    line-height: 1;
-}
-
-/* =====================================================
-   CALENDÁRIO ESTÁTICO
-   ===================================================== */
-
-.ag-calendario-caixa {
-    padding: 12px;
-    border: 1px solid var(--ag-borda);
-    border-radius: 9px;
-    background: #FFFFFF;
-}
-
-.ag-mes {
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    color: var(--ag-texto);
-}
-
-.ag-mes strong {
-    font-size: 16px;
-}
-
-.ag-mes > span {
-    color: var(--ag-azul);
-    font-size: 25px;
-    font-weight: 700;
-}
-
-.ag-dias {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    justify-items: center;
-    align-items: center;
-    gap: 5px 2px;
-}
-
-.ag-dias-semana {
-    margin-bottom: 12px;
-}
-
-.ag-dias-semana span {
-    color: var(--ag-texto);
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.ag-numeros span {
-    width: 30px;
-    height: 30px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    color: var(--ag-texto);
-    font-size: 12px;
-}
-
-.ag-numeros .ag-dia-escolhido {
-    color: var(--ag-branco);
-    background: var(--ag-azul);
-}
-
-/* =====================================================
-   HORÁRIOS
-   ===================================================== */
-
-.ag-lista-horarios {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.ag-horario {
-    min-height: 35px;
-    padding: 6px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #C9DDF8;
-    border-radius: 7px;
-    background: #F7FAFF;
-    color: var(--ag-texto);
-    font-size: 13px;
-    transition: background 0.2s ease;
-}
-
-.ag-horario:hover {
-    background: #E7F1FF;
-}
-
-.ag-horario-ativo {
-    color: var(--ag-branco);
-    background: #0872E5;
-    border-color: #0872E5;
-}
-
-/* =====================================================
-   AVISO E BOTÃO DE CONTINUAÇÃO
-   ===================================================== */
-
-.ag-lembrete {
-    margin-top: 18px;
-    padding: 13px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    border: 1px solid #C8DFFF;
-    border-radius: 9px;
-    background: #EDF5FF;
-}
-
-.ag-info-icone {
-    width: 24px;
-    height: 24px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    border-radius: 50%;
-    color: var(--ag-branco);
-    background: var(--ag-azul);
-    font-weight: 700;
-}
-
-.ag-lembrete strong {
-    display: block;
-    margin-bottom: 2px;
-    color: var(--ag-azul);
-}
-
-.ag-lembrete p {
-    margin-bottom: 3px;
-    color: var(--ag-texto-suave);
-    font-size: 12px;
-}
-
-.ag-lembrete a {
-    color: var(--ag-azul);
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.ag-acoes {
-    margin-top: 14px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.ag-botao-proximo {
-    min-height: 44px;
-    padding: 10px 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 24px;
-    color: var(--ag-azul-profundo) !important;
-    background: var(--ag-amarelo);
-    font-weight: 700;
-    transition: background 0.2s ease;
-}
-
-.ag-botao-proximo:hover {
-    background: var(--ag-amarelo-hover);
-}
-
-.ag-aviso-funcionamento {
-    margin: 12px 0 0;
-    color: #657A98;
-    font-size: 11px;
-    text-align: right;
-}
-
-/* =====================================================
-   PAINEL LATERAL
-   ===================================================== */
-
-.ag-lateral {
-    min-width: 0;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-}
-
-.ag-beneficio {
-    padding: 13px 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 1px solid var(--ag-borda);
-    border-radius: 9px;
-    background: var(--ag-branco);
-}
-
-.ag-beneficio-icone {
-    width: 52px;
-    height: 52px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #E5F0FF;
-    color: var(--ag-azul-escuro);
-    font-size: 27px;
-}
-
-.ag-beneficio h3,
-.ag-preferencial h3 {
-    margin-bottom: 4px;
-    color: var(--ag-texto);
-    font-size: 14px;
-    line-height: 1.3;
-}
-
-.ag-beneficio p,
-.ag-preferencial p {
-    margin-bottom: 0;
-    color: var(--ag-texto-suave);
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-/* Atendimento preferencial */
-
-.ag-preferencial {
-    margin-top: 10px;
-    padding: 15px 12px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    border: 1px solid #F4CC25;
-    border-radius: 9px;
-    background: #FFF8D9;
-}
-
-.ag-preferencial-icone {
-    width: 50px;
-    height: 50px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #FFE58A;
-    color: var(--ag-azul-escuro);
-    font-size: 26px;
-}
-
-.ag-preferencial p {
-    margin-bottom: 12px;
-    color: #344B6D;
-}
-
-.ag-preferencial a {
-    padding: 9px 11px;
-    display: block;
-    border-radius: 7px;
-    background: var(--ag-amarelo);
-    color: var(--ag-azul-profundo);
-    font-size: 11px;
-    font-weight: 700;
-    text-align: center;
-    transition: background 0.2s ease;
-}
-
-.ag-preferencial a:hover {
-    background: var(--ag-amarelo-hover);
-}
-
-/* Cartão institucional */
-
-.ag-cartao-marca {
-    min-height: 175px;
-    margin-top: 5px;
-    padding: 22px 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    border-radius: 9px;
-    color: var(--ag-branco);
-    background: linear-gradient(
-        145deg,
-        #0758B1,
-        #003777 100%
-    );
-    text-align: center;
-}
-
-.ag-marca-central {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-align: left;
-}
-
-.ag-logo-claro {
-    color: var(--ag-branco);
-}
-
-.ag-marca-central strong {
-    display: block;
-    font-size: 23px;
-    line-height: 1;
-}
-
-.ag-marca-central small {
-    display: block;
-    margin-top: 7px;
-    font-size: 9px;
-}
-
-.ag-cartao-marca > p {
-    margin: 0;
-    font-size: 12px;
-    opacity: 0.9;
-}
-
-/* =====================================================
-   RODAPÉ
-   ===================================================== */
-
-.ag-rodape {
-    min-height: 58px;
-    padding: 15px 4%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    color: var(--ag-branco);
-    background: var(--ag-azul-profundo);
-}
-
-.ag-rodape-marca {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 12px;
-}
-
-.ag-rodape-marca > strong {
-    font-size: 26px;
+    font-size: 21px;
+    font-weight: 950;
     letter-spacing: -3px;
 }
 
-.ag-rodape p {
+.cc-brand-card-logo strong {
+    display: block;
+
+    font-size: 20px;
+    line-height: 1.02;
+}
+
+.cc-brand-card-logo small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 8px;
+}
+
+.cc-skyline {
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+
+    height: 38px;
+
+    margin-top: 15px;
+
+    color: #a9d3ff;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.cc-skyline i:nth-child(1) {
+    font-size: 27px;
+}
+
+.cc-skyline i:nth-child(2) {
+    font-size: 34px;
+}
+
+.cc-skyline i:nth-child(3) {
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   20. RODAPÉ DA PÁGINA
+   ========================================================= */
+
+.cc-page-footer {
+    min-height: 54px;
+
+    padding: 18px 1px 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    color: #45658e;
+
+    font-size: 10px;
+}
+
+.cc-page-footer div {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.cc-page-footer strong {
+    color: #07366f;
+}
+
+.cc-page-footer div span {
+    width: 1px;
+    height: 15px;
+
+    background: #b8cce4;
+}
+
+.cc-page-footer p {
     margin: 0;
-    font-size: 11px;
+
     text-align: right;
 }
 
-/* =====================================================
-   RESPONSIVIDADE — TABLETS
-   ===================================================== */
 
-@media (max-width: 1150px) {
-    .ag-cabecalho {
-        flex-wrap: wrap;
-        justify-content: center;
+/* Texto acessível, visualmente oculto */
+
+.cc-sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   21. RESPONSIVIDADE — NOTEBOOKS MENORES
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+    .cc-layout {
+        grid-template-columns: 285px minmax(0, 1fr);
     }
 
-    .ag-slogan {
-        display: none;
+    .cc-sidebar {
+        min-height: 650px;
     }
 
-    .ag-conteudo {
-        grid-template-columns: minmax(0, 1fr) 260px;
-        gap: 16px;
+    .cc-brand {
+        padding-inline: 17px;
+        gap: 10px;
     }
 
-    .ag-painel {
-        padding: 18px;
+    .cc-brand img {
+        width: 70px;
+        height: 64px;
     }
 
-    .ag-colunas {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 22px;
+    .cc-brand span {
+        font-size: 23px;
     }
 
-    .ag-especialidades {
-        padding-right: 16px;
+    .cc-nav-link {
+        padding-inline: 20px;
+
+        gap: 17px;
+
+        font-size: 15px;
     }
 
-    .ag-calendario {
-        padding-right: 0;
-        border-right: 0;
+    .cc-sidebar-note {
+        margin-inline: 16px;
+        padding: 15px;
     }
 
-    .ag-horarios {
-        grid-column: 1 / -1;
-        padding: 18px 0 0;
-        border-top: 1px solid #E0EAF7;
+    .cc-sidebar-footer {
+        margin-inline: 16px;
+        gap: 11px;
     }
 
-    .ag-lista-horarios {
+    .cc-city-icon {
+        width: 58px;
+        height: 65px;
+
+        flex-basis: 58px;
+    }
+
+    .cc-main {
+        padding-inline: 18px;
+    }
+
+    .cc-content-grid {
+        grid-template-columns: minmax(0, 1fr) 250px;
+
+        gap: 12px;
+    }
+
+    .cc-booking-card {
+        padding-inline: 14px;
+    }
+
+    .cc-booking-section {
+        padding-inline: 10px;
+    }
+
+    .cc-progress {
+        gap: 5px;
+    }
+
+    .cc-step {
+        gap: 5px;
+
+        font-size: 10px;
+    }
+
+    .cc-step span {
+        width: 30px;
+        height: 30px;
+
+        flex-basis: 30px;
+    }
+
+    .cc-days span {
+        width: 23px;
+        height: 25px;
+    }
+
+    .cc-benefits {
+        padding: 9px;
+    }
+}
+
+
+/* =========================================================
+   22. RESPONSIVIDADE — TABLETS
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+    .cc-layout {
+        grid-template-columns: 245px minmax(0, 1fr);
+    }
+
+    .cc-content-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cc-benefits {
         display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        align-items: stretch;
+    }
+
+    .cc-sidebar-brand-card {
+        min-height: 150px;
+    }
+
+    .cc-booking-columns {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        row-gap: 22px;
+    }
+
+    .cc-time-section {
+        grid-column: 1 / -1;
+
+        padding: 18px 0 0;
+
+        border-left: 0 !important;
+        border-top: 1px solid #e0ebf9;
+    }
+
+    .cc-time-list {
+        display: grid;
+
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .ag-descricao {
-        min-height: 0;
+    .cc-hero-slogan {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDADE — CELULARES
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .cc-layout {
+        display: flex;
+        flex-direction: column;
     }
 
-    .ag-etapa {
+    .cc-sidebar {
+        position: static;
+
+        width: 100%;
+        height: auto;
+        min-height: 0;
+
+        padding-bottom: 12px;
+
+        overflow: visible;
+    }
+
+    .cc-brand {
+        min-height: 80px;
+
+        padding: 10px 17px;
+    }
+
+    .cc-brand img {
+        width: 62px;
+        height: 56px;
+    }
+
+    .cc-brand span {
+        font-size: 22px;
+    }
+
+    .cc-navigation {
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
         gap: 5px;
+
+        padding: 10px;
+    }
+
+    .cc-nav-link {
+        min-height: 49px;
+
+        padding: 9px 10px;
+
+        gap: 9px;
+
+        border: 0;
+        border-radius: 8px;
+
+        font-size: 12px;
+    }
+
+    .cc-nav-link:hover {
+        padding-left: 10px;
+    }
+
+    .cc-nav-link > i {
+        width: 22px;
+
+        flex-basis: 22px;
+
+        font-size: 18px;
+    }
+
+    .cc-sidebar-note {
+        margin: 5px 12px 12px;
+
+        padding: 12px 14px;
+    }
+
+    .cc-note-heading {
+        margin-bottom: 7px;
+    }
+
+    .cc-note-heading i {
+        font-size: 25px;
+    }
+
+    .cc-note-heading h2 {
+        font-size: 13px;
+    }
+
+    .cc-sidebar-note p {
+        font-size: 12px;
+    }
+
+    .cc-sidebar-footer {
+        display: none;
+    }
+
+    .cc-main {
+        padding: 0 12px 14px;
+    }
+
+    .cc-topbar {
+        min-height: 95px;
+
+        align-items: flex-start;
+
+        padding: 17px 0;
+    }
+
+    .cc-topbar h1 {
+        font-size: 25px;
+    }
+
+    .cc-topbar-description {
+        font-size: 12px;
+    }
+
+    .cc-user-area {
+        gap: 6px;
+
         font-size: 11px;
     }
 
-    .ag-etapa > span {
+    .cc-user-avatar {
         width: 30px;
         height: 30px;
     }
+
+    .cc-exit-link {
+        margin-left: 0;
+
+        padding: 8px;
+
+        font-size: 0;
+    }
+
+    .cc-exit-link i {
+        font-size: 14px;
+    }
+
+    .cc-hero {
+        min-height: 155px;
+
+        padding: 20px 17px;
+
+        gap: 13px;
+    }
+
+    .cc-hero-icon {
+        width: 53px;
+        height: 53px;
+
+        flex-basis: 53px;
+
+        font-size: 26px;
+    }
+
+    .cc-hero-kicker {
+        font-size: 8px;
+    }
+
+    .cc-hero h2 {
+        font-size: 23px;
+    }
+
+    .cc-hero p {
+        font-size: 12px;
+    }
+
+    .cc-booking-card {
+        padding: 15px 12px;
+    }
+
+    .cc-progress {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        row-gap: 10px;
+
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+
+    .cc-step {
+        width: calc(50% - 5px);
+
+        font-size: 11px;
+    }
+
+    .cc-booking-columns {
+        grid-template-columns: minmax(0, 1fr);
+
+        row-gap: 20px;
+    }
+
+    .cc-booking-section,
+    .cc-booking-section:first-child {
+        padding: 0;
+
+        border-left: 0;
+    }
+
+    .cc-booking-section + .cc-booking-section {
+        padding-top: 18px;
+
+        border-top: 1px solid #e0ebf9;
+    }
+
+    .cc-section-help {
+        min-height: 0;
+    }
+
+    .cc-specialty {
+        min-height: 46px;
+    }
+
+    .cc-calendar {
+        max-width: 370px;
+    }
+
+    .cc-days span {
+        width: 31px;
+        height: 31px;
+    }
+
+    .cc-time-section {
+        grid-column: auto;
+    }
+
+    .cc-time-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cc-benefits {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cc-sidebar-brand-card {
+        min-height: 145px;
+    }
+
+    .cc-page-footer {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding-top: 16px;
+    }
+
+    .cc-page-footer p {
+        text-align: left;
+    }
+}
+
+
+/* =========================================================
+   24. RESPONSIVIDADE — CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .cc-navigation {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cc-user-greeting {
+        display: none;
+    }
+
+    .cc-hero-icon {
+        display: none;
+    }
+
+    .cc-hero h2 {
+        font-size: 21px;
+    }
+
+    .cc-step {
+        font-size: 10px;
+    }
+
+    .cc-step span {
+        width: 27px;
+        height: 27px;
+
+        flex-basis: 27px;
+    }
+
+    .cc-days span {
+        width: 27px;
+        height: 27px;
+    }
+
+    .cc-reminder {
+        padding: 10px;
+    }
+}
+
+
+/* =========================================================
+   25. ACESSIBILIDADE — MOVIMENTOS REDUZIDOS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cc-agendamento-page *,
+    .cc-agendamento-page *::before,
+    .cc-agendamento-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
 }
 
 /* =====================================================
