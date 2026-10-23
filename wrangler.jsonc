@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nome-do-seu-projeto",
+  "main": "src/index.ts", // Ajuste para o arquivo principal do seu worker (ex: src/index.js ou src/index.ts)
+  "compatibility_date": "2026-01-01",
+
+  // Configuração do Banco de Dados D1
+  "d1_databases": [
+    {
+      "binding": "DB", // Nome que você usará no código para acessar o banco (ex: env.DB)
+      "database_name": "meu-banco", // O nome que você deu ao criar o banco
+      "database_id": "COLE_O_DATABASE_ID_AQUI" // O ID gerado pelo comando wrangler d1 create
+    }
+  ]
+}
