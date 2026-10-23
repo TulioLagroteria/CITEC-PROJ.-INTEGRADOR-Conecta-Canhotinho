@@ -8,11 +8,11 @@
     "nodejs_compat"
   ],
 
-  "d1_databases": [
+   "d1_databases": [
     {
-      "binding": "DB", 
-      "database_name": "meu-banco", 
-      "database_id": "COLE_O_DATABASE_ID_AQUI" 
+      "binding": "conecta_canhotinho",
+      "database_name": "conecta-canhotinho",
+      "database_id": "be36209f-a0f4-4474-ba59-fa249ceb655d"
     }
   ],
   
