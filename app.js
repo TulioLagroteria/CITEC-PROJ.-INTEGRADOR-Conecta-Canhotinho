@@ -36,7 +36,6 @@ app.use(session({
     saveUninitialized: false
 }));
 
-console.log(process.env.SECRET_SESSION)
 //===============================================================================
 
 const fs = require('fs');
