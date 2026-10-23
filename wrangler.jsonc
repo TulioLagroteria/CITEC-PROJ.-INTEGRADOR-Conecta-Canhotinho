@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "conecta-canhotinho", // Ajustado: apenas minúsculas e hifens
+  "name": "conecta-canhotinho",
   "main": "src/index.ts", 
   "compatibility_date": "2026-01-01",
   
