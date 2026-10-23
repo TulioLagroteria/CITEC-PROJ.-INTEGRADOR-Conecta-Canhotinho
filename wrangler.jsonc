@@ -1,22 +1,18 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "conecta-canhotinho",
-  "main": "src/index.ts", 
-  "compatibility_date": "2026-01-01",
-  
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-
-   "d1_databases": [
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "conecta-canhotinho",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-01-01",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
     {
-      "binding": "conecta_canhotinho",
-      "database_name": "conecta-canhotinho",
-      "database_id": "be36209f-a0f4-4474-ba59-fa249ceb655d"
+      "binding": "conecta_db",
+      "database_id": "e54abf12-f324-4f11-af35-6b06282772d6"
     }
   ],
-  
-  "observability": {
-    "enabled": true
-  }
+	"observability": {
+		"enabled": true
+	}
 }
