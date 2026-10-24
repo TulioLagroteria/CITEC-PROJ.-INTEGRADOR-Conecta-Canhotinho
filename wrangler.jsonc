@@ -1,7 +1,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "citec-proj--integrador-conecta-canhotinho",
-	"main": "./public/src/index.js",
+	"main": "app.js",
 	"compatibility_date": "2026-01-01",
 	"compatibility_flags": [
 		"nodejs_compat"
