@@ -1,7 +1,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "conecta-canhotinho",
-	"main": "./src/index.js",
+	"main": "./public/src/index.js",
 	"compatibility_date": "2026-01-01",
 	"compatibility_flags": [
 		"nodejs_compat"
