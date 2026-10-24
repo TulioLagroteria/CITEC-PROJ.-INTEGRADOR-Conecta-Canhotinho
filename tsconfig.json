@@ -8,8 +8,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@cloudflare/workers-types"]
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noEmit": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
 }
