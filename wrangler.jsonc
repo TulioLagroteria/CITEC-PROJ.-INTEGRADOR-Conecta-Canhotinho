@@ -8,7 +8,8 @@
 	],
 	"d1_databases": [
     {
-      "binding": "conecta_db",
+      "binding": "DB",
+      "migrations_dir": "migrations",
       "database_id": "e54abf12-f324-4f11-af35-6b06282772d6"
     }
   ],
