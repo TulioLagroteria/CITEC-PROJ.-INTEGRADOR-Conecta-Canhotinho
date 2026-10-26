@@ -3,14 +3,39 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    // 🏠 PÁGINA PRINCIPAL — Raiz /
+    // ======================================================
+    // 🏠 PÁGINAS ESTÁTICAS — (aqui adicionamos , env em cada linha)
+    // ======================================================
     if (path === '/' || path === '/index.html') {
-      return serveFile('index.html', 'text/html; charset=utf-8');
+      return serveFile('index.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/logo' || path === '/logodeentrada.html') {
+      return serveFile('logodeentrada.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/index') {
+      return serveFile('telainicial.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/areadelogin') {
+      return serveFile('areadelogin.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/ficha_agendamento') {
+      return serveFile('ficha_agendamento.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/posicaonafila') {
+      return serveFile('posicaonafila.html', 'text/html; charset=utf-8', env);
+    }
+    if (path === '/sistemapreferencial') {
+      return serveFile('sistemapreferencial.html', 'text/html; charset=utf-8', env);
     }
 
-    // 📁 Arquivos estáticos
+    // ======================================================
+    // 📁 ARQUIVOS DE ESTILO, SCRIPTS E IMAGENS
+    // ======================================================
     if (path.startsWith('/css/')) {
-      return serveFile(path.slice(1), 'text/css; charset=utf-8');
+      return serveFile(path.slice(1), 'text/css; charset=utf-8', env);
+    }
+    if (path.startsWith('/js/')) {
+      return serveFile(path.slice(1), 'application/javascript; charset=utf-8', env);
     }
     if (path.startsWith('/imagens/')) {
       const ext = path.split('.').pop().toLowerCase();
@@ -18,145 +43,137 @@ export default {
         ext === 'png' ? 'image/png' :
         ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' :
         ext === 'ico' ? 'image/x-icon' : 'application/octet-stream';
-      return serveFile(path.slice(1), contentType);
-    }
-    if (path === '/areadelogin.html' || path === '/login.html') {
-      return serveFile(path.slice(1), 'text/html; charset=utf-8');
+      return serveFile(path.slice(1), contentType, env);
     }
 
-    // 🟢 API — Status
-    if (path === '/api/status') {
-      try {
-        await env.DB.prepare('SELECT 1').run();
-        return Response.json({
-          status: 'online',
-          database: 'conectado',
-          timestamp: new Date().toISOString()
-        });
-      } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
-      }
-    }
-
-    // 🔐 API — Login (recebe passwordHash PRONTO do frontend)
-    else if (path === '/api/login' && request.method === 'POST') {
+    // ======================================================
+    // 🔐 LOGIN
+    // ======================================================
+    if (path === '/api/login' && request.method === 'POST') {
       try {
         const { email, passwordHash } = await request.json();
-
         if (!email || !passwordHash) {
-          return Response.json({ error: 'E-mail e senha são obrigatórios.' }, { status: 400 });
+          return Response.json({ mensagem: "E-mail e hash da senha são obrigatórios." }, { status: 400 });
         }
-
-        const usuario = await env.DB.prepare('SELECT id, nome, email, perfil FROM usuarios WHERE email = ? AND senha_hash = ?')
-          .bind(email.toLowerCase().trim(), passwordHash)
+        const usuario = await env.DB.prepare('SELECT * FROM usuarios WHERE email = ?')
+          .bind(email.toLowerCase().trim())
           .first();
-
         if (!usuario) {
-          return Response.json({ error: 'Credenciais inválidas.' }, { status: 401 });
+          return Response.json({ mensagem: "E-mail não encontrado." }, { status: 401 });
         }
-
-        return Response.json({
-          success: true,
-          mensagem: 'Login efetuado com sucesso!',
+        if (passwordHash !== usuario.senha_hash) {
+          return Response.json({ mensagem: "Senha incorreta." }, { status: 401 });
+        }
+        return Response.json({ 
+          mensagem: "Login realizado com sucesso!",
           usuario: { id: usuario.id, nome: usuario.nome, email: usuario.email, perfil: usuario.perfil }
         });
       } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+        return Response.json({ mensagem: error.message }, { status: 500 });
       }
     }
 
-    // 🔐 API — Cadastro (recebe passwordHash PRONTO do frontend)
+    // ======================================================
+    // 📝 CADASTRO
+    // ======================================================
     else if (path === '/api/cadastro' && request.method === 'POST') {
       try {
         const { nome, email, cpf, telefone, passwordHash } = await request.json();
-
         if (!nome || !email || !cpf || !passwordHash) {
-          return Response.json({ error: 'Nome, e-mail, CPF e senha são obrigatórios.' }, { status: 400 });
+          return Response.json({ mensagem: "Nome, e-mail, CPF e senha são obrigatórios." }, { status: 400 });
         }
-
         const emailTratado = email.toLowerCase().trim();
-
         const usuarioExistente = await env.DB.prepare('SELECT id FROM usuarios WHERE email = ? OR cpf = ?')
           .bind(emailTratado, cpf)
           .first();
-
         if (usuarioExistente) {
-          return Response.json({ error: 'Este e-mail ou CPF já está cadastrado.' }, { status: 409 });
+          return Response.json({ mensagem: "Este e-mail ou CPF já está cadastrado." }, { status: 409 });
         }
-
         await env.DB.prepare(`
           INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
           VALUES (?, ?, ?, ?, ?, 'cidadao')
         `).bind(nome, emailTratado, cpf, telefone || null, passwordHash).run();
-
-        return Response.json({ success: true, mensagem: 'Usuário cadastrado com sucesso!' });
+        return Response.json({ success: true, mensagem: "Usuário cadastrado com sucesso!" });
       } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+        return Response.json({ mensagem: error.message }, { status: 500 });
       }
     }
 
-    // 👤 Usuários
-    else if (path === '/api/usuarios') {
+    // ======================================================
+    // 🚪 LOGOUT
+    // ======================================================
+    else if (path === '/api/logout' && request.method === 'POST') {
+      return Response.json({ mensagem: "Logout realizado com sucesso!" });
+    }
+
+    // ======================================================
+    // 🎫 GERAR SENHA
+    // ======================================================
+    else if (path === '/api/senha' && request.method === 'POST') {
       try {
-        const dados = await env.DB.prepare('SELECT * FROM usuarios').all();
-        return Response.json(dados);
+        const { tipo } = await request.json();
+        if (tipo !== "normal" && tipo !== "preferencial") {
+          return Response.json({ mensagem: "Tipo de senha inválido." }, { status: 400 });
+        }
+        const letra = tipo === "preferencial" ? "P" : "N";
+        const resultado = await env.DB.prepare(
+          'SELECT COUNT(*) AS total FROM posicaoFila WHERE tipo = ?'
+        ).bind(tipo).first();
+        const numero = resultado.total + 1;
+        const senha = letra + String(numero).padStart(3, "0");
+        await env.DB.prepare(
+          'INSERT INTO posicaoFila (senha, tipo, status) VALUES (?, ?, ?)'
+        ).bind(senha, tipo, 'aguardando').run();
+        return Response.json({ senha });
       } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+        return Response.json({ mensagem: error.message }, { status: 500 });
       }
     }
 
-    // 📋 Serviços
-    else if (path === '/api/servicos') {
+    // ======================================================
+    // 📋 LISTAR FILA
+    // ======================================================
+    else if (path === '/api/fila') {
       try {
-        const dados = await env.DB.prepare('SELECT * FROM servicos').all();
-        return Response.json(dados);
-      } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
-      }
-    }
-
-    // 🏘️ Empresas/Prestadores
-    else if (path === '/api/empresas') {
-      try {
-        const dados = await env.DB.prepare('SELECT * FROM empresas').all();
-        return Response.json(dados);
-      } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
-      }
-    }
-
-    // 📅 Agendamentos
-    else if (path === '/api/agendamentos') {
-      try {
-        const dados = await env.DB.prepare(`
-          SELECT agendamentos.*, 
-                 usuarios.nome AS usuario_nome,
-                 servicos.titulo AS servico_nome
-          FROM agendamentos
-          JOIN usuarios ON agendamentos.usuario_id = usuarios.id
-          JOIN servicos ON agendamentos.servico_id = servicos.id
+        const fila = await env.DB.prepare(`
+          SELECT senha FROM posicaoFila 
+          WHERE status = 'aguardando'
+          ORDER BY
+            CASE WHEN tipo = 'preferencial' THEN 0 ELSE 1 END,
+            id ASC
         `).all();
-        return Response.json(dados);
+        return Response.json(fila.results.map(item => item.senha));
       } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+        return Response.json({ mensagem: error.message }, { status: 500 });
       }
     }
 
-    // 💬 Avaliações
-    else if (path === '/api/avaliacoes') {
+    // ======================================================
+    // ⏭️ CHAMAR PRÓXIMA SENHA
+    // ======================================================
+    else if (path === '/api/proximo' && request.method === 'POST') {
       try {
-        const dados = await env.DB.prepare(`
-          SELECT avaliacoes.*, usuarios.nome AS usuario_nome
-          FROM avaliacoes
-          JOIN usuarios ON avaliacoes.usuario_id = usuarios.id
-        `).all();
-        return Response.json(dados);
+        const proxima = await env.DB.prepare(`
+          SELECT id, senha FROM posicaoFila
+          WHERE status = 'aguardando'
+          ORDER BY
+            CASE WHEN tipo = 'preferencial' THEN 0 ELSE 1 END,
+            id ASC
+          LIMIT 1
+        `).first();
+        if (!proxima) return Response.json({});
+        await env.DB.prepare(
+          "UPDATE posicaoFila SET status = 'chamada' WHERE id = ?"
+        ).bind(proxima.id).run();
+        return Response.json({ senha: proxima.senha });
       } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+        return Response.json({ mensagem: error.message }, { status: 500 });
       }
     }
 
-    // ❌ 404
+    // ======================================================
+    // ❌ PÁGINA 404
+    // ======================================================
     return new Response(`
       <!DOCTYPE html>
       <html><body style="font-family:Arial;text-align:center;padding:3rem;">
@@ -165,20 +182,25 @@ export default {
       </body></html>
     `, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 
-    // 📦 Função auxiliar para servir arquivos
-    async function serveFile(filePath, contentType) {
+    // ======================================================
+    // 📦 FUNÇÃO AUXILIAR — serveFile (ATUALIZADA)
+    // ======================================================
+    async function serveFile(filePath, contentType, env) {
       try {
-        const file = await fetch(new URL(`../public/${filePath}`, import.meta.url));
-        if (!file.ok) throw new Error('Arquivo não encontrado');
-        return new Response(file.body, {
+        const arquivo = await env.ASSETS.fetch(new Request(`/${filePath}`));
+        if (!arquivo.ok) {
+          throw new Error('Arquivo não encontrado');
+        }
+        return new Response(arquivo.body, {
           headers: { 
             'Content-Type': contentType,
             'Cache-Control': 'public, max-age=3600'
           }
         });
       } catch (err) {
+        console.error(err);
         return new Response(`Arquivo não encontrado: ${filePath}`, { status: 404 });
       }
     }
   }
-}
+};
