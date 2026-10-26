@@ -1,37 +1,64 @@
-// Array de usuários cadastrados
-const login = [
-    {
-        nome: "Fulano",
-        usuario: "fulaninhoPW",
-        cpf: "123.456.789-00",
-        senha: "senha123"
-    },
-    {
-        nome: "Beltrano",
-        usuario: "beltraninhoPW",
-        cpf: "000.000.000-00",
-        senha: "senha000"
-    },
-    {
-        nome: "Alisson",
-        usuario: "profAlisson",
-        cpf: "111.111.111-11",
-        senha: "senha111"
-    }
-]
+document.getElementById('form-login').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-// Função para validar o login
-function verificarLogin(identificacao, senha) {
-    for (let i=0; i<login.length; i++){
-        
-        if ((login[i].cpf === identificacao ||
-        login[i].usuario === identificacao) &&
-        login[i].senha === senha) {
-            
-        return true;
-    }
-}
-        return false; 
-}
+    const btn = document.getElementById('btn-entrar');
+    const textoOriginalBotao = btn.textContent;
 
-module.exports = verificarLogin;
+    const email = document.getElementById('login-email').value.toLowerCase().trim();
+    const senha = document.getElementById('login-senha').value;
+
+    try {
+        // Altera o estado do botão para evitar cliques duplos durante o cálculo na CPU
+        btn.disabled = true;
+        btn.textContent = 'Autenticando com segurança...';
+
+        // Configuração matemática idêntica ao fluxo de cadastro (600.000 iterações / SHA-256)
+        const iterations = 600000;
+        const enc = new TextEncoder();
+        const saltBytes = enc.encode(email);
+        const passwordBytes = enc.encode(senha);
+
+        // Importa a string para uma chave criptográfica nativa do navegador
+        const baseKey = await window.crypto.subtle.importKey(
+            "raw", passwordBytes, "PBKDF2", false, ["deriveBits"]
+        );
+
+        // Medição do tempo gasto pela CPU do usuário (Decisão 2)
+        const t0 = performance.now();
+
+        const derivedBits = await window.crypto.subtle.deriveBits(
+            { name: "PBKDF2", salt: saltBytes, iterations: iterations, hash: "SHA-256" },
+            baseKey, 256
+        );
+
+        const t1 = performance.now();
+        console.log(`[PBKDF2 Login] Calculado em ${(t1 - t0).toFixed(2)}ms.`);
+
+        // Transforma o resultado binário em string Hexadecimal
+        const passwordHash = Array.from(new Uint8Array(derivedBits))
+            .map(b => b.toString(16).padStart(2, '0')).join('');
+
+        // Envia as credenciais no formato JSON para o backend (/login)
+        const resposta = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, passwordHash })
+        });
+
+        const resultado = await resposta.json();
+
+        if (resposta.ok) {
+            alert(resultado.mensagem || 'Login realizado!');
+            window.location.href = '/index';
+        } else {
+            alert('Erro na autenticação: ' + (resultado.mensagem || 'Credenciais inválidas'));
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert('Ocorreu um erro ao processar o seu login.');
+    } finally {
+        btn.disabled = false;
+        btn.textContent = textoOriginalBotao;
+    }
+});

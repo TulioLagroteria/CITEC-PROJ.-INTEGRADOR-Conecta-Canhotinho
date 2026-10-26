@@ -9,7 +9,6 @@ const express = require("express");
 const session = require('express-session');
 const Database = require("better-sqlite3");
 const path = require("path");
-const bcrypt = require('bcrypt'); // Added bcrypt require
 const db = new Database("banco.db");
 const app = express();
 const port = 3000;
@@ -74,20 +73,53 @@ app.get("/logodeentrada.html", (req, res) => {
 // ==============================================================================================
 // APP.POST
 // ==============================================================================================
-// ROTA DE LOGIN
+// ROTA DE LOGIN (Alinhada com schema.sql real)
 // -----------------------------------------------------------------------------------------------
 app.post("/login", (req, res) => {
-    const { email, senha } = req.body;
-    const usuario = db.prepare('SELECT * FROM usuarios WHERE email = ?').get(email);
+    const { email, passwordHash } = req.body;
+
+    if (!email || !passwordHash) {
+        return res.status(400).json({ mensagem: "E-mail e hash da senha são obrigatórios." });
+    }
+
+    const usuario = db.prepare('SELECT * FROM usuarios WHERE email = ?').get(email.toLowerCase().trim());
     if (!usuario) {
         return res.status(401).json({ mensagem: "e-mail não encontrado." });
     }
-   const senhaCorreta = bcrypt.compareSync(senha, usuario.senha);
-    if (!senhaCorreta) {
+
+    // Validação direta do hash string contra a coluna real 'senha_hash'
+    if (passwordHash !== usuario.senha_hash) {
         return res.status(401).json({ mensagem: "Senha incorreta." });
     }
-   req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email };
+
+    req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, perfil: usuario.perfil };
     res.json({ mensagem: "Login realizado com sucesso!" });
+});
+// -----------------------------------------------------------------------------------------------
+
+// ROTA DE CADASTRO (Adicionada para salvar o Hash calculado no Cliente e perfil cidadao)
+// -----------------------------------------------------------------------------------------------
+app.post("/cadastro", (req, res) => {
+    const { nome, email, cpf, telefone, passwordHash } = req.body;
+
+    if (!nome || !email || !cpf || !passwordHash) {
+        return res.status(400).json({ mensagem: "Nome, e-mail, CPF e senha são obrigatórios." });
+    }
+
+    const emailTratado = email.toLowerCase().trim();
+    const usuarioExistente = db.prepare('SELECT id FROM usuarios WHERE email = ? OR cpf = ?').get(emailTratado, cpf);
+
+    if (usuarioExistente) {
+        return res.status(409).json({ mensagem: "Este e-mail ou CPF já está cadastrado." });
+    }
+
+    // Gravação respeitando a coluna 'senha_hash' e o perfil CHECK obrigatório
+    db.prepare(`
+        INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
+        VALUES (?, ?, ?, ?, ?, 'cidadao')
+    `).run(nome, emailTratado, cpf, telefone || null, passwordHash);
+
+    res.json({ success: true, mensagem: "Usuário cadastrado com sucesso!" });
 });
 // -----------------------------------------------------------------------------------------------
 

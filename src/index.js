@@ -38,6 +38,68 @@ export default {
       }
     }
 
+    // 🔐 COMPLEMENTO: API — Login (Ajustado para o seu schema.sql real)
+    else if (path === '/api/login' && request.method === 'POST') {
+      try {
+        const { email, passwordHash } = await request.json();
+
+        if (!email || !passwordHash) {
+          return Response.json({ error: 'E-mail e hash da senha são obrigatórios.' }, { status: 400 });
+        }
+
+        // Validação usando as colunas reais: 'senha_hash' e trazendo o 'perfil'
+        const usuario = await env.DB.prepare('SELECT id, nome, email, perfil FROM usuarios WHERE email = ? AND senha_hash = ?')
+          .bind(email.toLowerCase().trim(), passwordHash)
+          .first();
+
+        if (!usuario) {
+          return Response.json({ error: 'Credenciais inválidas.' }, { status: 401 });
+        }
+
+        return Response.json({
+          success: true,
+          mensagem: 'Login efetuado com sucesso!',
+          usuario: { id: usuario.id, nome: usuario.nome, email: usuario.email, perfil: usuario.perfil }
+        });
+
+      } catch (error) {
+        return Response.json({ error: error.message }, { status: 500 });
+      }
+    }
+
+    // 🔐 COMPLEMENTO: API — Cadastro (Ajustado para o seu schema.sql real)
+    else if (path === '/api/cadastro' && request.method === 'POST') {
+      try {
+        const { nome, email, cpf, telefone, passwordHash } = await request.json();
+
+        if (!nome || !email || !cpf || !passwordHash) {
+          return Response.json({ error: 'Nome, e-mail, CPF e senha são obrigatórios.' }, { status: 400 });
+        }
+
+        const emailTratado = email.toLowerCase().trim();
+
+        // Validação de unicidade para E-mail e CPF conforme regras do banco
+        const usuarioExistente = await env.DB.prepare('SELECT id FROM usuarios WHERE email = ? OR cpf = ?')
+          .bind(emailTratado, cpf)
+          .first();
+
+        if (usuarioExistente) {
+          return Response.json({ error: 'Este e-mail ou CPF já está cadastrado.' }, { status: 409 });
+        }
+
+        // Insere preenchendo 'senha_hash' e definindo o check obrigatório de 'perfil' como 'cidadao'
+        await env.DB.prepare(`
+          INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
+          VALUES (?, ?, ?, ?, ?, 'cidadao')
+        `).bind(nome, emailTratado, cpf, telefone || null, passwordHash).run();
+
+        return Response.json({ success: true, mensagem: 'Usuário cadastrado com sucesso!' });
+
+      } catch (error) {
+        return Response.json({ error: error.message }, { status: 500 });
+      }
+    }
+
     // 👤 Usuários
     else if (path === '/api/usuarios') {
       try {

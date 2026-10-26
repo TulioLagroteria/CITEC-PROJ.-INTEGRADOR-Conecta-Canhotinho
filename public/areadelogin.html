@@ -12,7 +12,7 @@
 
 <body class="pagina-login">
 
-    <a class="login-voltar">
+    <a href="/index" class="login-voltar">
         Voltar ao início
     </a>
 
@@ -20,7 +20,7 @@
 
         <section class="login-cartao">
 
-            <a  class="login-marca" aria-label="Página inicial">
+            <a class="login-marca" aria-label="Página inicial">
                 <img
                     src="imagens/logo1.png"
                     alt="Logo do Conecta Canhotinho">
@@ -32,7 +32,7 @@
                 Entre na sua conta para continuar.
             </p>
 
-            <form action="/login" method="POST">
+            <form id="form-login">
 
                 <div class="login-campo">
                     <label for="login-email">
@@ -78,7 +78,7 @@
 
                 </div>
 
-                <button type="submit" class="login-botao">
+                <button type="submit" class="login-botao" id="btn-entrar">
                     Entrar
                 </button>
 
@@ -99,6 +99,9 @@
         </section>
 
     </main>
+
+    <!-- Vinculação do arquivo JS separado -->
+    <script src="js/login.js"></script>
 
 </body>
 
