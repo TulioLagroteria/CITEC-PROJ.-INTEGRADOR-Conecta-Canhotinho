@@ -204,3 +204,18 @@ export default {
     }
   }
 };
+// ======================================================
+// 🏠 PÁGINAS ESTÁTICAS
+// ======================================================
+if (path === '/' || path === '/index.html') {
+  return serveFile('index.html', 'text/html; charset=utf-8', env);
+}
+if (path === '/index') {
+  return serveFile('index.html', 'text/html; charset=utf-8', env);
+}
+if (path === '/login' || path === '/areadelogin') {
+  return serveFile('areadelogin.html', 'text/html; charset=utf-8', env);
+}
+if (path === '/cadastro') {
+  return serveFile('cadastro.html', 'text/html; charset=utf-8', env);
+}

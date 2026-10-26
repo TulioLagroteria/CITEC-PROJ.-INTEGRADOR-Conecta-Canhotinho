@@ -42,8 +42,7 @@ document.getElementById('form-login').addEventListener('submit', async function 
         const resultado = await resposta.json();
 
         if (resposta.ok) {
-            // ✅ Sem alerta que atrapalha — vai direto para a página principal!
-            window.location.replace('/');
+            window.location.href = '/';
         } else {
             alert('Erro na autenticação: ' + (resultado.mensagem || 'Credenciais inválidas'));
         }
