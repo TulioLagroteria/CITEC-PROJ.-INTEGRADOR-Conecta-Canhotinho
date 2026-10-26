@@ -47,7 +47,6 @@ export default {
           return Response.json({ error: 'E-mail e senha são obrigatórios.' }, { status: 400 });
         }
 
-        // ⚠️ O hash JÁ vem calculado do navegador — só comparamos com o banco
         const usuario = await env.DB.prepare('SELECT id, nome, email, perfil FROM usuarios WHERE email = ? AND senha_hash = ?')
           .bind(email.toLowerCase().trim(), passwordHash)
           .first();
@@ -61,7 +60,6 @@ export default {
           mensagem: 'Login efetuado com sucesso!',
           usuario: { id: usuario.id, nome: usuario.nome, email: usuario.email, perfil: usuario.perfil }
         });
-
       } catch (error) {
         return Response.json({ error: error.message }, { status: 500 });
       }
@@ -78,7 +76,6 @@ export default {
 
         const emailTratado = email.toLowerCase().trim();
 
-        // Verifica duplicidade
         const usuarioExistente = await env.DB.prepare('SELECT id FROM usuarios WHERE email = ? OR cpf = ?')
           .bind(emailTratado, cpf)
           .first();
@@ -87,14 +84,12 @@ export default {
           return Response.json({ error: 'Este e-mail ou CPF já está cadastrado.' }, { status: 409 });
         }
 
-        // Salva o hash que veio do frontend
         await env.DB.prepare(`
           INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
           VALUES (?, ?, ?, ?, ?, 'cidadao')
         `).bind(nome, emailTratado, cpf, telefone || null, passwordHash).run();
 
         return Response.json({ success: true, mensagem: 'Usuário cadastrado com sucesso!' });
-
       } catch (error) {
         return Response.json({ error: error.message }, { status: 500 });
       }
@@ -155,6 +150,8 @@ export default {
           FROM avaliacoes
           JOIN usuarios ON avaliacoes.usuario_id = usuarios.id
         `).all();
+        return Response.json(dados);
+      } catch (error) {
         return Response.json({ error: error.message }, { status: 500 });
       }
     }
