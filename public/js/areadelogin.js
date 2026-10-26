@@ -33,7 +33,6 @@ document.getElementById('form-login').addEventListener('submit', async function 
         const passwordHash = Array.from(new Uint8Array(derivedBits))
             .map(b => b.toString(16).padStart(2, '0')).join('');
 
-        // ✅ CORRIGIDO: estava '/login' → agora está '/api/login'
         const resposta = await fetch('/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -43,8 +42,8 @@ document.getElementById('form-login').addEventListener('submit', async function 
         const resultado = await resposta.json();
 
         if (resposta.ok) {
-            alert(resultado.mensagem || 'Login realizado!');
-            window.location.href = '/index';
+            // ✅ Sem alerta que atrapalha — vai direto para a página principal!
+            window.location.replace('/');
         } else {
             alert('Erro na autenticação: ' + (resultado.mensagem || 'Credenciais inválidas'));
         }
