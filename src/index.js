@@ -38,16 +38,16 @@ export default {
       }
     }
 
-    // 🔐 COMPLEMENTO: API — Login (Ajustado para o seu schema.sql real)
+    // 🔐 API — Login (recebe passwordHash PRONTO do frontend)
     else if (path === '/api/login' && request.method === 'POST') {
       try {
         const { email, passwordHash } = await request.json();
 
         if (!email || !passwordHash) {
-          return Response.json({ error: 'E-mail e hash da senha são obrigatórios.' }, { status: 400 });
+          return Response.json({ error: 'E-mail e senha são obrigatórios.' }, { status: 400 });
         }
 
-        // Validação usando as colunas reais: 'senha_hash' e trazendo o 'perfil'
+        // ⚠️ O hash JÁ vem calculado do navegador — só comparamos com o banco
         const usuario = await env.DB.prepare('SELECT id, nome, email, perfil FROM usuarios WHERE email = ? AND senha_hash = ?')
           .bind(email.toLowerCase().trim(), passwordHash)
           .first();
@@ -67,7 +67,7 @@ export default {
       }
     }
 
-    // 🔐 COMPLEMENTO: API — Cadastro (Ajustado para o seu schema.sql real)
+    // 🔐 API — Cadastro (recebe passwordHash PRONTO do frontend)
     else if (path === '/api/cadastro' && request.method === 'POST') {
       try {
         const { nome, email, cpf, telefone, passwordHash } = await request.json();
@@ -78,7 +78,7 @@ export default {
 
         const emailTratado = email.toLowerCase().trim();
 
-        // Validação de unicidade para E-mail e CPF conforme regras do banco
+        // Verifica duplicidade
         const usuarioExistente = await env.DB.prepare('SELECT id FROM usuarios WHERE email = ? OR cpf = ?')
           .bind(emailTratado, cpf)
           .first();
@@ -87,7 +87,7 @@ export default {
           return Response.json({ error: 'Este e-mail ou CPF já está cadastrado.' }, { status: 409 });
         }
 
-        // Insere preenchendo 'senha_hash' e definindo o check obrigatório de 'perfil' como 'cidadao'
+        // Salva o hash que veio do frontend
         await env.DB.prepare(`
           INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
           VALUES (?, ?, ?, ?, ?, 'cidadao')
@@ -155,8 +155,6 @@ export default {
           FROM avaliacoes
           JOIN usuarios ON avaliacoes.usuario_id = usuarios.id
         `).all();
-        return Response.json(dados);
-      } catch (error) {
         return Response.json({ error: error.message }, { status: 500 });
       }
     }
