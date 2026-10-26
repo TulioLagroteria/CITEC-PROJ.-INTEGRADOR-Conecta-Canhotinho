@@ -4,7 +4,7 @@ export default {
     const path = url.pathname;
 
     // ======================================================
-    // 🏠 PÁGINAS ESTÁTICAS — (aqui adicionamos , env em cada linha)
+    // 🏠 PÁGINAS ESTÁTICAS
     // ======================================================
     if (path === '/' || path === '/index.html') {
       return serveFile('index.html', 'text/html; charset=utf-8', env);
@@ -13,7 +13,7 @@ export default {
       return serveFile('logodeentrada.html', 'text/html; charset=utf-8', env);
     }
     if (path === '/index') {
-      return serveFile('telainicial.html', 'text/html; charset=utf-8', env);
+      return serveFile('index.html', 'text/html; charset=utf-8', env);
     }
     if (path === '/areadelogin') {
       return serveFile('areadelogin.html', 'text/html; charset=utf-8', env);
@@ -183,7 +183,7 @@ export default {
     `, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 
     // ======================================================
-    // 📦 FUNÇÃO AUXILIAR — serveFile (ATUALIZADA)
+    // 📦 FUNÇÃO AUXILIAR — serveFile
     // ======================================================
     async function serveFile(filePath, contentType, env) {
       try {
