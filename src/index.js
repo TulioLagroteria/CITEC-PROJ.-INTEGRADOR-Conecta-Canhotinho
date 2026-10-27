@@ -1,3 +1,6 @@
+//=====================================================
+// 🏗️ CONFIGURAÇÃO DO WORKER
+//=====================================================
 export default {
   async fetch(request, env, _ctx) {
     const url = new URL(request.url);
