@@ -33,7 +33,13 @@ document.getElementById('form-login').addEventListener('submit', async function 
         const passwordHash = Array.from(new Uint8Array(derivedBits))
             .map(b => b.toString(16).padStart(2, '0')).join('');
 
-        const resposta = await fetch('/api/login', {
+        // 🔄 DETECÇÃO DINÂMICA DE ROTA:
+        // Se rodar localmente usa '/login'. Se rodar na nuvem da Cloudflare usa '/api/login'
+        const urlLogin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+            ? '/login' 
+            : '/api/login';
+
+        const resposta = await fetch(urlLogin, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, passwordHash })
@@ -42,7 +48,8 @@ document.getElementById('form-login').addEventListener('submit', async function 
         const resultado = await resposta.json();
 
         if (resposta.ok) {
-            window.location.href = '/';
+            // Se o login der certo, joga para a rota inicial do seu ecossistema
+            window.location.href = '/index';
         } else {
             alert('Erro na autenticação: ' + (resultado.mensagem || 'Credenciais inválidas'));
         }

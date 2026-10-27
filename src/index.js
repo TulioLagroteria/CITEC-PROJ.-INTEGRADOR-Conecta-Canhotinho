@@ -83,7 +83,7 @@ export default {
         }
 
         if (passwordHash !== usuario.senha_hash) {
-          return Response.json({ mensagem: 'Senha incorreta.' }, { status: 401 });
+          return Response.json({ gem: 'Senha incorreta.' }, { status: 401 });
         }
 
         return Response.json({
@@ -103,6 +103,31 @@ export default {
     // ======================================================
     // 📝 CADASTRO
     // ======================================================
+    else if (path === '/api/senha' && request.method === 'POST') {
+      try {
+        const { tipo } = await request.json();
+        if (tipo !== 'normal' && tipo !== 'preferencial') {
+          return Response.json({ mensagem: 'Tipo de senha inválido.' }, { status: 400 });
+        }
+
+        const letra = tipo === 'preferencial' ? 'P' : 'N';
+        const resultado = await env.DB.prepare('SELECT COUNT(*) AS total FROM posicaoFila WHERE tipo = ?')
+          .bind(tipo)
+          .first();
+
+        const numero = (resultado?.total ?? 0) + 1;
+        const senha = letra + String(numero).padStart(3, '0');
+
+        await env.DB.prepare('INSERT INTO posicaoFila (senha, tipo, status) VALUES (?, ?, ?)')
+          .bind(senha, tipo, 'aguardando')
+          .run();
+
+        return Response.json({ senha });
+      } catch (error) {
+        return Response.json({ mensagem: error.message }, { status: 500 });
+      }
+    }
+    // 🔐 ADAPTAÇÃO CIRÚRGICA: Mapeamento direto de parâmetros e validação de perfil real do banco
     else if (path === '/api/cadastro' && request.method === 'POST') {
       try {
         const { nome, email, cpf, telefone, passwordHash } = await request.json();
@@ -123,9 +148,10 @@ export default {
           return Response.json({ mensagem: 'E-mail já cadastrado.' }, { status: 409 });
         }
 
+        // Alterado de 'usuario' para 'cidadao' para respeitar estritamente o CHECK(perfil IN ('cidadao', 'atendente')) do seu schema.sql
         const resultado = await env.DB.prepare(`
           INSERT INTO usuarios (nome, email, cpf, telefone, senha_hash, perfil)
-          VALUES (?, ?, ?, ?, ?, 'usuario')
+          VALUES (?, ?, ?, ?, ?, 'cidadao')
         `)
           .bind(nome.trim(), emailNormalizado, cpfNormalizado, telefoneNormalizado, passwordHash)
           .run();

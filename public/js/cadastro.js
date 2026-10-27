@@ -48,8 +48,8 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         const passwordHash = Array.from(new Uint8Array(derivedBits))
             .map(b => b.toString(16).padStart(2, '0')).join('');
 
-        // 🔄 DETECÇÃO DINÂMICA DE ROTA:
-        // Se estiver rodando em localhost (porta 3000), usa '/cadastro'. Se estiver na nuvem, usa '/api/cadastro'
+        // 🔄 CORREÇÃO DA ROTA DINÂMICA:
+        // Identifica se você está local ou na nuvem de forma automática e segura
         const urlCadastro = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
             ? '/cadastro' 
             : '/api/cadastro';
@@ -64,11 +64,10 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         const resultado = await resposta.json();
 
         if (resposta.ok && resultado.success) {
-            alert('Conta criada com sucesso!');
-            // Redireciona para o fluxo correto do seu servidor
+            alert(resultado.mensagem || 'Conta criada com sucesso!');
             window.location.href = '/areadelogin';
         } else {
-            alert('Erro no cadastro: ' + (resultado.error || resultado.mensagem || 'Erro desconhecido'));
+            alert('Erro no cadastro: ' + (resultado.mensagem || 'Erro desconhecido'));
         }
 
     } catch (error) {

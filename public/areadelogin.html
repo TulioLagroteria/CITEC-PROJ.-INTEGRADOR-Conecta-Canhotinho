@@ -32,7 +32,8 @@
                 Entre na sua conta para continuar.
             </p>
 
-            <form id="form-login" method="post" action="/api/login">
+            <!-- 🔄 CORREÇÃO: Removidos 'method' e 'action' para evitar disparos tradicionais que ignoram o JS -->
+            <form id="form-login">
 
                 <div class="login-campo">
                     <label for="login-email">
