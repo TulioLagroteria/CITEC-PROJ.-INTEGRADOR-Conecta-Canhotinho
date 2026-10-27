@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     email TEXT NOT NULL UNIQUE,
     telefone TEXT,
     senha_hash TEXT NOT NULL,
-    perfil TEXT NOT NULL CHECK(perfil IN ('cidadao', 'atendente'))
+    perfil TEXT NOT NULL CHECK(perfil IN ('Cidadão','Administrativo', 'ACS', 'Super_Admin'))
 );
 
 CREATE TABLE IF NOT EXISTS sessoes (
