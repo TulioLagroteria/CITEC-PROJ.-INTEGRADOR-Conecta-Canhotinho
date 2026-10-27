@@ -80,29 +80,7 @@
                 <span>Sistema Preferencial</span>
             </a>
 
-            <a href="#contato">
-                <i class="fa-regular fa-envelope"></i>
-                <span>Contato</span>
-            </a>
-
         </nav>
-
-        <section class="pref-sidebar-message">
-
-            <i class="fa-solid fa-heart-pulse"></i>
-
-            <strong>
-                Cuidar das pessoas<br>
-                também é prioridade!
-            </strong>
-
-            <p>
-                O sistema preferencial auxilia no registro das
-                solicitações, respeitando os direitos de quem
-                precisa de atendimento prioritário.
-            </p>
-
-        </section>
 
         <div class="pref-city">
 
@@ -381,7 +359,10 @@
                                 </select>
                             </div>
 
-                            <div class="pref-field">
+                            <div class="pref-field" 
+                                     id="pref-tipo"
+                                        name="tipo"
+                                        required>
                                 <label for="pref-unidade">
                                     Unidade de saúde *
                                 </label>
@@ -390,14 +371,11 @@
                                         name="unidade"
                                         required>
 
-                                    <option value="UBS Centro">UBS Centro</option>
-                                    <option value="UBS Boa Vista">UBS Boa Vista</option>
-                                    <option value="Unidade Rural">
-                                        Unidade de Saúde Rural
-                                    </option>
-                                    <option value="Hospital Municipal">
-                                        Hospital Municipal
-                                    </option>
+                                    <option value="UBS Maria Natércia">UBS Maria Natércia</option>
+                                    <option value="UBS Centro Social">UBS Centro Social</option>
+                                    <option value="UBS Leonardo de Morais">UBS Leonardo de Morais</option>
+                                    <option value="Hospital Municipal">UBS Manoel Filipe Vieira da Silva</option>
+                                    <option value="USF Maria José Gonzaga">USF Maria José Gonzaga</option>
 
                                 </select>
                             </div>
