@@ -20,9 +20,7 @@
     "url": "https://github.com"
   },
   "homepage": "https://github.com",
-  "dependencies": {
-    "express": "^5.3.0"
-  },
+  
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261023.1",
     "typescript": "^5.4.5",
