@@ -1,3 +1,19 @@
+
+
+// Teste de conexão com o banco
+if (url.pathname === '/api/tabelas') {
+  const resultado = await env.DB.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+  return Response.json({
+    conectado: true,
+    tabelas: resultado.results
+  });
+}
+
+
+
+
+
+
 //=====================================================
 // 🏗️ CONFIGURAÇÃO DO WORKER
 //=====================================================
