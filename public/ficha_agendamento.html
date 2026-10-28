@@ -1,764 +1,246 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#06366f">
-
-    <title>Agendamento Online | Conecta Canhotinho</title>
-
-    <!-- CSS da página -->
+    <title>Agendamento Online - Conecta Canhotinho</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Biblioteca de ícones -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
 </head>
 
-<body class="cc-agendamento-page">
+<body class="ag-body">
 
-    <div class="cc-layout">
+<header class="ag-header">
 
-        <!-- =====================================
-             MENU LATERAL
-        ====================================== -->
+    <div class="ag-topo">
 
-        <aside class="cc-sidebar" aria-label="Navegação principal">
-
-            <a class="cc-brand">
-
-                <img
+        <div class="ag-logo">
+            <img
                     src="imagens/logo1.png"
-                    alt="Logotipo Conecta Canhotinho"
-                >
-
-                <span>
-                    Conecta<br>
-                    Canhotinho
-                </span>
-
-            </a>
-
-            <nav class="cc-navigation" aria-label="Menu principal">
-
-                <a class="cc-nav-link" href="index.html">
-                    <i class="fa-solid fa-house" aria-hidden="true"></i>
-                    <span>Início</span>
-                </a>
-
-                <a
-                    class="cc-nav-link cc-current"
-                    href="agendamento.html"
-                    aria-current="page"
-                >
-                    <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
-                    <span>Agendamento</span>
-                </a>
-
-                <a class="cc-nav-link" href="posicaonafila.html">
-                    <i class="fa-solid fa-list-alt" aria-hidden="true"></i>
-                    <span>Posição na Fila</span>
-                </a>
-
-                <a class="cc-nav-link" href="sistemapreferencial.html">
-                    <i class="fa-solid fa-wheelchair" aria-hidden="true"></i>
-                    <span>Sistema Preferencial</span>
-                </a>
-
-                
-
-            </nav>
-
-            <!-- Cartão informativo do menu -->
-
-            <section class="cc-sidebar-note">
-
-                <div class="cc-note-heading">
-
-                    <i
-                        class="fa-solid fa-heart-pulse"
-                        aria-hidden="true"
-                    ></i>
-
-                    <h2>
-                        Cuidar das pessoas também é prioridade!
-                    </h2>
-
-                </div>
-
-                <p>
-                    O Conecta Canhotinho facilita o acesso aos
-                    serviços de saúde e ajuda você a encontrar
-                    as informações de que precisa.
-                </p>
-
-            </section>
-
-            <!-- Rodapé do menu lateral -->
-
-            <footer class="cc-sidebar-footer">
-
-                <div class="cc-city-icon" aria-hidden="true">
-                    <i class="fa-solid fa-landmark"></i>
-                </div>
-
-                <div>
-
-                    <h2>
-                        Prefeitura Municipal<br>
-                        de Canhotinho
-                    </h2>
-
-                    <p>
-                        Trabalhando por uma cidade melhor para todos!
-                    </p>
-
-                </div>
-
-            </footer>
-
-        </aside>
-
-
-        <!-- =====================================
-             CONTEÚDO PRINCIPAL
-        ====================================== -->
-
-        <main class="cc-main">
-
-            <!-- Cabeçalho -->
-
-            <header class="cc-topbar">
-
-                <div>
-
-                    <p class="cc-eyebrow">
-                        ÁREA DA SAÚDE
-                    </p>
-
-                    <h1>
-                        Agendamento Online
-                    </h1>
-
-                    <p class="cc-topbar-description">
-                        Marque sua consulta de forma simples e segura.
-                    </p>
-
-                </div>
-
-                <div class="cc-user-area">
-
-                    <span class="cc-user-avatar" aria-hidden="true">
-                        <i class="fa-solid fa-user"></i>
-                    </span>
-
-                    <span class="cc-user-greeting">
-                        Olá, cidadão(ã)
-                    </span>
-
-                </div>
-
-            </header>
-
-
-            <!-- =====================================
-                 BANNER DA SAÚDE
-            ====================================== -->
-
-            <section
-                class="cc-hero"
-                aria-label="Informações sobre o agendamento"
-            >
-
-                <div class="cc-hero-icon">
-                    <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
-                </div>
-
-                <div class="cc-hero-copy">
-
-                    <span class="cc-hero-kicker">
-                        SAÚDE MAIS PERTO DE VOCÊ
-                    </span>
-
-                    <h2>
-                        Agendamento Online
-                    </h2>
-
-                    <p>
-                        Agende sua consulta com praticidade,
-                        sem precisar sair de casa.
-                    </p>
-
-                </div>
-
-                <div class="cc-hero-slogan">
-                    Saúde é qualidade<br>
-                    de vida!
-                </div>
-
-            </section>
-
-
-            <!-- =====================================
-                 ÁREA DE AGENDAMENTO
-            ====================================== -->
-
-            <div class="cc-content-grid">
-
-                <section
-                    class="cc-booking-card"
-                    aria-labelledby="cc-booking-title"
-                >
-
-                    <!-- Etapas do agendamento -->
-
-                    <div
-                        class="cc-progress"
-                        aria-label="Etapas do agendamento"
-                    >
-
-                     
-
-                    </div>
-
-                    <h2
-                        class="cc-sr-only"
-                        id="cc-booking-title"
-                    >
-                        Escolha os dados do atendimento
-                    </h2>
-
-
-                    <!-- Colunas principais -->
-
-                    <div class="cc-booking-columns">
-
-                        <!-- ESPECIALIDADES -->
-
-                        <section class="cc-booking-section">
-
-                            <h3>
-                                <span>1.</span>
-                                Escolha a especialidade
-                            </h3>
-
-                            <p class="cc-section-help">
-                                Selecione a especialidade desejada
-                                para o atendimento.
-                            </p>
-
-                            <div class="cc-specialty-list">
-
-                                <a
-                                    class="cc-specialty cc-specialty-selected"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-stethoscope"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Clínica Geral</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                                <a
-                                    class="cc-specialty"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-baby"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Pediatria</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                                <a
-                                    class="cc-specialty"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-venus"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Ginecologia</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                                <a
-                                    class="cc-specialty"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-heart-pulse"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Cardiologia</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                                <a
-                                    class="cc-specialty"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-tooth"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Odontologia</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                                <a
-                                    class="cc-specialty"
-                                    href="#data-horario"
-                                >
-                                    <i
-                                        class="fa-solid fa-plus"
-                                        aria-hidden="true"
-                                    ></i>
-
-                                    <span>Outras especialidades</span>
-
-                                    <i
-                                        class="fa-solid fa-chevron-right cc-chevron"
-                                        aria-hidden="true"
-                                    ></i>
-                                </a>
-
-                            </div>
-
-                        </section>
-
-
-                        <!-- CALENDÁRIO -->
-
-                        <section
-                            class="cc-booking-section cc-date-section"
-                            id="data-horario"
-                        >
-
-                            <h3>
-                                <span>2.</span>
-                                Escolha a data
-                            </h3>
-
-                            <p class="cc-section-help">
-                                Confira as datas disponíveis para atendimento.
-                            </p>
-
-                            <div class="cc-calendar">
-
-                                <div class="cc-calendar-header">
-
-                                    <button
-                                        type="button"
-                                        aria-label="Mês anterior"
-                                        disabled
-                                    >
-                                        <i class="fa-solid fa-chevron-left"></i>
-                                    </button>
-
-                                    <h4>Outubro 2026</h4>
-
-                                    <button
-                                        type="button"
-                                        aria-label="Próximo mês"
-                                        disabled
-                                    >
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                    </button>
-
-                                </div>
-
-                                <div
-                                    class="cc-calendar-grid cc-weekdays"
-                                    aria-hidden="true"
-                                >
-                                    <span>Dom</span>
-                                    <span>Seg</span>
-                                    <span>Ter</span>
-                                    <span>Qua</span>
-                                    <span>Qui</span>
-                                    <span>Sex</span>
-                                    <span>Sáb</span>
-                                </div>
-
-                                <div class="cc-calendar-grid cc-days">
-
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-
-                                    <span>1</span>
-                                    <span>2</span>
-                                    <span>3</span>
-
-                                    <span>4</span>
-                                    <span>5</span>
-                                    <span>6</span>
-                                    <span>7</span>
-                                    <span>8</span>
-                                    <span>9</span>
-                                    <span>10</span>
-
-                                    <span>11</span>
-                                    <span>12</span>
-                                    <span>13</span>
-                                    <span>14</span>
-                                    <span>15</span>
-                                    <span>16</span>
-                                    <span>17</span>
-
-                                    <span>18</span>
-                                    <span>19</span>
-                                    <span>20</span>
-
-                                    <span class="cc-day-selected">21</span>
-
-                                    <span>22</span>
-                                    <span>23</span>
-                                    <span>24</span>
-
-                                    <span>25</span>
-                                    <span>26</span>
-                                    <span>27</span>
-                                    <span>28</span>
-                                    <span>29</span>
-                                    <span>30</span>
-                                    <span>31</span>
-
-                                </div>
-
-                            </div>
-
-                            <p class="cc-calendar-caption">
-                                <i
-                                    class="fa-regular fa-calendar"
-                                    aria-hidden="true"
-                                ></i>
-
-                                Data ilustrativa: 21/10/2026
-                            </p>
-
-                        </section>
-
-
-                        <!-- HORÁRIOS -->
-
-                        <section class="cc-booking-section cc-time-section">
-
-                            <h3>
-                                <span>3.</span>
-                                Escolha o horário
-                            </h3>
-
-                            <p class="cc-section-help">
-                                Horários de exemplo para a data selecionada.
-                            </p>
-
-                            <div class="cc-time-list">
-
-                                <label class="cc-time-option">
-                                    <input
-                                        type="radio"
-                                        name="horario"
-                                        checked
-                                    >
-                                    <span>08:00</span>
-                                    <i
-                                        class="fa-solid fa-check"
-                                        aria-hidden="true"
-                                    ></i>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>08:30</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>09:00</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>09:30</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>10:00</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>10:30</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>11:00</span>
-                                </label>
-
-                                <label class="cc-time-option">
-                                    <input type="radio" name="horario">
-                                    <span>11:30</span>
-                                </label>
-
-                            </div>
-
-                        </section>
-
-                    </div>
-
-
-                    <!-- AVISO DE ATENDIMENTO PREFERENCIAL -->
-
-                    <div class="cc-reminder">
-
-                        <i
-                            class="fa-solid fa-circle-info"
-                            aria-hidden="true"
-                        ></i>
-
-                        <div>
-
-                            <strong>Lembre-se!</strong>
-
-                            <p>
-                                Se precisar de atendimento preferencial,
-                                informe sua necessidade durante o atendimento
-                                ou consulte as orientações disponíveis.
-                            </p>
-
-                            <a href="sistema-preferencial.html">
-                                Saiba mais sobre atendimento preferencial
-
-                                <i
-                                    class="fa-solid fa-arrow-right"
-                                    aria-hidden="true"
-                                ></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- BOTÃO DE AGENDAR -->
-
-                    <div class="cc-booking-actions">
-
-                        <a
-                            class="cc-next-button"
-                            href="#confirmacao"
-                        >
-                            Agendar
-
-                            <i
-                                class="fa-solid fa-chevron-right"
-                                aria-hidden="true"
-                            ></i>
-                        </a>
-
-                    </div>
-
-                    <p class="cc-demo-notice" id="confirmacao">
-                        Demonstração visual: datas, especialidades e horários
-                        não representam disponibilidade real.
-                    </p>
-
-                </section>
-
-
-                <!-- =====================================
-                     PAINEL LATERAL DE INFORMAÇÕES
-                ====================================== -->
-
-                <aside
-                    class="cc-benefits"
-                    aria-label="Benefícios do serviço"
-                >
-
-                    <article class="cc-benefit-card">
-
-                        <div class="cc-benefit-icon">
-                            <i
-                                class="fa-solid fa-calendar-check"
-                                aria-hidden="true"
-                            ></i>
-                        </div>
-
-                        <div>
-                            <h3>Agendamento Online</h3>
-                            <p>
-                                Consulte as informações do atendimento
-                                em um só lugar.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="cc-benefit-card">
-
-                        <div class="cc-benefit-icon">
-                            <i
-                                class="fa-solid fa-clock"
-                                aria-hidden="true"
-                            ></i>
-                        </div>
-
-                        <div>
-                            <h3>Mais agilidade</h3>
-                            <p>
-                                Organize seu atendimento com mais praticidade.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="cc-benefit-card">
-
-                        <div class="cc-benefit-icon">
-                            <i
-                                class="fa-solid fa-shield-halved"
-                                aria-hidden="true"
-                            ></i>
-                        </div>
-
-                        <div>
-                            <h3>Seguro e confiável</h3>
-                            <p>
-                                Proteção e cuidado devem estar presentes
-                                em cada etapa.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <!-- Atendimento preferencial -->
-
-                    <article class="cc-preferential-card">
-
-                        <div class="cc-preferential-icon">
-                            <i
-                                class="fa-solid fa-people-group"
-                                aria-hidden="true"
-                            ></i>
-                        </div>
-
-                        <div>
-
-                            <h3>Atendimento Preferencial</h3>
-
-                            <p>
-                                Pessoas com direito ao atendimento prioritário
-                                podem consultar as orientações do
-                                sistema preferencial.
-                            </p>
-
-                            <a href="sistema-preferencial.html">
-                                Conhecer o serviço
-                            </a>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Cartão de identidade visual -->
-
-                    <div class="cc-sidebar-brand-card">
-
-                        <div class="cc-brand-card-logo">
-
-                            <span class="cc-brand-card-symbol">
-                               <img
-                                  src="imagens/logo1.png"
-                                  alt="Logo do Conecta Canhotinho" class="pref-brand-mark">
-                            </span>
-
-                            <div>
-                                <strong>
-                                    Conecta<br>
-                                    Canhotinho
-                                </strong>
-
-                                <small>
-                                    Prefeitura Municipal de Canhotinho
-                                </small>
-                            </div>
-
-                        </div>
-
-                        <div class="cc-skyline" aria-hidden="true">
-                            <i class="fa-solid fa-mountain-sun"></i>
-                            <i class="fa-solid fa-church"></i>
-                            <i class="fa-solid fa-house"></i>
-                        </div>
-
-                    </div>
-
-                </aside>
-
+                    alt="Logo do Conecta Canhotinho" class="ag-simbolo">
+            <div>
+                <h1>CONECTA <span>CANHOTINHO</span></h1>
+                <p>Prefeitura Municipal de Canhotinho</p>
             </div>
+        </div>
 
+        <div class="ag-pesquisa">
+            🔍 &nbsp; Pesquisa
+        </div>
 
-            <!-- RODAPÉ PRINCIPAL -->
-
-            <footer class="cc-page-footer">
-
-                <div>
-                    <strong>Conecta Canhotinho</strong>
-                    <span></span>
-                    Prefeitura Municipal de Canhotinho
-                </div>
-
-                <p>
-                    © 2026 — Todos os direitos reservados.
-                </p>
-
-            </footer>
-
-        </main>
+        <button class="ag-login">
+            👤 &nbsp; Login
+        </button>
 
     </div>
+
+    <nav class="ag-nav">
+        <a href="#" class="ag-nav-ativo">⌂ &nbsp; Início</a>
+        <a href="#">👤 &nbsp; Sobre</a>
+        <a href="#">💼 &nbsp; Produtos</a>
+        <a href="#">⚙ &nbsp; Serviços</a>
+        <a href="#">▣ &nbsp; Notícias e Eventos</a>
+        <a href="#">✉ &nbsp; Contato</a>
+    </nav>
+
+</header>
+
+<main class="ag-main">
+
+    <section class="ag-banner">
+
+        <div class="ag-banner-icone">▣</div>
+
+        <div>
+            <h2>Agendamento Online</h2>
+
+            <p>
+                Marque seus atendimentos de forma rápida e fácil,
+                sem sair de casa.
+            </p>
+        </div>
+
+    </section>
+
+
+    <h2 class="ag-titulo">
+        Como funciona?
+    </h2>
+
+
+    <section class="ag-etapas">
+
+        <div class="ag-etapa">
+            <div class="ag-etapa-icone">☷</div>
+
+            <h3>1. Escolha o serviço</h3>
+
+            <p>Selecione o tipo de atendimento.</p>
+        </div>
+
+
+        <div class="ag-seta">›</div>
+
+
+        <div class="ag-etapa">
+            <div class="ag-etapa-icone">▣</div>
+
+            <h3>2. Faça o agendamento</h3>
+
+            <p>Escolha dia e horário.</p>
+        </div>
+
+
+        <div class="ag-seta">›</div>
+
+
+        <div class="ag-etapa">
+            <div class="ag-etapa-icone">☷</div>
+
+            <h3>3. Confirme seus dados</h3>
+
+            <p>Preencha as informações necessárias.</p>
+        </div>
+
+
+        <div class="ag-seta">›</div>
+
+
+        <div class="ag-etapa">
+            <div class="ag-etapa-icone">✓</div>
+
+            <h3>4. Pronto!</h3>
+
+            <p>Seu agendamento foi realizado.</p>
+        </div>
+
+    </section>
+
+
+    <h2 class="ag-titulo">
+        Serviços disponíveis
+    </h2>
+
+
+    <section class="ag-servicos">
+
+        <div class="ag-card">
+            <div class="ag-card-icone">♥</div>
+
+            <div>
+                <h3>Saúde</h3>
+                <p>Consultas, exames e procedimentos.</p>
+            </div>
+        </div>
+
+
+        <div class="ag-card">
+            <div class="ag-card-icone">♧</div>
+
+            <div>
+                <h3>Assistência Social</h3>
+                <p>CRAS, benefícios e programas.</p>
+            </div>
+        </div>
+
+
+        <div class="ag-card">
+            <div class="ag-card-icone">🎓</div>
+
+            <div>
+                <h3>Educação</h3>
+                <p>Matrículas e informações escolares.</p>
+            </div>
+        </div>
+
+
+        <div class="ag-card">
+            <div class="ag-card-icone">▣</div>
+
+            <div>
+                <h3>Tributação</h3>
+                <p>IPTU, ISS e outros tributos.</p>
+            </div>
+        </div>
+
+
+        <div class="ag-card">
+            <div class="ag-card-icone">✓</div>
+
+            <div>
+                <h3>Protocolo Geral</h3>
+                <p>Requerimentos e solicitações.</p>
+            </div>
+        </div>
+
+
+        <div class="ag-card">
+            <div class="ag-card-icone">♧</div>
+
+            <div>
+                <h3>Outros Serviços</h3>
+                <p>Diversos atendimentos da prefeitura.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="ag-aviso">
+
+        <div>
+            <h3>▣ &nbsp; Não encontrou o que precisa?</h3>
+
+            <p>
+                Consulte a lista completa de serviços
+                ou entre em contato com a prefeitura.
+            </p>
+        </div>
+
+        <button>
+            Ver todos os serviços →
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer class="ag-footer">
+
+    <div class="ag-footer-logo">
+        <h2>CONECTA <span>CANHOTINHO</span></h2>
+        <p>Prefeitura Municipal de Canhotinho</p>
+    </div>
+
+
+    <div>
+        <h3>Links úteis</h3>
+
+        <p>• Portal da Transparência</p>
+        <p>• Ouvidoria</p>
+        <p>• Acesso à Informação</p>
+    </div>
+
+
+    <div>
+        <h3>Redes sociais</h3>
+
+        <p>◎ &nbsp; f &nbsp; ▶ &nbsp; X</p>
+    </div>
+
+
+    <div class="ag-slogan">
+        Canhotinho<br>
+        <strong>é a nossa gente!</strong>
+    </div>
+
+
+    <div class="ag-copyright">
+        © 2025 Prefeitura Municipal de Canhotinho -
+        Todos os direitos reservados.
+    </div>
+
+</footer>
 
 </body>
 </html>

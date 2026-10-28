@@ -1,400 +1,456 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Posição na Fila | Conecta Canhotinho</title>
+    <title>Posição na Fila - Conecta Canhotinho</title>
 
-    <!-- CSS unificado existente -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Ícones -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body class="pagina-posicao-fila">
+<body class="fila-body">
 
-    <!-- CABEÇALHO -->
-    <header class="fila-topbar">
+<header class="fila-header">
 
-        <a href="001_telainicial.html" class="fila-brand">
-            <span class="fila-brand-mark">CC</span>
+    <div class="fila-topo">
 
-            <span class="fila-brand-text">
-                Conecta<br>Canhotinho
-            </span>
-        </a>
+        <div class="fila-logo">
 
-        <div class="fila-divider"></div>
-
-        <div class="fila-module">
-            <h1>Sistema de Saúde</h1>
-            <p>Posição na Fila</p>
-        </div>
-
-        <div class="fila-account">
-            <i class="fa-solid fa-user fila-user-icon"></i>
-
-            <span>Olá, João Silva</span>
-
-            <i class="fa-solid fa-chevron-down fila-chevron"></i>
-
-            <a href="/logout" class="fila-logout">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Sair
-            </a>
-        </div>
-
-    </header>
-
-    <!-- MENU LATERAL -->
-    <aside class="fila-sidebar">
-
-        <nav class="fila-nav" aria-label="Menu principal">
-
-            <a href="001_telainicial.html">
-                <i class="fa-solid fa-house"></i>
-                <span>Início</span>
-            </a>
-
-            <a href="ficha_agendamento.html">
-                <i class="fa-regular fa-calendar-check"></i>
-                <span>Agendamento</span>
-            </a>
-
-            <a href="posicao-fila.html" class="fila-active"
-               aria-current="page">
-                <i class="fa-solid fa-rectangle-list"></i>
-                <span>Posição na Fila</span>
-            </a>
-
-            <a href="sistema-preferencial.html">
-                <i class="fa-brands fa-accessible-icon"></i>
-                <span>Sistema Preferencial</span>
-            </a>
-
-        </nav>
-
-        <div class="fila-city">
-
-            <div class="fila-city-symbol">
-                <i class="fa-solid fa-landmark"></i>
+            <div class="fila-simbolo">
+                 <img
+                    src="imagens/logo1.png"
+                    alt="Logo do Conecta Canhotinho">
             </div>
 
             <div>
-                <strong>Prefeitura Municipal<br>de Canhotinho</strong>
+                <h1>
+                    CONECTA <span>CANHOTINHO</span>
+                </h1>
 
                 <p>
-                    Cuidando das pessoas,<br>
-                    construindo o futuro.
+                    Prefeitura Municipal de Canhotinho
                 </p>
             </div>
 
         </div>
 
-    </aside>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="fila-main">
+        <div class="fila-pesquisa">
+            🔍 &nbsp; Pesquisa
+        </div>
 
-        <div class="fila-layout">
 
-            <!-- COLUNA PRINCIPAL -->
-            <section class="fila-column">
+        <button class="fila-login">
+            👤 &nbsp; Login
+        </button>
 
-                <div class="fila-heading">
+    </div>
 
-                    <div class="fila-heading-icon">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                    </div>
 
-                    <div>
-                        <h2>Posição na Fila</h2>
-                        <p>
-                            Acompanhe sua posição e tempo estimado
-                            de atendimento.
-                        </p>
-                    </div>
+    <nav class="fila-nav">
 
-                </div>
+        <a href="#" class="fila-nav-ativo">
+            ⌂ &nbsp; Início
+        </a>
 
-                <!-- AVISO -->
-                <div class="fila-notice">
-                    <i class="fa-solid fa-circle-info"></i>
+        <a href="#">
+            👤 &nbsp; Sobre
+        </a>
 
-                    <div>
-                        <strong>Sua senha está ativa!</strong>
-                        <p>
-                            Acompanhe abaixo as informações
-                            do seu atendimento.
-                        </p>
-                    </div>
-                </div>
+        <a href="#">
+            💼 &nbsp; Produtos
+        </a>
 
-                <!-- CARTÃO DE ATENDIMENTO -->
-                <section class="fila-queue-card"
-                         aria-label="Detalhes do atendimento">
+        <a href="#">
+            ⚙ &nbsp; Serviços
+        </a>
 
-                    <div class="fila-ticket-details">
+        <a href="#">
+            ▣ &nbsp; Notícias e Eventos
+        </a>
 
-                        <div class="fila-ticket">
+        <a href="#">
+            ✉ &nbsp; Contato
+        </a>
 
-                            <div class="fila-ticket-label">
-                                <i class="fa-solid fa-ticket"></i>
-                                <span>SENHA</span>
-                            </div>
+    </nav>
 
-                            <strong>A-047</strong>
+</header>
 
-                        </div>
 
-                        <div class="fila-appointment-details">
+<main class="fila-main">
 
-                            <div class="fila-detail-row">
-                                <i class="fa-solid fa-stethoscope"></i>
 
-                                <div>
-                                    <span>Tipo de atendimento</span>
-                                    <strong>Consulta Clínica Geral</strong>
-                                </div>
-                            </div>
+    <!-- BANNER -->
 
-                            <div class="fila-detail-row">
-                                <i class="fa-solid fa-hospital"></i>
+    <section class="fila-banner">
 
-                                <div>
-                                    <span>Unidade de Saúde</span>
-                                    <strong>UBS Centro</strong>
-                                </div>
-                            </div>
+        <div class="fila-banner-icone">
+            ☷
+        </div>
 
-                            <div class="fila-detail-row">
-                                <i class="fa-regular fa-calendar-days"></i>
 
-                                <div>
-                                    <span>Data e horário da solicitação</span>
-                                    <strong>23/10/2026 - 14:32</strong>
-                                </div>
-                            </div>
+        <div>
 
-                        </div>
+            <h2>
+                Posição na Fila
+            </h2>
 
-                        <div class="fila-confirmation">
-
-                            <span class="fila-success-icon">
-                                <i class="fa-solid fa-check"></i>
-                            </span>
-
-                            <div>
-                                <strong>
-                                    Sua solicitação foi registrada
-                                    com sucesso!
-                                </strong>
-
-                                <p>
-                                    O atendimento seguirá a organização
-                                    da fila e os critérios de prioridade
-                                    aplicáveis.
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- INDICADORES -->
-                    <div class="fila-stats">
-
-                        <div class="fila-stat fila-position-stat">
-                            <i class="fa-solid fa-people-group fila-stat-icon"></i>
-
-                            <span class="fila-label">Sua posição na fila</span>
-                            <strong class="fila-position-number">08</strong>
-                            <span>de 20 pacientes</span>
-                        </div>
-
-                        <div class="fila-stat">
-                            <i class="fa-solid fa-user fila-stat-icon"></i>
-
-                            <span class="fila-label">Pessoas à sua frente</span>
-                            <strong class="fila-stat-number">07</strong>
-                            <span>aguardando</span>
-                        </div>
-
-                        <div class="fila-stat">
-                            <i class="fa-regular fa-clock fila-stat-icon"></i>
-
-                            <span class="fila-label">Tempo estimado</span>
-                            <strong class="fila-stat-number">~ 35 min</strong>
-                            <span>pode variar</span>
-                        </div>
-
-                        <div class="fila-stat">
-                            <i class="fa-solid fa-door-open fila-stat-icon"></i>
-
-                            <span class="fila-label">Sala de atendimento</span>
-                            <strong class="fila-stat-number">Sala 03</strong>
-                            <span>Consultório 03</span>
-                        </div>
-
-                    </div>
-
-                    <!-- PROGRESSO VISUAL -->
-                    <div class="fila-progress-area">
-
-                        <div class="fila-progress-track"
-                             role="progressbar"
-                             aria-label="Progresso ilustrativo da fila"
-                             aria-valuemin="0"
-                             aria-valuemax="100"
-                             aria-valuenow="35">
-
-                            <span class="fila-progress-fill"></span>
-
-                        </div>
-
-                        <strong>35%</strong>
-
-                    </div>
-
-                    <p class="fila-update-note">
-                        <i class="fa-solid fa-circle-info"></i>
-
-                        Dados ilustrativos. A atualização real da fila
-                        depende da integração com o sistema de saúde.
-                    </p>
-
-                </section>
-
-            </section>
-
-            <!-- COLUNA DE PRIORIDADES -->
-            <aside class="fila-rules">
-
-                <h2>
-                    <i class="fa-solid fa-user-shield"></i>
-                    Regras de Atendimento Prioritário
-                </h2>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-purple">
-                        <i class="fa-brands fa-accessible-icon"></i>
-                    </span>
-
-                    <div>
-                        <strong>Pessoas com deficiência</strong>
-                        <p>Conforme a legislação aplicável.</p>
-                    </div>
-                </div>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-gold">
-                        <i class="fa-solid fa-person-cane"></i>
-                    </span>
-
-                    <div>
-                        <strong>Idosos</strong>
-                        <p>Com 60 anos ou mais.</p>
-                    </div>
-                </div>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-pink">
-                        <i class="fa-solid fa-person-pregnant"></i>
-                    </span>
-
-                    <div>
-                        <strong>Gestantes</strong>
-                        <p>Conforme as regras de prioridade aplicáveis.</p>
-                    </div>
-                </div>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-teal">
-                        <i class="fa-solid fa-person-breastfeeding"></i>
-                    </span>
-
-                    <div>
-                        <strong>Lactantes</strong>
-                        <p>Conforme os critérios aplicáveis.</p>
-                    </div>
-                </div>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-blue">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </span>
-
-                    <div>
-                        <strong>Pessoas com doenças graves</strong>
-                        <p>Quando houver previsão legal.</p>
-                    </div>
-                </div>
-
-                <div class="fila-rule">
-                    <span class="fila-rule-icon fila-orange">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </span>
-
-                    <div>
-                        <strong>Outros casos previstos em lei</strong>
-                        <p>Conforme os requisitos de cada situação.</p>
-                    </div>
-                </div>
-
-                <div class="fila-proof">
-
-                    <h3>
-                        <i class="fa-solid fa-file-lines"></i>
-                        Documentos para comprovação
-                    </h3>
-
-                    <p>
-                        Quando exigida para análise da solicitação,
-                        a documentação pode incluir:
-                    </p>
-
-                    <ul>
-                        <li>Laudo ou relatório médico, quando aplicável.</li>
-                        <li>Documento de identificação com foto.</li>
-                        <li>Comprovante pertinente à condição informada.</li>
-                    </ul>
-
-                </div>
-
-                <a href="sistemapreferencial.html"
-                   class="fila-request-link">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Solicitar atendimento preferencial
-                </a>
-
-            </aside>
+            <p>
+                Consulte sua posição na fila de atendimento
+                de forma rápida e fácil.
+            </p>
 
         </div>
 
-        <!-- RODAPÉ -->
-        <footer class="fila-footer">
+    </section>
 
-            <div class="fila-footer-links">
-                <span>Conecta Canhotinho</span>
-                <i></i>
-                <span>Prefeitura Municipal de Canhotinho</span>
-                <i></i>
-                <span>Sistema de Saúde - Posição na Fila</span>
+
+
+    <!-- ÁREA DE CONSULTA -->
+
+    <section class="fila-consulta">
+
+
+        <div class="fila-consulta-principal">
+
+            <h2>
+                Consulte sua posição
+            </h2>
+
+            <p>
+                Digite o número da sua senha para acompanhar
+                sua posição atual na fila.
+            </p>
+
+
+            <div class="fila-formulario">
+
+                <div class="fila-campo">
+
+                    <span class="fila-campo-icone">
+                        ▤
+                    </span>
+
+                    <span class="fila-placeholder">
+                        Ex.: 001245
+                    </span>
+
+                </div>
+
+
+                <button class="fila-botao-consultar">
+                    🔍 &nbsp; Consultar
+                </button>
+
             </div>
 
-            <a href="#acessibilidade" class="fila-accessibility">
-                <i class="fa-solid fa-universal-access"></i>
-                Acessibilidade
-            </a>
+        </div>
 
-        </footer>
 
-    </main>
+
+        <!-- CARD DE INFORMAÇÃO -->
+
+        <aside class="fila-info">
+
+            <div class="fila-info-icone">
+                ?
+            </div>
+
+            <h2>
+                Como funciona?
+            </h2>
+
+            <p>
+                Digite o número da sua senha para consultar
+                sua posição atual na fila de atendimento.
+            </p>
+
+        </aside>
+
+    </section>
+
+
+
+    <!-- RESULTADO -->
+
+    <section class="fila-resultado">
+
+
+        <div class="fila-resultado-topo">
+
+            <div>
+
+                <h2>
+                    Sua posição na fila
+                </h2>
+
+                <p>
+                    Senha:
+                    <strong>001245</strong>
+                </p>
+
+            </div>
+
+
+            <div class="fila-status">
+                Aguardando atendimento
+            </div>
+
+        </div>
+
+
+
+        <div class="fila-posicao">
+
+
+            <div class="fila-numero">
+                08
+            </div>
+
+
+            <div class="fila-posicao-texto">
+
+                <h3>
+                    Você está na posição
+                </h3>
+
+                <p>
+                    Existem
+                    <strong>7 pessoas</strong>
+                    na sua frente.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PREVISÃO -->
+
+        <div class="fila-previsao">
+
+            <div class="fila-previsao-icone">
+                ⏱
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Previsão de atendimento
+                </h3>
+
+                <p>
+                    Aproximadamente 30 minutos
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ETAPAS -->
+
+    <h2 class="fila-titulo">
+        Acompanhe sua fila
+    </h2>
+
+
+    <section class="fila-etapas">
+
+
+        <div class="fila-etapa">
+
+            <div class="fila-etapa-icone fila-concluido">
+                ✓
+            </div>
+
+            <h3>
+                Senha retirada
+            </h3>
+
+            <p>
+                Sua senha foi registrada no sistema.
+            </p>
+
+        </div>
+
+
+        <div class="fila-seta">
+            ›
+        </div>
+
+
+        <div class="fila-etapa">
+
+            <div class="fila-etapa-icone fila-atual">
+                08
+            </div>
+
+            <h3>
+                Sua posição
+            </h3>
+
+            <p>
+                Você está aguardando atendimento.
+            </p>
+
+        </div>
+
+
+        <div class="fila-seta">
+            ›
+        </div>
+
+
+        <div class="fila-etapa">
+
+            <div class="fila-etapa-icone">
+                ☎
+            </div>
+
+            <h3>
+                Chamamento
+            </h3>
+
+            <p>
+                Aguarde sua senha ser chamada.
+            </p>
+
+        </div>
+
+
+        <div class="fila-seta">
+            ›
+        </div>
+
+
+        <div class="fila-etapa">
+
+            <div class="fila-etapa-icone">
+                ✓
+            </div>
+
+            <h3>
+                Atendimento
+            </h3>
+
+            <p>
+                Dirija-se ao local indicado.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- AVISO -->
+
+    <section class="fila-aviso">
+
+        <div class="fila-aviso-icone">
+            !
+        </div>
+
+
+        <div>
+
+            <h3>
+                Fique atento ao seu chamado!
+            </h3>
+
+            <p>
+                Acompanhe sua posição e fique atento aos
+                painéis ou avisos de atendimento.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- RODAPÉ -->
+
+<footer class="fila-footer">
+
+
+    <div class="fila-footer-logo">
+
+        <h2>
+            CONECTA <span>CANHOTINHO</span>
+        </h2>
+
+        <p>
+            Prefeitura Municipal de Canhotinho
+        </p>
+
+    </div>
+
+
+    <div class="fila-footer-links">
+
+        <h3>
+            Links úteis
+        </h3>
+
+        <p>
+            • Portal da Transparência
+        </p>
+
+        <p>
+            • Ouvidoria
+        </p>
+
+        <p>
+            • Acesso à Informação
+        </p>
+
+    </div>
+
+
+    <div class="fila-footer-social">
+
+        <h3>
+            Redes sociais
+        </h3>
+
+        <p>
+            ◎ &nbsp; f &nbsp; ▶ &nbsp; X
+        </p>
+
+    </div>
+
+
+    <div class="fila-slogan">
+
+        Canhotinho<br>
+
+        <strong>
+            é a nossa gente!
+        </strong>
+
+    </div>
+
+
+    <div class="fila-copyright">
+
+        © 2025 Prefeitura Municipal de Canhotinho -
+        Todos os direitos reservados.
+
+    </div>
+
+
+</footer>
 
 </body>
 </html>
