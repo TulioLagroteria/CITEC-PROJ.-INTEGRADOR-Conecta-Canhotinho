@@ -1,8 +1,8 @@
 {
-  "name": "Conecta-Canhotinho",
+  "name": "conecta-canhotinho",
   "version": "1.0.0",
   "description": "PROJ. INT. - Centralização de Serviços de Saúde de Canhotinho",
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
@@ -20,12 +20,9 @@
     "url": "https://github.com"
   },
   "homepage": "https://github.com",
-  "dependencies": {
-    "express": "^5.3.0"
-  },
+  
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261023.1",
-    "@types/express": "^4.17.21",
     "typescript": "^5.4.5",
     "wrangler": "^4.152.0"
   }

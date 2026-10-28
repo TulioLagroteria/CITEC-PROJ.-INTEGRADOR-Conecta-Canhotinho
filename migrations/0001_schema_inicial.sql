@@ -5,9 +5,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nome TEXT NOT NULL,
     cpf TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
+    preferencial TEXT,
     telefone TEXT,
     senha_hash TEXT NOT NULL,
-    perfil TEXT NOT NULL CHECK(perfil IN ('cidadao', 'atendente'))
+    perfil TEXT NOT NULL CHECK(perfil IN ('Cidadão','Administrativo', 'ACS', 'Super_Admin'))
 );
 
 CREATE TABLE IF NOT EXISTS sessoes (
