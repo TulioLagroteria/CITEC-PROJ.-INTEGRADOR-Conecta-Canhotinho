@@ -2,7 +2,7 @@
   "name": "citec-proj.-integrador-conecta-canhotinho",
   "version": "1.0.0",
   "description": "PROJ. INT.",
-  "main": "agendamentoonline.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
